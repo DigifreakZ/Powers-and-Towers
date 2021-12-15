@@ -135,7 +135,9 @@ GameObject:
   - component: {fileID: 81722642}
   - component: {fileID: 81722641}
   - component: {fileID: 81722640}
-  m_Layer: 0
+  - component: {fileID: 81722644}
+  - component: {fileID: 81722643}
+  m_Layer: 6
   m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +171,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -1634,6 +1636,129 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &81722643
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81722638}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 81722640}
+    m_ColliderPaths:
+    - - X: 60000000
+        Y: 50000000
+      - X: -30000000
+        Y: 50000000
+      - X: -30000000
+        Y: 0
+      - X: 70000000
+        Y: 0
+      - X: 70000000
+        Y: -10000000
+      - X: 120000000
+        Y: -10000000
+      - X: 120000000
+        Y: -20000000
+      - X: 80000000
+        Y: -20000000
+      - X: 80000000
+        Y: -30000000
+      - X: -160000000
+        Y: -30000000
+      - X: -160000000
+        Y: -50000000
+      - X: 100000000
+        Y: -50000000
+      - X: 100000000
+        Y: -40000000
+      - X: 140000000
+        Y: -40000000
+      - X: 140000000
+        Y: 10000000
+      - X: 90000000
+        Y: 10000000
+      - X: 90000000
+        Y: 20000000
+      - X: -10000000
+        Y: 20000000
+      - X: -10000000
+        Y: 30000000
+      - X: 80000000
+        Y: 30000000
+      - X: 80000000
+        Y: 90000000
+      - X: 60000000
+        Y: 90000000
+      - X: 60000000
+        Y: 80000000
+      - X: 30000000
+        Y: 80000000
+      - X: 30000000
+        Y: 70000000
+      - X: 60000000
+        Y: 70000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 9.99997, y: -5}
+      - {x: 10.00003, y: -4}
+      - {x: 14, y: -3.999971}
+      - {x: 13.999971, y: 1}
+      - {x: 9, y: 1.0000294}
+      - {x: 8.99997, y: 2}
+      - {x: -1, y: 2.0000293}
+      - {x: -0.9999706, y: 3}
+      - {x: 8, y: 3.0000293}
+      - {x: 7.9999704, y: 9}
+      - {x: 6, y: 8.99997}
+      - {x: 5.9999704, y: 8}
+      - {x: 3, y: 7.9999704}
+      - {x: 3.0000293, y: 7}
+      - {x: 6, y: 6.9999704}
+      - {x: 5.9999704, y: 5}
+      - {x: -3, y: 4.999971}
+      - {x: -2.999971, y: 0}
+      - {x: 7, y: -0.0000294}
+      - {x: 7.0000296, y: -1}
+      - {x: 12, y: -1.0000294}
+      - {x: 11.99997, y: -2}
+      - {x: 8, y: -2.0000293}
+      - {x: 7.9999704, y: -3}
+      - {x: -16, y: -3.0000293}
+      - {x: -15.999971, y: -5}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!50 &81722644
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81722638}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &257917611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,6 +2193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 724565689}
+  animate: 0
 --- !u!114 &914387176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,6 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
+  tweener: {fileID: 0}
 --- !u!1 &1088768053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 835324284}
+  animate: 0
 --- !u!114 &1088768058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2186,6 +2314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
+  tweener: {fileID: 0}
 --- !u!1 &1121193887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,6 +2634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 1286583108}
+  animate: 0
 --- !u!114 &1414146400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2518,6 +2648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
+  tweener: {fileID: 0}
 --- !u!1 &1539290687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,6 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 1255402278}
+  animate: 0
 --- !u!114 &1539290690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,6 +2755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
+  tweener: {fileID: 0}
 --- !u!1 &1589267522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,6 +2848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 2115127858}
+  animate: 0
 --- !u!114 &1589267527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2728,6 +2862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
+  tweener: {fileID: 0}
 --- !u!1 &1616156931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,6 +3136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 706526197}
+  animate: 0
 --- !u!114 &1804086973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3014,6 +3150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
+  tweener: {fileID: 0}
 --- !u!1 &1845583591
 GameObject:
   m_ObjectHideFlags: 0
