@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] private Transform targetedEnd;
     private Vector3 startLocation;
@@ -51,5 +51,15 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         StopAllCoroutines();
         StartCoroutine("GoToStart");
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        print("Clicked " + name);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        print("Clicked " + name);
     }
 }
