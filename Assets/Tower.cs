@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    hitCollider.GetComponent<Enemy>()
+    public float attackSpeed = 1f;
+    public int damage = 1;
+    public DamageType type;
     private void Update()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         foreach (var hitCollider in hitColliders)
         {
-            hitCollider.SendMessage("AddDamage");
+            Enemy enemy = hitCollider.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage();
+            }
         }
     }
+}
+
+public enum DamageType
+{
+    Normal
 }

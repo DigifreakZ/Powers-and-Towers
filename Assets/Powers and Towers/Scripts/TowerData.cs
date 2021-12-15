@@ -7,6 +7,7 @@ public class TowerData : ScriptableObject
 {
     public float attackSpeed = 1f;
     public int damage = 1;
+    public DamageType type;
 
     public GameObject TowerPrefab;
 
