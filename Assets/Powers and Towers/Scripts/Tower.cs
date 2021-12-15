@@ -22,11 +22,14 @@ public class Tower : MonoBehaviour
                 radius,
                 1<<8
             );
-            Enemy enemy = hitCollider.GetComponent<Enemy>();
-            if (enemy != null)
+            if (hitCollider != null)
             {
-                enemy.Health -= damage;
-                attackCD = attackSpeed;
+                Enemy enemy = hitCollider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.Health -= damage;
+                    attackCD = attackSpeed;
+                }
             }
         }
         else
