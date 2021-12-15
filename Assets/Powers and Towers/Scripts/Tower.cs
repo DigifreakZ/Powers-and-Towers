@@ -8,16 +8,27 @@ public class Tower : MonoBehaviour
     public int damage = 1;
     public DamageType type;
     private float radius = 5f;
+
+    private float attackCD = 0f;
     private void Update()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-        foreach (var hitCollider in hitColliders)
+        if (attackCD < 0f)
         {
-            Enemy enemy = hitCollider.GetComponent<Enemy>();
-            if (enemy != null)
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+            foreach (var hitCollider in hitColliders)
             {
-                // enemy.TakeDamage();
+                Enemy enemy = hitCollider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.Health -= damage;
+
+                    break;
+                }
             }
+        }
+        else
+        {
+            attackCD -= Time.deltaTime;
         }
     }
 }

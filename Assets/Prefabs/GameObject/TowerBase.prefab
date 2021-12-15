@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6761258728919141184}
   - component: {fileID: 848833332269116759}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5621588213169864369}
   - component: {fileID: 1537850162777525119}
   - component: {fileID: 6618479644304661282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

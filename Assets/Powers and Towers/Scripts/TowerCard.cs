@@ -7,6 +7,7 @@ using UnityEngine;
 public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private TowerData towerData;
+    public LayerMask mLayerMask;
     private bool holdingCard;
     public void SetTower(Vector3 pos)
     {
@@ -22,6 +23,9 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         if (m.image.sprite != towerData.spriteImage)
             m.image.sprite = towerData.spriteImage;
+
+        if (ViablePlacementArea) m.image.color = Color.white;
+        else                     m.image.color = Color.red;
     }
     // Sets tower att mouse Position
     // towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
@@ -33,11 +37,12 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             objs = Physics2D.OverlapBox
             (
                 Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0,0,10),
-                Vector2.one,
-                0f
+                towerData.TowerPrefab.transform.localScale * 0.8f,
+                0f,
+                mLayerMask
             );
-            if (objs != null)
-            print(objs.name);
+            //if (objs != null)
+            //print(objs.name);
             return objs == null;
         }
     } 
