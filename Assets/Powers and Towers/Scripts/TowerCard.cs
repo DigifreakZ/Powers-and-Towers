@@ -7,74 +7,53 @@ using UnityEngine;
 public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private TowerData towerData;
-    [SerializeField] private UITweener tweener;
     private bool holdingCard;
-    private bool HoldingCard
-    {
-        set
-        {
-            if (tweener != null) tweener.animate = value;
-            holdingCard = value;
-        }
-        get => holdingCard;
-    }
     public void SetTower(Vector3 pos)
     {
         towerData.SetTower(pos);
     }
-
-    private void Awake()
+    private void Update()
     {
-        tweener = GetComponent<UITweener>();
+        if (!holdingCard || MouseHandler.instance == null) return;
+        
+        MouseHandler m = MouseHandler.instance;
+
+        if (!m.image.enabled) m.image.enabled = true;
+
+        if (m.image.sprite != towerData.spriteImage)
+            m.image.sprite = towerData.spriteImage;
     }
     // Sets tower att mouse Position
     // towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
-    private void Update()
-    {
-        if (holdingCard)
-        {
-            transform.position = Mouse.current.position.ReadValue();
-        }
-        //    Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
-
     private bool ViablePlacementArea
     {
         get
         {
             Collider2D objs;
-            objs = Physics2D.OverlapBox(Mouse.current.position.ReadValue(), Vector2.one, 0,6);
+            objs = Physics2D.OverlapBox
+            (
+                Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0,0,10),
+                Vector2.one,
+                0f
+            );
             if (objs != null)
             print(objs.name);
             return objs == null;
-            //RaycastHit2D hit = Physics2D.BoxCast(Mouse.current.position.ReadValue(),
-            //    Vector2.one,
-            //    0,
-            //    Vector2.zero,
-            //    100,
-            //    6);
-            //if (hit)
-            //print(hit.collider.gameObject.name);
-            //return !hit;
         }
     } 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        HoldingCard = true;
+        holdingCard = true;
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        HoldingCard = false;
-        tweener.StartCoroutine("GoToStart");
+        holdingCard = false;
         if (ViablePlacementArea)
         {
             towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(Mouse.current.position.ReadValue(), Vector3.one);
+        if (MouseHandler.instance == null) return;
+        MouseHandler.instance.SetDefaultMouse();
     }
 }

@@ -9,7 +9,6 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private Transform targetedEnd;
     private Vector3 startLocation;
     private Vector3 endPosition;
-    public bool animate = false;
     private float tween = 0f;
     private float animationSpeed = 5f;
     // Start is called before the first frame update
@@ -21,7 +20,7 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     IEnumerator GoToEnd()
     {
-        while (tween < 1f && !animate)
+        while (tween < 1f)
         {
             yield return new WaitForFixedUpdate();
             tween += Time.fixedDeltaTime * animationSpeed;
@@ -32,7 +31,7 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     IEnumerator GoToStart()
     {
-        while (tween > 0f && !animate)
+        while (tween > 0f)
         {
             yield return new WaitForFixedUpdate();
             tween -= Time.fixedDeltaTime * animationSpeed;

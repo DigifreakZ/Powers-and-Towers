@@ -9,7 +9,7 @@ public class TowerData : ScriptableObject
     public float attackSpeed = 1f;
     public int damage = 1;
     public DamageType type;
-    public Image image;
+    public Sprite spriteImage;
     public GameObject TowerPrefab;
 
     public void SetTower(Vector3 pos) 
