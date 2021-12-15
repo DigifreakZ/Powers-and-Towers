@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -14,16 +15,18 @@ public class Tower : MonoBehaviour
     {
         if (attackCD < 0f)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-            foreach (var hitCollider in hitColliders)
+            Collider2D hitCollider =
+            Physics2D.OverlapCircle
+            (
+                transform.position,
+                radius,
+                1<<8
+            );
+            Enemy enemy = hitCollider.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                Enemy enemy = hitCollider.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.Health -= damage;
-
-                    break;
-                }
+                enemy.Health -= damage;
+                attackCD = attackSpeed;
             }
         }
         else
