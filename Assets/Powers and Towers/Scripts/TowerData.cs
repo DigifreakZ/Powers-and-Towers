@@ -13,6 +13,8 @@ public class TowerData : ScriptableObject
 
     public void SetTower(Vector3 pos) 
     {
-        Instantiate(TowerPrefab, pos, Quaternion.identity);
+        GameObject _object = Instantiate(TowerPrefab, pos, Quaternion.identity);
+        Tower towerScript = _object.GetComponent<Tower>();
+        towerScript.damage = damage;
     } 
 }

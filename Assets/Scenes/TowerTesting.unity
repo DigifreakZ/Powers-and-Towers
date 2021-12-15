@@ -213,7 +213,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -50
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1988,6 +1988,7 @@ GameObject:
   - component: {fileID: 914387174}
   - component: {fileID: 914387173}
   - component: {fileID: 914387175}
+  - component: {fileID: 914387176}
   m_Layer: 5
   m_Name: Tower Card 6
   m_TagString: Untagged
@@ -2067,6 +2068,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 724565689}
+--- !u!114 &914387176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914387171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
 --- !u!1 &1088768053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2093,7 @@ GameObject:
   - component: {fileID: 1088768056}
   - component: {fileID: 1088768055}
   - component: {fileID: 1088768057}
+  - component: {fileID: 1088768058}
   m_Layer: 5
   m_Name: Tower Card 4
   m_TagString: Untagged
@@ -2158,6 +2173,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 835324284}
+--- !u!114 &1088768058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088768053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
 --- !u!1 &1121193887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,6 +2425,7 @@ GameObject:
   - component: {fileID: 1414146398}
   - component: {fileID: 1414146397}
   - component: {fileID: 1414146399}
+  - component: {fileID: 1414146400}
   m_Layer: 5
   m_Name: Tower Card 5
   m_TagString: Untagged
@@ -2476,6 +2505,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 1286583108}
+--- !u!114 &1414146400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414146395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
 --- !u!1 &1539290687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,6 +2530,7 @@ GameObject:
   - component: {fileID: 1539290691}
   - component: {fileID: 1539290690}
   - component: {fileID: 1539290689}
+  - component: {fileID: 1539290692}
   m_Layer: 5
   m_Name: Tower Card 1
   m_TagString: Untagged
@@ -2567,6 +2610,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539290687}
   m_CullTransparentMesh: 1
+--- !u!114 &1539290692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539290687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
 --- !u!1 &1589267522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,6 +2635,7 @@ GameObject:
   - component: {fileID: 1589267525}
   - component: {fileID: 1589267524}
   - component: {fileID: 1589267526}
+  - component: {fileID: 1589267527}
   m_Layer: 5
   m_Name: Tower Card 2
   m_TagString: Untagged
@@ -2658,6 +2715,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 2115127858}
+--- !u!114 &1589267527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589267522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
 --- !u!1 &1616156931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,6 +2921,7 @@ GameObject:
   - component: {fileID: 1804086971}
   - component: {fileID: 1804086970}
   - component: {fileID: 1804086972}
+  - component: {fileID: 1804086973}
   m_Layer: 5
   m_Name: Tower Card 3
   m_TagString: Untagged
@@ -2930,6 +3001,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedEnd: {fileID: 706526197}
+--- !u!114 &1804086973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804086968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
 --- !u!1 &1845583591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,7 +3163,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

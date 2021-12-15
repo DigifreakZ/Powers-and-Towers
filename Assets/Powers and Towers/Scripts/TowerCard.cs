@@ -1,33 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private TowerData towerData;
+    [SerializeField] private UITweener tweener;
     private bool holdingCard;
+    private bool HoldingCard
+    {
+        set
+        {
+            if (tweener != null) tweener.animate = value;
+            holdingCard = value;
+        }
+        get => holdingCard;
+    }
     public void SetTower(Vector3 pos)
     {
         towerData.SetTower(pos);
-        
     }
 
+    private void Awake()
+    {
+        tweener = GetComponent<UITweener>();
+    }
+    // Sets tower att mouse Position
+    // towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
     private void Update()
     {
         if (holdingCard)
         {
-            print("Hello " + name);
+            transform.position = Mouse.current.position.ReadValue();
         }
         //    Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        holdingCard = true;
+        HoldingCard = true;
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        holdingCard = false;
+        HoldingCard = false;
     }
 }

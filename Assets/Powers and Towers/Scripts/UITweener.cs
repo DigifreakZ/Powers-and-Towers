@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Transform targetedEnd;
     private Vector3 startLocation;
     private Vector3 endPosition;
+    public bool animate = false;
     private float tween = 0f;
     private float animationSpeed = 5f;
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     IEnumerator GoToEnd()
     {
-        while (tween < 1f)
+        while (tween < 1f && !animate)
         {
             yield return new WaitForFixedUpdate();
             tween += Time.fixedDeltaTime * animationSpeed;
@@ -31,7 +32,7 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     IEnumerator GoToStart()
     {
-        while (tween > 0f)
+        while (tween > 0f && !animate)
         {
             yield return new WaitForFixedUpdate();
             tween -= Time.fixedDeltaTime * animationSpeed;
@@ -51,15 +52,5 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         StopAllCoroutines();
         StartCoroutine("GoToStart");
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        print("Clicked " + name);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        print("Clicked " + name);
     }
 }
