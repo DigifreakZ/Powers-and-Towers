@@ -3151,7 +3151,7 @@ GameObject:
   - component: {fileID: 1005836642}
   - component: {fileID: 1005836641}
   - component: {fileID: 1005836640}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
