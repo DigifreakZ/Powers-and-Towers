@@ -19,3 +19,4 @@ public class TowerData : ScriptableObject
         towerScript.damage = damage;
     } 
 }
+

@@ -29,6 +29,7 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     // Sets tower att mouse Position
     // towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
+
     private bool ViablePlacementArea
     {
         get
