@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
     protected virtual void ReachedEnd()
     {
         index = 0;
-        Destroy(gameObject);
+        Die();
     }
 
     protected virtual void Die()
