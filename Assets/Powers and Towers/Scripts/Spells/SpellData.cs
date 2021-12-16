@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]
 public class SpellData : ScriptableObject
@@ -12,6 +13,7 @@ public class SpellData : ScriptableObject
     public string spellDescription;
     public LayerMask target;
     public float spellPower;
+    public float spellRange;
     public bool slow;
     [Range(0,1)][HideInInspector]
     public float slowPower;
@@ -20,6 +22,10 @@ public class SpellData : ScriptableObject
     public void Cast(int levelCastAt)
     {
         Debug.Log("Cast " + spellNames[levelCastAt]);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(Mouse.current.position.ReadValue(), spellRange, target);
+        foreach (var item in hits)
+        {
+            Debug.Log("Enemy hit");
+        }
     }
-
 }

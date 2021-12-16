@@ -12,7 +12,7 @@ public class SpellDataEditor : Editor
 
         if (spellData.slow)
         {
-            //spellData.slowPower.
+            spellData.slowPower = EditorGUILayout.Slider("Slow Power", spellData.slowPower,0,1);
         }
     }
 }

@@ -60,14 +60,6 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         }
     }
-    private void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
-        {
-            LevelUp();
-            print("Card Leveled up!");
-        }
-    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
