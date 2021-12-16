@@ -170,6 +170,7 @@ MonoBehaviour:
   - {fileID: 203830175}
   - {fileID: 1147715415}
   wave: 
+  demoMode: 1
 --- !u!4 &60694870
 Transform:
   m_ObjectHideFlags: 0
