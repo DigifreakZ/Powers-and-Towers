@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] private Transform[] _pathNodes;
     [SerializeField] private List<int> wave;
     private List<Enemy> enemies;
+    public bool demoMode;
     private void Awake()
     {
         if (MapManager.instance != null) Destroy(gameObject);
@@ -28,10 +29,10 @@ public class MapManager : MonoBehaviour
         else
         {
 
-            //if (enemies.Count <= 0)
-            //{
-            //    nextWave = true;
-            //}
+            if (enemies.Count <= 0 && !demoMode)
+            {
+                nextWave = true;
+            }
         }
     }
     // spawn enemy at start
@@ -86,7 +87,7 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < wave[wave.Count - 1]; i++)
         {
             enemies.Add(Instantiate(enemyPrefab, _pathNodes[0].position, Quaternion.identity).GetComponent<Enemy>());
-            yield return new WaitForSeconds((10/wave[wave.Count - 1]));
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
