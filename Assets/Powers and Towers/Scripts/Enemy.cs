@@ -10,9 +10,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform[] _nodes;
     [SerializeField] Rigidbody2D rb;
     private int index = 0;
-    public virtual int Health 
-    { 
-        get 
+    public virtual int Health
+    {
+        get
         {
             return _health;
         }
@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
     protected virtual void ReachedEnd()
     {
         index = 0;
+        Destroy(gameObject);
     }
 
     protected virtual void Die()
@@ -68,5 +69,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         return;
     }
+
 
 }
