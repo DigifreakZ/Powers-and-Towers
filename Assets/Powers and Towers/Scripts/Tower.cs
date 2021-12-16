@@ -20,7 +20,6 @@ public class Tower : MonoBehaviour
             (
                 transform.position,
                 radius,
-
                 1<<8
             );
             if (hitCollider != null)
