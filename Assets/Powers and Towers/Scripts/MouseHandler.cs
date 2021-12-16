@@ -19,7 +19,6 @@ public class MouseHandler : MonoBehaviour
     {
         transform.position = Mouse.current.position.ReadValue();
     }
-
     internal void SetDefaultMouse()
     {
         image.enabled = false;
