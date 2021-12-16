@@ -320,7 +320,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 113800421}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: CommandStartNextRound
         m_Mode: 1
@@ -3089,7 +3089,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 113800421}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: CommandEndRound
         m_Mode: 1
