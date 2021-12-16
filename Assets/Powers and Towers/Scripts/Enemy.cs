@@ -64,6 +64,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
+        MapManager.instance.EnemyDied(this);
         Destroy(gameObject);
         return;
     }
