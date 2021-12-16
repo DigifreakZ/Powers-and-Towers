@@ -12,7 +12,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private SpellData spellData;
     public SpellEffectManager effectManager;
     [SerializeField]
-    private float spellLevel;
+    private int spellLevel = 0;
     [SerializeField]
     private TextMeshProUGUI spellNameField;
     [SerializeField]
@@ -28,10 +28,9 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         load = true;
         effectManager = FindObjectOfType<SpellEffectManager>();
-        spellLevel = 1f;
-        spellNameField.text = spellData.spellNameLevel1;
+        spellNameField.text = spellData.spellNames[spellLevel];
         spellCostField.text = spellData.spellCost.ToString();
-        spellIcon.sprite = spellData.spellIconLevel1;
+        spellIcon.sprite = spellData.spellIcons[spellLevel];
         spellDescriptionField.text = spellData.spellDescription;
     }
 
@@ -53,26 +52,21 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void LevelUp()
     {
-        if (spellLevel < 3)
+        if (spellLevel < spellData.spellNames.Length)
         {
             spellLevel++;
-            if (spellLevel == 2)
-            {
-                spellNameField.text = spellData.spellNameLevel2;
-                spellIcon.sprite = spellData.spellIconLevel2;
-            }
-            else if (spellLevel == 3)
-            {
-                spellNameField.text = spellData.spellNameLevel3;
-                spellIcon.sprite = spellData.spellIconLevel3;
-            }
+            spellNameField.text = spellData.spellNames[spellLevel];
+            spellIcon.sprite = spellData.spellIcons[spellLevel];
+
         }
     }
     private void OnGUI()
     {
         if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
+        {
             LevelUp();
-        print("Card Leveled up!");
+            print("Card Leveled up!");
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -82,7 +76,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        effectManager.CastSpell(1);
+        spellData.Cast(spellLevel);
         grabbed = false;
         Destroy(gameObject);
     }

@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellID: 1
   spellCost: 5
-  spellNameLevel1: Fireball
-  spellNameLevel2: Firestorm
-  spellNameLevel3: Meteor
-  spellIconLevel1: {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
-  spellIconLevel2: {fileID: 21300000, guid: ef934c34ca12e294fb8f72bea545e27d, type: 3}
-  spellIconLevel3: {fileID: 21300000, guid: 07b3c49f8b01aca49a38f03ced48ed47, type: 3}
+  spellNames:
+  - Fireball
+  - Firestorm
+  - Meteor
+  spellIcons:
+  - {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
+  - {fileID: 21300000, guid: ef934c34ca12e294fb8f72bea545e27d, type: 3}
+  - {fileID: 21300000, guid: 07b3c49f8b01aca49a38f03ced48ed47, type: 3}
   spellDescription: Ball of fire which explodes
+  target:
+    serializedVersion: 2
+    m_Bits: 128
+  spellPower: 5
+  slow: 0
+  slowPower: 0
