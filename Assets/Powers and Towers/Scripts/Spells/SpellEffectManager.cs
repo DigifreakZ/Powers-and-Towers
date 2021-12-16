@@ -14,7 +14,6 @@ public class SpellEffectManager : MonoBehaviour
                 { 
                     print("Fireball!");
                     Physics2D.OverlapCircle(Mouse.current.position.ReadValue(), 5f);
-                
                 }
                 break;
             default:
