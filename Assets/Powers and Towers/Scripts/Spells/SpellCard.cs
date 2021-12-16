@@ -51,6 +51,29 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
     }
 
+    public void LevelUp()
+    {
+        if (spellLevel < 3)
+        {
+            spellLevel++;
+            if (spellLevel == 2)
+            {
+                spellNameField.text = spellData.spellNameLevel2;
+                spellIcon.sprite = spellData.spellIconLevel2;
+            }
+            else if (spellLevel == 3)
+            {
+                spellNameField.text = spellData.spellNameLevel3;
+                spellIcon.sprite = spellData.spellIconLevel3;
+            }
+        }
+    }
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
+            LevelUp();
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         grabbed = true;
