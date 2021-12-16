@@ -49,38 +49,43 @@ public class MapManager : MonoBehaviour
     public void CommandEndRound()
     {
         StopAllCoroutines();
-        while(enemies.Count > 0)
+        for (int i = enemies.Count -1; i >= 0; i--)
         {
-            enemies[0].Health = 0;
-            enemies.RemoveAt(0);
+            try
+            {
+                enemies[i].Health = 0;
+            }
+            catch 
+            {
+                enemies.RemoveAt(i);
+            }
         }
     }
 
     public void CommandStartNextRound()
     {
-        if (wave != null)
-        wave.Add(wave[wave.Count - 1] * 2);
-        else
-        {
-            wave = new List<int>();
-            wave.Add(10);
-        }
         nextWave = true;
     }
 
     IEnumerator Spawner()
     {
         if (wave != null)
+        {
+            if (wave.Count == 0)
+            wave.Add(10);
+            else
             wave.Add(wave[wave.Count - 1] * 2);
+        }
         else
         {
             wave = new List<int>();
             wave.Add(10);
         }
+
         for (int i = 0; i < wave[wave.Count - 1]; i++)
         {
             enemies.Add(Instantiate(enemyPrefab, _pathNodes[0].position, Quaternion.identity).GetComponent<Enemy>());
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds((10/wave[wave.Count - 1]));
         }
     }
 

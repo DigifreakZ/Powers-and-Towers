@@ -43,12 +43,13 @@ public class Enemy : MonoBehaviour
     {
         if (_nodes != null)
         {
-            if ((transform.position - _nodes[index].position).sqrMagnitude < 0.1 * 0.1)
+            if ((transform.position - _nodes[index].position).sqrMagnitude < 0.3 * 0.3)
             {
                 if (index < _nodes.Length - 1)
                     index += 1;
                 else
                     ReachedEnd();
+
 
                 Vector3 triangle = _nodes[index].position - transform.position;
                 transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
