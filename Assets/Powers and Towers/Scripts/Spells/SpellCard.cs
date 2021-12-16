@@ -23,6 +23,12 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private TextMeshProUGUI spellDescriptionField;
     private bool load;
     private bool grabbed;
+    [SerializeField]
+    private Transform targetCircle;
+    private bool targetInRange;
+
+
+
 
     void OnEnable()
     {
@@ -38,7 +44,17 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (grabbed)
         {
-            transform.position = Mouse.current.position.ReadValue();
+            Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()).x, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()).y, 0);
+            targetCircle.transform.position = mousePos;
+            targetInRange = Physics2D.OverlapCircle(mousePos, spellData.spellRange, spellData.target) != null;
+            if (targetInRange)
+            {
+                targetCircle.GetComponent<SpriteRenderer>().color = Color.green;
+            }
+            else
+            {
+                targetCircle.GetComponent<SpriteRenderer>().color = Color.red;
+            }
         }
     }
 
@@ -64,12 +80,14 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         grabbed = true;
+        targetCircle.transform.localScale = new Vector2((spellData.spellRange + spellLevel * 0.5f) * 2, (spellData.spellRange + spellLevel * 0.5f) * 2);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         spellData.Cast(spellLevel);
         grabbed = false;
+        targetCircle.transform.position = new Vector3(0, 0, -10);
         Destroy(gameObject);
     }
 }

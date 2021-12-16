@@ -27,6 +27,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   spellPower: 5
-  spellRange: 1
+  spellRange: 1.5
   slow: 0
   slowPower: 0

@@ -22,7 +22,7 @@ public class SpellData : ScriptableObject
     public void Cast(int levelCastAt)
     {
         Debug.Log("Cast " + spellNames[levelCastAt]);
-        Collider2D[] hits = Physics2D.OverlapCircleAll(Mouse.current.position.ReadValue(), spellRange, target);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), spellRange + levelCastAt * 0,5, target);
         foreach (var item in hits)
         {
             Debug.Log("Enemy hit");
