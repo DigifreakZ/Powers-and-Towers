@@ -86,7 +86,7 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < wave[wave.Count - 1]; i++)
         {
             enemies.Add(Instantiate(enemyPrefab, _pathNodes[0].position, Quaternion.identity).GetComponent<Enemy>());
-            yield return new WaitForSeconds((10/wave[wave.Count - 1]));
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
