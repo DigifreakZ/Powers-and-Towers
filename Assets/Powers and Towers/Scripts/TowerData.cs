@@ -10,7 +10,7 @@ public class TowerData : CardData
     [Tooltip("Second Between attacks")]
     public float attackSpeed = 1f;
     [Tooltip("Towers attack range")]
-    public float radius = 5f;
+    public float range = 5f;
     [Tooltip("What Damage the tower will make")]
     public DamageType type;
     [Tooltip("Next Upgrade of Tower")]

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -10,10 +12,27 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private TowerData towerData;
     [Tooltip("Layers Tower can't be placed on")]
     public LayerMask mLayerMask;
+    [SerializeField] private TextMeshProUGUI cardCostText;
+    [SerializeField] private TextMeshProUGUI cardNameText;
+    [SerializeField] private TextMeshProUGUI cardDamageText;
+    [SerializeField] private TextMeshProUGUI cardSpeedText;
+    [SerializeField] private TextMeshProUGUI cardRangeText;
+    [SerializeField] private TextMeshProUGUI cardElementText;
+    [SerializeField] private Image cardTowerImage;
     private bool holdingCard;
     public void SetTower(Vector3 pos)
     {
         towerData.SetTower(pos);
+    }
+    private void Awake()
+    {
+        cardCostText.text = towerData.cardCost.ToString();
+        cardNameText.text = towerData.cardName.ToString();
+        cardDamageText.text = towerData.damage.ToString();
+        cardSpeedText.text = (1/towerData.attackSpeed).ToString();
+        cardRangeText.text = towerData.range.ToString();
+        cardElementText.text = towerData.type.ToString();
+        cardTowerImage.sprite = towerData.spriteImage;
     }
     private void Update()
     {

@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour
         {
             this.damage = data.damage;
             this.attackSpeed = data.attackSpeed;
-            this.radius = data.radius;
+            this.radius = data.range;
             this.type = data.type;
             this.data = data;
         }
