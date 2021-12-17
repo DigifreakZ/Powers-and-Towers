@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Spell", menuName = "Spells/Spell base class")]
 public class SpellData : ScriptableObject
 {
     public float spellID;
@@ -8,8 +7,8 @@ public class SpellData : ScriptableObject
     public string[] spellNames = new string[3];
     public Sprite[] spellIcons = new Sprite[3];
     public string spellDescription;
+    [HideInInspector]
     public LayerMask target;
-    public int spellPower;
     public float spellRange;
     public float spellRangeLevelUp;
 
