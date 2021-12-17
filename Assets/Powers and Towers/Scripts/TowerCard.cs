@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [Tooltip("Towers Base Data")]
     [SerializeField] private TowerData towerData;
+    [Tooltip("Layers Tower can't be placed on")]
     public LayerMask mLayerMask;
     private bool holdingCard;
     public void SetTower(Vector3 pos)
@@ -27,9 +29,13 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (ViablePlacementArea) m.image.color = Color.white;
         else                     m.image.color = Color.red;
     }
+
     // Sets tower att mouse Position
     // towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
-
+    
+    /// <summary>
+    /// Returns true if an object is blocking placement of Tower
+    /// </summary>
     private bool ViablePlacementArea
     {
         get
@@ -42,12 +48,10 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 0f,
                 mLayerMask
             );
-            //if (objs != null)
-            //print(objs.name);
+            // if there is an object att location Return true
             return objs == null;
         }
-    } 
-
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         holdingCard = true;
