@@ -13,11 +13,11 @@ public class Tower : MonoBehaviour
     [SerializeField] private TowerData towerData;
     private List<Collider2D> colliders;
     private float attackCD = 0f;
-    private void Update()
+    protected void Update()
     {
         Attack();
     }
-    private void Attack()
+    protected virtual void Attack()
     {
         if (attackCD < 0f)
         {
