@@ -5,64 +5,50 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public float attackSpeed = 1f;
-    public int damage = 1;
-    public DamageType type;
-    private float radius = 5f;
-
-    [SerializeField] private TowerData towerData;
-    private List<Collider2D> colliders;
-    private float attackCD = 0f;
-    private void Update()
+    // Stats
+    protected int damage = 1;
+    protected float attackSpeed = 1f;
+    protected float radius = 5f;
+    protected DamageType type;
+    //
+    // Chache
+    protected TowerData data;
+    protected Transform headTransform;
+    protected float attackCD = 0f;
+    // 
+    public virtual void Init(TowerData data)
+    {
+        if (data != this.data)
+        {
+            this.damage = data.damage;
+            this.attackSpeed = data.attackSpeed;
+            this.radius = data.radius;
+            this.type = data.type;
+            this.data = data;
+        }
+        if (headTransform == null)
+        headTransform = gameObject.transform.GetChild(0);
+    }
+    protected virtual void Update()
     {
         Attack();
     }
-    private void Attack()
+    protected virtual void Upgrade()
     {
-        if (attackCD < 0f)
-        {
-            Collider2D[] hitCollider =
-            Physics2D.OverlapCircleAll
-            (
-                transform.position,
-                radius,
-                1 << 8
-            );
-            colliders = new List<Collider2D>();
-            colliders.AddRange(hitCollider);
-            if (colliders != null && !(colliders.Count <= 0))
-            {
-                colliders.Sort(
-                    (x1, x2) =>
-                (
-                    x1.transform.position - transform.position
-                    )
-                    .sqrMagnitude.CompareTo
-                    (
-                        (x2.transform.position - transform.position).sqrMagnitude
-                    )
-                );
-                if ((colliders[0].transform.position - transform.position).sqrMagnitude >= radius * radius) return;
-                if (colliders[0] != null)
-                {
-                    Enemy enemy = colliders[0].GetComponent<Enemy>();
-                    if (enemy != null)
-                    {
-                        enemy.ReceiveDamage(damage, type);
-                        attackCD = attackSpeed;
-                    }
-                }
-            }
-        }
-        else
-        {
-            attackCD -= Time.deltaTime;
-        }
+        data.UpgradeTower(this);
+    }
+    protected virtual void Attack()
+    {
+        Debug.Log($"{name} Attacked");
     }
 }
 
 public enum DamageType
 {
-    Normal,
-    Fire
+    Physical,
+    Fire,
+    Lightning,
+    Earth,
+    Water,
+    Air
 }
