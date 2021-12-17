@@ -10,25 +10,47 @@ public class Tower : MonoBehaviour
     public DamageType type;
     private float radius = 5f;
 
+    [SerializeField] private TowerData towerData;
+    private List<Collider2D> colliders;
     private float attackCD = 0f;
     private void Update()
     {
+        Attack();
+    }
+    private void Attack()
+    {
         if (attackCD < 0f)
         {
-            Collider2D hitCollider =
-            Physics2D.OverlapCircle
+            Collider2D[] hitCollider =
+            Physics2D.OverlapCircleAll
             (
                 transform.position,
                 radius,
-                1<<8
+                1 << 8
             );
-            if (hitCollider != null)
+            colliders = new List<Collider2D>();
+            colliders.AddRange(hitCollider);
+            if (colliders != null && !(colliders.Count <= 0))
             {
-                Enemy enemy = hitCollider.GetComponent<Enemy>();
-                if (enemy != null)
+                colliders.Sort(
+                    (x1, x2) =>
+                (
+                    x1.transform.position - transform.position
+                    )
+                    .sqrMagnitude.CompareTo
+                    (
+                        (x2.transform.position - transform.position).sqrMagnitude
+                    )
+                );
+                if ((colliders[0].transform.position - transform.position).sqrMagnitude >= radius * radius) return;
+                if (colliders[0] != null)
                 {
-                    enemy.Health -= damage;
-                    attackCD = attackSpeed;
+                    Enemy enemy = colliders[0].GetComponent<Enemy>();
+                    if (enemy != null)
+                    {
+                        enemy.ReceiveDamage(damage, type);
+                        attackCD = attackSpeed;
+                    }
                 }
             }
         }

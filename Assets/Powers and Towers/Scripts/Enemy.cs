@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     [SerializeField] private Transform[] _nodes;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] DamageType[] resistances;
+    [SerializeField] DamageType[] Weakness;
     private int index = 0;
     public virtual int Health
     {
@@ -57,6 +59,27 @@ public class Enemy : MonoBehaviour
             rb.position = Vector3.MoveTowards(transform.position, _nodes[index].position, _speed * Time.fixedDeltaTime);
         }
     }
+
+    public void ReceiveDamage(int dmg, DamageType type)
+    {
+        float dmgMultiplyer = 1f;
+        foreach(DamageType _type in Weakness)
+        {
+            if (_type == type)
+            {
+                dmgMultiplyer *= 2f;
+            }
+        }
+        foreach (DamageType _type in resistances)
+        {
+            if (_type == type)
+            {
+                dmgMultiplyer *= 0.5f;
+            }
+        }
+        Health -= Mathf.Clamp(Mathf.RoundToInt(dmg * dmgMultiplyer),1,int.MaxValue);
+    }
+
     protected virtual void ReachedEnd()
     {
         index = 0;
