@@ -63,5 +63,6 @@ public class Tower : MonoBehaviour
 
 public enum DamageType
 {
-    Normal
+    Normal,
+    Fire
 }

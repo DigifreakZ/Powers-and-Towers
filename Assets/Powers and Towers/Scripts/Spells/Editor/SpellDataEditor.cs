@@ -9,10 +9,10 @@ public class SpellDataEditor : Editor
         base.OnInspectorGUI();
 
         SpellData spellData = (SpellData)target;
-
+        /*
         if (spellData.slow)
         {
             spellData.slowPower = EditorGUILayout.Slider("Slow Power", spellData.slowPower,0,1);
-        }
+        }*/
     }
 }
