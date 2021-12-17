@@ -3474,7 +3474,7 @@ PrefabInstance:
     - target: {fileID: 4970608873702318494, guid: 17ce1019e2dbe4b4eae35a4ecde8db47, type: 3}
       propertyPath: spellData
       value: 
-      objectReference: {fileID: 11400000, guid: b3f966ba1b88c1b4293a668b3224b8a2, type: 2}
+      objectReference: {fileID: 11400000, guid: 911778d8e2e966348b4cf96d83686b2d, type: 2}
     - target: {fileID: 4970608873702318494, guid: 17ce1019e2dbe4b4eae35a4ecde8db47, type: 3}
       propertyPath: targetCircle
       value: 
@@ -12179,7 +12179,7 @@ PrefabInstance:
     - target: {fileID: 4970608873702318494, guid: 17ce1019e2dbe4b4eae35a4ecde8db47, type: 3}
       propertyPath: spellData
       value: 
-      objectReference: {fileID: 11400000, guid: b3f966ba1b88c1b4293a668b3224b8a2, type: 2}
+      objectReference: {fileID: 11400000, guid: 911778d8e2e966348b4cf96d83686b2d, type: 2}
     - target: {fileID: 4970608873702318494, guid: 17ce1019e2dbe4b4eae35a4ecde8db47, type: 3}
       propertyPath: targetCircle
       value: 

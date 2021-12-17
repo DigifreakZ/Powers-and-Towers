@@ -10,7 +10,6 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]
     private SpellData spellData;
-    public SpellEffectManager effectManager;
     [SerializeField]
     private int spellLevel = 0;
     [SerializeField]
@@ -32,12 +31,16 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void OnEnable()
     {
+        DisplayData();
+    }
+
+    private void DisplayData()
+    {
         load = true;
-        effectManager = FindObjectOfType<SpellEffectManager>();
         spellNameField.text = spellData.spellNames[spellLevel];
-        spellCostField.text = spellData.spellCost.ToString();
+        spellCostField.text = spellData.cardCost.ToString();
         spellIcon.sprite = spellData.spellIcons[spellLevel];
-        spellDescriptionField.text = spellData.spellDescription;
+        spellDescriptionField.text = spellData.cardDescription;
     }
 
     void Update()

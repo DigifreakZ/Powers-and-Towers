@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1609d710fd7e4ba44f753c91e381b, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  spellID: 1
+  cardName: Fireball
+  cardID: 1
+  cardCost: 5
+  cardImage: {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
+  cardDescription: 
   spellCost: 5
   spellNames:
   - Fireball
@@ -22,7 +26,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
   - {fileID: 21300000, guid: ef934c34ca12e294fb8f72bea545e27d, type: 3}
   - {fileID: 21300000, guid: 07b3c49f8b01aca49a38f03ced48ed47, type: 3}
-  spellDescription: Exploding ball of fire
   target:
     serializedVersion: 2
     m_Bits: 128

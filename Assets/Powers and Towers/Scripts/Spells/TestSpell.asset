@@ -25,7 +25,7 @@ MonoBehaviour:
   spellDescription: Test spell
   target:
     serializedVersion: 2
-    m_Bits: 7
+    m_Bits: 128
   spellRange: 2
   spellRangeLevelUp: 1
   damage: 0

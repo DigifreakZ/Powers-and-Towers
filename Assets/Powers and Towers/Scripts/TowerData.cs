@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="New Tower",menuName ="Towers/New Tower")]
-public class TowerData : ScriptableObject
+public class TowerData : CardData
 {
     [Tooltip("Tower Damage per Shot")]
     public int damage = 1;
