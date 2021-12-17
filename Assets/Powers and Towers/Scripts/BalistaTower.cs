@@ -14,7 +14,7 @@ public class BalistaTower : Tower
             (
                 transform.position,
                 radius,
-                1 << 8
+                1 << 7
             );
             colliders = new List<Collider2D>();
             colliders.AddRange(hitCollider);
