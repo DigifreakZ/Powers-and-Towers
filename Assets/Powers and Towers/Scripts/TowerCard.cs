@@ -52,6 +52,7 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             return objs == null;
         }
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         holdingCard = true;
@@ -65,5 +66,18 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         if (MouseHandler.instance == null) return;
         MouseHandler.instance.SetDefaultMouse();
+    }
+    public void LevelUp()
+    {
+
+    }
+
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
+        {
+            LevelUp();
+            print("Level Up");
+        }
     }
 }
