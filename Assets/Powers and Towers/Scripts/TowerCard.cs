@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [Tooltip("Towers Base Data")]
+    [Tooltip("Tower Data")]
     [SerializeField] private TowerData towerData;
     [Tooltip("Layers Tower can't be placed on")]
     public LayerMask mLayerMask;

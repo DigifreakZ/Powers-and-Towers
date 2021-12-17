@@ -12,22 +12,31 @@ public class Tower : MonoBehaviour
     protected DamageType type;
     //
     // Chache
+    protected TowerData data;
     protected Transform headTransform;
     protected float attackCD = 0f;
     // 
-    public virtual void Init(int damage, float attackspeed, float radius, DamageType type)
+    public virtual void Init(TowerData data)
     {
-        this.damage = damage;
-        this.attackSpeed = attackspeed;
-        this.radius = radius;
-        this.type = type;
+        if (data != this.data)
+        {
+            this.damage = data.damage;
+            this.attackSpeed = data.attackSpeed;
+            this.radius = data.radius;
+            this.type = data.type;
+            this.data = data;
+        }
+        if (headTransform == null)
         headTransform = gameObject.transform.GetChild(0);
     }
     protected virtual void Update()
     {
         Attack();
     }
-
+    protected virtual void Upgrade()
+    {
+        data.UpgradeTower(this);
+    }
     protected virtual void Attack()
     {
         Debug.Log($"{name} Attacked");

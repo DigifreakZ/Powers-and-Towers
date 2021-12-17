@@ -7,14 +7,14 @@ public class TowerData : ScriptableObject
 {
     [Tooltip("Tower Damage per Shot")]
     public int damage = 1;
-    [Tooltip("Towers Attack speed")]
+    [Tooltip("Second Between attacks")]
     public float attackSpeed = 1f;
     [Tooltip("Towers attack range")]
     public float radius = 5f;
     [Tooltip("What Damage the tower will make")]
     public DamageType type;
     [Tooltip("Next Upgrade of Tower")]
-    public TowerData UpgradedVersion;
+    public TowerData upgradedVersion;
     [Space]
     [Tooltip("Image Player will see when placing tower")]
     public Sprite spriteImage;
@@ -28,11 +28,11 @@ public class TowerData : ScriptableObject
     {
         GameObject _object = Instantiate(TowerPrefab, pos, Quaternion.identity);
         Tower towerScript = _object.GetComponent<Tower>();
-        towerScript.Init(damage,attackSpeed,radius,type);
+        towerScript.Init(this);
     }
-    public virtual void UpgradeTower()
+    public virtual void UpgradeTower(Tower tower)
     {
-        Debug.Log("Update Tower");
+        tower.Init(upgradedVersion);
     }
 }
 
