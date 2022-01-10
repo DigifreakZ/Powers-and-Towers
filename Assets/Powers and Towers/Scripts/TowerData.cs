@@ -8,7 +8,7 @@ public class TowerData : CardData
     [Tooltip("Tower Damage per Shot")]
     public int damage = 1;
     [Tooltip("Second Between attacks")]
-    public float attackSpeed = 1f;
+    public float attackCooldown = 1f;
     [Tooltip("Towers attack range")]
     public float range = 5f;
     [Tooltip("What Damage the tower will make")]

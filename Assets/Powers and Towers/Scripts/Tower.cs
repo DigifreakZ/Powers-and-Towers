@@ -21,7 +21,7 @@ public class Tower : MonoBehaviour
         if (data != this.data)
         {
             this.damage = data.damage;
-            this.attackSpeed = data.attackSpeed;
+            this.attackSpeed = data.attackCooldown;
             this.radius = data.range;
             this.type = data.type;
             this.data = data;

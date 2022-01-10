@@ -29,7 +29,7 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         cardCostText.text = towerData.cardCost.ToString();
         cardNameText.text = towerData.cardName.ToString();
         cardDamageText.text = towerData.damage.ToString();
-        cardSpeedText.text = (1/towerData.attackSpeed).ToString();
+        cardSpeedText.text = (1/towerData.attackCooldown).ToString();
         cardRangeText.text = towerData.range.ToString();
         cardElementText.text = towerData.type.ToString();
         cardTowerImage.sprite = towerData.spriteImage;
