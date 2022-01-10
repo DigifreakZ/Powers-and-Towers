@@ -7,7 +7,9 @@ public class TowerSelector : MonoBehaviour
 {
     public static TowerSelector instance;
     public UpgradeTowerButton upgradeButton;
+    public DestroyTowerButton destroyButton;
     private UITweener tweener;
+
     private void Awake()
     {
         if (!tweener) tweener = GetComponent<UITweener>();
@@ -29,6 +31,7 @@ public class TowerSelector : MonoBehaviour
                 if (raycastHit_Game.collider.transform.gameObject.layer == 8)
                 {
                     upgradeButton.SelectTower(raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>());
+                    destroyButton.SelectTower(raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>());
                     tweener.On();
                 }
             }
