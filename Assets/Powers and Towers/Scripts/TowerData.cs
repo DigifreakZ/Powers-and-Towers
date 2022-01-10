@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="New Tower",menuName ="Towers/New Tower")]
@@ -20,6 +18,10 @@ public class TowerData : CardData
     public Sprite spriteImage;
     [Tooltip("The Tower that will spawn")]
     public GameObject TowerPrefab;
+    [Tooltip("The Rotating part of the tower")]
+    public Sprite Head;
+    [Tooltip("What the Head is standing on")]
+    public Sprite Towerbase;
     /// <summary>
     /// Places Tower
     /// </summary>

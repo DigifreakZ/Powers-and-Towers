@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -10,7 +7,6 @@ public class Tower : MonoBehaviour
     protected float attackSpeed = 1f;
     protected float radius = 5f;
     protected DamageType type;
-    //
     // Chache
     protected TowerData data;
     protected Transform headTransform;
@@ -33,7 +29,7 @@ public class Tower : MonoBehaviour
     {
         Attack();
     }
-    protected virtual void Upgrade()
+    public virtual void Upgrade()
     {
         data.UpgradeTower(this);
     }
@@ -41,6 +37,7 @@ public class Tower : MonoBehaviour
     {
         Debug.Log($"{name} Attacked");
     }
+
 }
 
 public enum DamageType

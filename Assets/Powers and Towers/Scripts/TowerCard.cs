@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Tooltip("Tower Data")]
     [SerializeField] private TowerData towerData;
@@ -19,6 +19,7 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private TextMeshProUGUI cardRangeText;
     [SerializeField] private TextMeshProUGUI cardElementText;
     [SerializeField] private Image cardTowerImage;
+    private UITweener tweener;
     private bool holdingCard;
     public void SetTower(Vector3 pos)
     {
@@ -91,12 +92,24 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     }
 
-    private void OnGUI()
+    //private void OnGUI()
+    //{
+    //    if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
+    //    {
+    //        LevelUp();
+    //        print("Level Up");
+    //    }
+    //}
+
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
-        {
-            LevelUp();
-            print("Level Up");
-        }
+        if (tweener == null) tweener = GetComponent<UITweener>();
+        tweener.On();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (tweener == null) tweener = GetComponent<UITweener>();
+        tweener.Off();
     }
 }
