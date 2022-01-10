@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using System;
 
-public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public SpellData spellData;
     [SerializeField]
@@ -23,9 +24,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool grabbed;
     public Transform targetCircle;
     private bool targetInRange;
-
-
-
+    private SpellCard mergeTarget;
 
     void OnEnable()
     {
@@ -88,6 +87,20 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         CastSpell();
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("Mouse Enter");
+        SendMessageUpwards("ViewCard", gameObject);
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("Mouse Exit");
+        if (!grabbed)
+        {
+            SendMessageUpwards("NormalHandPosition");
+        }
+    }
+
     private void CastSpell()
     {
         spellData.Cast(spellLevel);
@@ -95,5 +108,27 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         targetCircle.transform.position = new Vector3(0, 0, -10);
         SendMessageUpwards("UpdateHand", gameObject);
         Destroy(gameObject);
+    }
+
+    private void MergeSpell()
+    {
+        if (mergeTarget.spellLevel == spellLevel && mergeTarget.spellData == spellData)
+        {
+            mergeTarget.LevelUp();
+            grabbed = false;
+            targetCircle.transform.position = new Vector3(0, 0, -10);
+            SendMessageUpwards("UpdateHand", gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Merge target not valid");
+            ReturnToPosition();
+        }
+    }
+
+    private void ReturnToPosition()
+    {
+        throw new NotImplementedException();
     }
 }
