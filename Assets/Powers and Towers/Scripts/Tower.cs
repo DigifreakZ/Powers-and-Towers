@@ -8,8 +8,10 @@ public class Tower : MonoBehaviour
     protected float radius = 5f;
     protected DamageType type;
     // Chache
-    protected TowerData data;
+    public TowerData data;
     protected Transform headTransform;
+    protected SpriteRenderer headRender;
+    protected SpriteRenderer baseRender;
     protected float attackCD = 0f;
     // 
     public virtual void Init(TowerData data)
@@ -22,8 +24,19 @@ public class Tower : MonoBehaviour
             this.type = data.type;
             this.data = data;
         }
+
         if (headTransform == null)
-        headTransform = gameObject.transform.GetChild(0);
+            headTransform = gameObject.transform.GetChild(0);
+        if (baseRender == null)
+            baseRender = GetComponent<SpriteRenderer>();
+        if (headRender == null && headTransform != null)
+            headRender = headTransform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        if (data.Head != null)
+        headRender.sprite = data.Head;
+        if (data.Towerbase != null)
+        baseRender.sprite = data.Towerbase;
+
     }
     protected virtual void Update()
     {

@@ -33,7 +33,17 @@ public class UpgradeTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
     // Clicked
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (selectedTower != null) selectedTower.Upgrade();
-    }
+        if (selectedTower == null) return;
 
+        float yourCurrency = 999999; // Insert Get Currency Function here
+
+        if (selectedTower.data.upgradedVersion.cardCost <= yourCurrency)
+        {
+            yourCurrency -= selectedTower.data.upgradedVersion.cardCost;
+            selectedTower.Upgrade();
+        }
+
+        // Return your currency Value Here
+        Debug.LogWarning("[Reminder] Need Currency System");
+    }
 }
