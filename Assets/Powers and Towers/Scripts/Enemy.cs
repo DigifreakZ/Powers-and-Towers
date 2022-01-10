@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health = 10;
-    [SerializeField] private float _lootValue = 1f;
+    //[SerializeField] private float _lootValue = 1f;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private Transform[] _nodes;
     [SerializeField] Rigidbody2D rb;

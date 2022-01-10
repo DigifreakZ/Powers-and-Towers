@@ -15,7 +15,7 @@ public class DefensiveSpellEditor : Editor
         spellData.buff = EditorGUILayout.Toggle("Buff", spellData.buff);
         if (spellData.buff)
         {
-            spellData.buffType = (BuffType)EditorGUILayout.EnumPopup("Damage Type", spellData.buffType);
+            spellData.buffType = (BuffType)EditorGUILayout.EnumPopup("Buff Type", spellData.buffType);
         }
     }
 }

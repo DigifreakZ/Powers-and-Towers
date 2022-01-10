@@ -8,8 +8,7 @@ using UnityEngine.InputSystem;
 
 public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField]
-    private SpellData spellData;
+    public SpellData spellData;
     [SerializeField]
     private int spellLevel = 0;
     [SerializeField]
@@ -22,8 +21,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private TextMeshProUGUI spellDescriptionField;
     private bool load;
     private bool grabbed;
-    [SerializeField]
-    private Transform targetCircle;
+    public Transform targetCircle;
     private bool targetInRange;
 
 
@@ -31,10 +29,10 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void OnEnable()
     {
-        DisplayData();
+        //DisplayData();
     }
 
-    private void DisplayData()
+    public void DisplayData()
     {
         load = true;
         spellNameField.text = spellData.spellNames[spellLevel];
@@ -76,7 +74,6 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             spellLevel++;
             spellNameField.text = spellData.spellNames[spellLevel];
             spellIcon.sprite = spellData.spellIcons[spellLevel];
-
         }
     }
 
@@ -88,9 +85,15 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        CastSpell();
+    }
+
+    private void CastSpell()
+    {
         spellData.Cast(spellLevel);
         grabbed = false;
         targetCircle.transform.position = new Vector3(0, 0, -10);
+        SendMessageUpwards("UpdateHand", gameObject);
         Destroy(gameObject);
     }
 }
