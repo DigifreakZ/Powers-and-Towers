@@ -5,13 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health = 10;
-    //[SerializeField] private float _lootValue = 1f;
+    [SerializeField] private int _lootValue = 1;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private Transform[] _nodes;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] DamageType[] resistances;
     [SerializeField] DamageType[] Weakness;
-    private int index = 0;
+    private int nextNodeIndex = 0;
     public virtual int Health
     {
         get
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     {
         _nodes = MapManager.GetPath();
         if (_nodes == null) Destroy(gameObject);
-        Vector3 triangle = _nodes[index].position - transform.position;
+        Vector3 triangle = _nodes[nextNodeIndex].position - transform.position;
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
         Physics2D.IgnoreLayerCollision(6, 6);
     }
@@ -45,18 +45,18 @@ public class Enemy : MonoBehaviour
     {
         if (_nodes != null)
         {
-            if ((transform.position - _nodes[index].position).sqrMagnitude < 0.3 * 0.3)
+            if ((transform.position - _nodes[nextNodeIndex].position).sqrMagnitude < 0.3 * 0.3)
             {
-                if (index < _nodes.Length - 1)
-                    index += 1;
+                if (nextNodeIndex < _nodes.Length - 1)
+                    nextNodeIndex += 1;
                 else
                     ReachedEnd();
 
 
-                Vector3 triangle = _nodes[index].position - transform.position;
+                Vector3 triangle = _nodes[nextNodeIndex].position - transform.position;
                 transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
             }
-            rb.position = Vector3.MoveTowards(transform.position, _nodes[index].position, _speed * Time.fixedDeltaTime);
+            rb.position = Vector3.MoveTowards(transform.position, _nodes[nextNodeIndex].position, _speed * Time.fixedDeltaTime);
         }
     }
 
@@ -82,13 +82,14 @@ public class Enemy : MonoBehaviour
 
     protected virtual void ReachedEnd()
     {
-        index = 0;
+        nextNodeIndex = 0;
         Die();
     }
 
     protected virtual void Die()
     {
         MapManager.instance.EnemyDied(this);
+        GameManager.instance.Currency = _lootValue + GameManager.instance.Currency;
         Destroy(gameObject);
         return;
     }

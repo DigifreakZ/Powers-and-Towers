@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
+using System;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -10,10 +8,11 @@ public class Tower : MonoBehaviour
     protected float attackSpeed = 1f;
     protected float radius = 5f;
     protected DamageType type;
-    //
     // Chache
-    protected TowerData data;
+    public TowerData data;
     protected Transform headTransform;
+    protected SpriteRenderer headRender;
+    protected SpriteRenderer baseRender;
     protected float attackCD = 0f;
     // 
     public virtual void Init(TowerData data)
@@ -26,14 +25,25 @@ public class Tower : MonoBehaviour
             this.type = data.type;
             this.data = data;
         }
+
         if (headTransform == null)
-        headTransform = gameObject.transform.GetChild(0);
+            headTransform = gameObject.transform.GetChild(0);
+        if (baseRender == null)
+            baseRender = GetComponent<SpriteRenderer>();
+        if (headRender == null && headTransform != null)
+            headRender = headTransform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        if (data.Head != null)
+        headRender.sprite = data.Head;
+        if (data.Towerbase != null)
+        baseRender.sprite = data.Towerbase;
+
     }
     protected virtual void Update()
     {
         Attack();
     }
-    protected virtual void Upgrade()
+    public virtual void Upgrade()
     {
         data.UpgradeTower(this);
     }
@@ -41,6 +51,17 @@ public class Tower : MonoBehaviour
     {
         Debug.Log($"{name} Attacked");
     }
+    public virtual void Destroy()
+    {
+        Debug.Log($"Destroyed {name}");
+
+        //Debug.Log("Return Money");
+        GameManager.instance.Currency = GameManager.instance.Currency + Convert.ToInt32(data.cardCost * 0.5f);
+
+        //Debug.Log("Destroy Object");
+        Destroy(gameObject);
+    }
+
 }
 
 public enum DamageType

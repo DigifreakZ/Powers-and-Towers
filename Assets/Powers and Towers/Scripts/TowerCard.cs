@@ -1,15 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using TMPro;
 using UnityEngine.UI;
-using UnityEngine;
 
-public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [Tooltip("Tower Data")]
+    [SerializeField] private int cardHolderID = -1;
+    [Tooltip("Determines what Tower the card is holding")]
     [SerializeField] private TowerData towerData;
+    public TowerData TowerData { set { towerData = value; UpdateVisuals(); } private get => towerData; }
     [Tooltip("Layers Tower can't be placed on")]
     public LayerMask mLayerMask;
     [SerializeField] private TextMeshProUGUI cardCostText;
@@ -19,17 +20,27 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private TextMeshProUGUI cardRangeText;
     [SerializeField] private TextMeshProUGUI cardElementText;
     [SerializeField] private Image cardTowerImage;
+    private UITweener tweener;
     private bool holdingCard;
     public void SetTower(Vector3 pos)
     {
         towerData.SetTower(pos);
     }
-    private void Awake()
+    private void Start()
+    {
+        if (cardHolderID == -1) Debug.LogError("TowerCard has no CardHolderId: TowerCard.CS");
+        TowerData = (TowerData)GameManager.GetHand(cardHolderID);
+        UpdateVisuals();
+    }
+    /// <summary>
+    /// Updates Visuals of Card to corresponding TowerData
+    /// </summary>
+    private void UpdateVisuals()
     {
         cardCostText.text = towerData.cardCost.ToString();
         cardNameText.text = towerData.cardName.ToString();
         cardDamageText.text = towerData.damage.ToString();
-        cardSpeedText.text = (1/towerData.attackCooldown).ToString();
+        cardSpeedText.text = (1 / towerData.attackCooldown).ToString();
         cardRangeText.text = towerData.range.ToString();
         cardElementText.text = towerData.type.ToString();
         cardTowerImage.sprite = towerData.spriteImage;
@@ -45,8 +56,12 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (m.image.sprite != towerData.spriteImage)
             m.image.sprite = towerData.spriteImage;
 
-        if (ViablePlacementArea) m.image.color = Color.white;
-        else                     m.image.color = Color.red;
+        if (ViablePlacementArea && GameManager.instance.Currency >= towerData.cardCost && !IsPointerOverUIObject())
+            m.image.color = Color.white;
+        else if (IsPointerOverUIObject())
+            m.image.color = new Color(0,0,0,0);
+        else
+            m.image.color = Color.red;
     }
 
     // Sets tower att mouse Position
@@ -79,8 +94,9 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         holdingCard = false;
-        if (ViablePlacementArea)
+        if (ViablePlacementArea && GameManager.instance.Currency >= towerData.cardCost && !IsPointerOverUIObject())
         {
+            GameManager.instance.Currency = GameManager.instance.Currency - towerData.cardCost;
             towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
         }
         if (MouseHandler.instance == null) return;
@@ -91,12 +107,33 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     }
 
-    private void OnGUI()
+    //private void OnGUI()
+    //{
+    //    if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
+    //    {
+    //        LevelUp();
+    //        print("Level Up");
+    //    }
+    //}
+
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GUI.Button(new Rect(10, 70, 50, 30), "Click"))
-        {
-            LevelUp();
-            print("Level Up");
-        }
+        if (tweener == null) tweener = GetComponent<UITweener>();
+        tweener.On();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (tweener == null) tweener = GetComponent<UITweener>();
+        tweener.Off();
+    }
+
+    public static bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = Mouse.current.position.ReadValue();
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UITweener : MonoBehaviour
 {
     [SerializeField] private Transform targetedEnd;
     private Vector3 startLocation;
@@ -29,6 +29,7 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
         yield return null;
     }
+
     IEnumerator GoToStart()
     {
         while (tween > 0f)
@@ -42,13 +43,13 @@ public class UITweener : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
 
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void On()
     {
         StopAllCoroutines();
         StartCoroutine("GoToEnd");
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void Off()
     {
         StopAllCoroutines();
         StartCoroutine("GoToStart");
