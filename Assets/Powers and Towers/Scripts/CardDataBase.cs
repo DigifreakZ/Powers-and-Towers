@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="new Card_DataBase", menuName ="DataBase/Tower")]
+[CreateAssetMenu(fileName ="new Card_DataBase", menuName ="ScriptableObject/Database/Tower")]
 public class CardDataBase : ScriptableObject
 {
     public List<CardData> cardData;

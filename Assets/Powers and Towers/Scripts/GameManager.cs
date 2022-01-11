@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public int[] DeckCards;
     private int _currency = 0;
     [SerializeField] private CardDataBase towerData;

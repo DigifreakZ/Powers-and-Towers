@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Balista Tower
   m_EditorClassIdentifier: 
   cardName: Balista Tower
-  cardID: 10
+  cardID: 0
   cardCost: 10
   cardImage: {fileID: 0}
   cardDescription: 
-  damage: 1
+  damage: 10
   attackCooldown: 1
   range: 5
   type: 0
