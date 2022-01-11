@@ -69,7 +69,7 @@ public enum DamageType
     Physical,
     Fire,
     Lightning,
-    Earth,
-    Water,
+    Nature,
+    Ice,
     Air
 }

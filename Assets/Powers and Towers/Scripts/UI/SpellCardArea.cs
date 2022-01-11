@@ -8,14 +8,8 @@ public class SpellCardArea : MonoBehaviour
     public GameObject spellCardPrefab;
     public Transform targetCircle;
     public List<GameObject> spellsInHand;
-    [HideInInspector] public SpellCard currentlyGrabbedCard;
-    [HideInInspector] public bool holdingCard = false;
-
-
-    private void Update()
-    {
-        
-    }
+    private SpellCard currentlyGrabbedCard;
+    private bool holdingCard = false;
 
     public void DrawCard()
     {
@@ -62,6 +56,8 @@ public class SpellCardArea : MonoBehaviour
             StartCoroutine(MoveCardUp(spellsInHand[i], i));
         }
     }
+
+    // Gets the index of a specific spell card, then moves all other spell cards below it, down.
     public void ViewCard(GameObject spellCard)
     {
         StopAllCoroutines();
@@ -78,7 +74,8 @@ public class SpellCardArea : MonoBehaviour
             }
         }
     }
-    IEnumerator MoveCardUp(GameObject item, int index)
+
+    private IEnumerator MoveCardUp(GameObject item, int index)
     {
         Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index);
         while (item.transform.localPosition.y < endPoint.y)
@@ -88,7 +85,8 @@ public class SpellCardArea : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator MoveCardDown(GameObject item, int index)
+
+    private IEnumerator MoveCardDown(GameObject item, int index)
     {
         Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index - 61);
         while (item.transform.localPosition.y > endPoint.y)
