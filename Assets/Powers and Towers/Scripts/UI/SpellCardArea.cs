@@ -8,8 +8,8 @@ public class SpellCardArea : MonoBehaviour
     public GameObject spellCardPrefab;
     public Transform targetCircle;
     public List<GameObject> spellsInHand;
-    public SpellCard currentlyGrabbedCard;
-    public bool holdingCard = false;
+    [HideInInspector] public SpellCard currentlyGrabbedCard;
+    [HideInInspector] public bool holdingCard = false;
 
 
     private void Update()
