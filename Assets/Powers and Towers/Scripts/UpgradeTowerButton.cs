@@ -44,6 +44,6 @@ public class UpgradeTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
         }
 
         // Return your currency Value Here
-        Debug.LogWarning("[Reminder] Need Currency System");
+        //Debug.LogWarning("[Reminder] Need Currency System");
     }
 }

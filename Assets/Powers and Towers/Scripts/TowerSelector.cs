@@ -50,8 +50,4 @@ public class TowerSelector : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
     }
-
-    //
-    //--------------------------------------------------------------------------
-    //
 }
