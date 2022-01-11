@@ -8,11 +8,17 @@ public class SpellCardArea : MonoBehaviour
     public GameObject spellCardPrefab;
     public Transform targetCircle;
     public List<GameObject> spellsInHand;
+    public SpellCard currentlyGrabbedCard;
+    public bool holdingCard = false;
 
+
+    private void Update()
+    {
+        
+    }
 
     public void DrawCard()
     {
-        //Debug.Log("Drawing a spell card");
         GameObject newSpellCard = Instantiate(spellCardPrefab, transform, false);
         Vector3 newCardPos = new Vector3(27, -230, 0);
         newSpellCard.transform.localPosition = newCardPos;
@@ -23,6 +29,23 @@ public class SpellCardArea : MonoBehaviour
         StartCoroutine(MoveCardUp(newSpellCard, spellsInHand.Count-1));
     }
 
+    public void GrabbedCard(SpellCard grabbedCard)
+    {
+        currentlyGrabbedCard = grabbedCard;
+        holdingCard = true;
+    }
+    public void MergeTarget(SpellCard mergeTarget)
+    {
+        if (holdingCard)
+        {
+            currentlyGrabbedCard.mergeTarget = mergeTarget;
+        }
+    }
+    public void ResetGrab()
+    {
+        holdingCard = false;
+    }
+
     public void UpdateHand(GameObject spellCard)
     {
         spellsInHand.Remove(spellCard);
@@ -31,7 +54,6 @@ public class SpellCardArea : MonoBehaviour
             StartCoroutine(MoveCardUp(spellsInHand[i], i));
         }
     }
-
     public void NormalHandPosition()
     {
         StopAllCoroutines();
@@ -40,19 +62,6 @@ public class SpellCardArea : MonoBehaviour
             StartCoroutine(MoveCardUp(spellsInHand[i], i));
         }
     }
-
-    IEnumerator MoveCardUp(GameObject item, int index)
-    {
-        Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index);
-        while (item.transform.localPosition.y < endPoint.y)
-        {
-            float step = 256 * Time.deltaTime;
-            item.transform.localPosition = Vector3.MoveTowards(item.transform.localPosition, endPoint, step);
-            yield return null;
-        }
-        //item.transform.localPosition = endPoint;
-    }
-
     public void ViewCard(GameObject spellCard)
     {
         StopAllCoroutines();
@@ -69,7 +78,16 @@ public class SpellCardArea : MonoBehaviour
             }
         }
     }
-
+    IEnumerator MoveCardUp(GameObject item, int index)
+    {
+        Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index);
+        while (item.transform.localPosition.y < endPoint.y)
+        {
+            float step = 256 * Time.deltaTime;
+            item.transform.localPosition = Vector3.MoveTowards(item.transform.localPosition, endPoint, step);
+            yield return null;
+        }
+    }
     IEnumerator MoveCardDown(GameObject item, int index)
     {
         Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index - 61);
@@ -79,6 +97,5 @@ public class SpellCardArea : MonoBehaviour
             item.transform.localPosition = Vector3.MoveTowards(item.transform.localPosition, endPoint, step);
             yield return null;
         }
-        //item.transform.localPosition = endPoint;
     }
 }
