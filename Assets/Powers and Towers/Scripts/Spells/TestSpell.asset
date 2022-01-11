@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1609d710fd7e4ba44f753c91e381b, type: 3}
   m_Name: TestSpell
   m_EditorClassIdentifier: 
-  spellID: 2
-  spellCost: 5
+  cardName: 
+  cardID: 0
+  cardCost: 0
+  cardImage: {fileID: 0}
+  cardDescription: 
   spellNames:
   - test_lvl_1
   - test_lvl_2
   - test_lvl_3
   spellIcons:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
   - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 21300000, guid: 9fb8823a0976ad84da4fcd73fc5f44b8, type: 3}
-  spellDescription: Test spell
   target:
     serializedVersion: 2
     m_Bits: 128
