@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         }
         set
         {
-            if (value >= 0)
+            if (value <= 0)
             {
                 Die();
             }
