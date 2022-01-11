@@ -20,11 +20,12 @@ public class Enemy : MonoBehaviour
         }
         set
         {
-            if (value <= 0)
+            _health = value;
+
+            if (_health <= 0)
             {
                 Die();
             }
-            _health = value;
         }
     }
 
