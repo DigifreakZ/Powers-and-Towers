@@ -8,10 +8,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _lootValue = 1;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private Transform[] _nodes;
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] DamageType[] resistances;
-    [SerializeField] DamageType[] Weakness;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private DamageType[] resistances;
+    [SerializeField] private DamageType[] weakness;
+    [SerializeField] private SpriteRenderer _renderer;
     private int nextNodeIndex = 0;
+    private EnemyData data;
+    public EnemyData EnemyData
+    {
+        get { return data; }
+        set
+        {
+            if (data != value) data = value;
+            else return;
+            Init();
+        }
+    }
     public virtual int Health
     {
         get
@@ -41,7 +53,18 @@ public class Enemy : MonoBehaviour
         Vector3 triangle = _nodes[nextNodeIndex].position - transform.position;
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
         Physics2D.IgnoreLayerCollision(6, 6);
+        if (data != null)
+        {
+            transform.localScale = data.Scale;
+            _health = data.health;
+            _speed = data.speed;
+            _renderer.sprite = data.spriteImage;
+            resistances = data.resistances;
+            weakness = data.weakness;
+        }
+
     }
+
     private void FixedUpdate()
     {
         if (_nodes != null)
@@ -64,7 +87,7 @@ public class Enemy : MonoBehaviour
     public void ReceiveDamage(int dmg, DamageType type)
     {
         float dmgMultiplyer = 1f;
-        foreach(DamageType _type in Weakness)
+        foreach(DamageType _type in weakness)
         {
             if (_type == type)
             {

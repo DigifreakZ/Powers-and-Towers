@@ -2,9 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalistaTower : Tower
+public class FlameTower : Tower
 {
+    private List<Enemy> EnemiesInFlame; 
+    [SerializeField] protected ParticleSystem particle;
     protected List<Collider2D> colliders;
+    [SerializeField] protected GameObject projectile;
+    private void Awake()
+    {
+        Init(data);
+    }
+
+    public override void Init(TowerData data)
+    {
+        base.Init(data);
+        EnemiesInFlame = new List<Enemy>();
+    }
     protected override void Attack()
     {
         if (attackCD < 0f)
@@ -20,6 +33,7 @@ public class BalistaTower : Tower
             colliders.AddRange(hitCollider);
             if (colliders != null && !(colliders.Count <= 0))
             {
+                particle.Play();
                 colliders.Sort(
                     (x1, x2) =>
                 (
@@ -36,12 +50,16 @@ public class BalistaTower : Tower
                     Enemy enemy = colliders[0].GetComponent<Enemy>();
                     if (enemy != null)
                     {
-                        enemy.ReceiveDamage(damage, type);
                         Vector3 triangle = enemy.transform.position - transform.position;
                         headTransform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
-                        attackCD = attackSpeed;
+                        // enemy.ReceiveDamage(damage, type);
+                        ShootProjectile();
                     }
                 }
+            }
+            else
+            {
+                particle.Stop();
             }
         }
         else
@@ -49,4 +67,33 @@ public class BalistaTower : Tower
             attackCD -= Time.deltaTime;
         }
     }
+
+    protected void ShootProjectile()
+    {
+        if (EnemiesInFlame.Count <= 0) return;
+
+        List<Enemy> enemies = EnemiesInFlame;
+        for (int i = 0; i < EnemiesInFlame.Count; i++)
+        {
+            enemies[i].ReceiveDamage(damage,type);
+        }
+        attackCD = attackSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+           EnemiesInFlame.Add(collision.transform.GetComponent<Enemy>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            EnemiesInFlame.Remove(collision.transform.GetComponent<Enemy>());
+        }
+    }
+
 }

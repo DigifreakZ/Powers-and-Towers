@@ -16,11 +16,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int Currency
     {
-        get => _currency;
+        get { return _currency; }
         set
         {
             _currency = value;
-
+            if (dashBoard != null)
             UpdateUIDashBoard();
         }
     }
@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Return card for your hand corresponding to hand position
     /// </summary>
-    /// <param name="deckHolder"></param>
-    /// <returns></returns>
+    /// <param name="deckHolder">ID</param>
+    /// <returns>CardData</returns>
     public static CardData GetHand(int deckHolder)
     {
         if (instance == null) return null;

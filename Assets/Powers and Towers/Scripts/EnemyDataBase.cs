@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Enemy_Database", menuName = "ScriptableObject/Database/Enemy Database")]
 public class EnemyDataBase : ScriptableObject
 {
-    List<EnemyData> Enemies;
+    public List<EnemyData> Enemies;
 
     public void OnValidate()
     {

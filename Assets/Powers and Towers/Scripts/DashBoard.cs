@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 
+/// </summary>
 public class DashBoard : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currencyText;
