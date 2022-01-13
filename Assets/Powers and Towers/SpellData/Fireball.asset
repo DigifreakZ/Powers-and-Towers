@@ -30,11 +30,12 @@ MonoBehaviour:
     m_Bits: 128
   spellRange: 2
   spellRangeLevelUp: 0.5
-  spellType: 00000000
+  spellType: 3
   damage: 1
   damagePower: 15
   damageType: 1
-  slow: 0
-  slowPower: 0
+  damageOverTime: 0
+  slow: 1
+  slowPower: 1
   buff: 0
-  buffType: 0
+  buffType: 2

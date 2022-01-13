@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,10 +12,11 @@ public class SpellData : CardData
     public LayerMask target;
     public float spellRange;
     public float spellRangeLevelUp;
-    public List<SpellType> spellType;
+    public SpellType spellType;
     [HideInInspector] public bool damage;
     [HideInInspector] public int damagePower;
     [HideInInspector] public DamageType damageType;
+    [HideInInspector] public bool damageOverTime;
     [HideInInspector] public bool slow;
     [HideInInspector] public float slowPower;
     [HideInInspector] public bool buff;
@@ -33,6 +35,7 @@ public class SpellData : CardData
             if (slow)
             {
                 Debug.Log("Enemy slowed");
+                item.GetComponent<Enemy>().GetSlowed(slowPower, 5);
             }
             if (buff)
             {
@@ -42,11 +45,17 @@ public class SpellData : CardData
     }
 }
 
-public enum SpellType
+
+[Flags] public enum SpellType
 {
-    Damage,
-    Control,
-    Support
+    Damage = 1,
+    Control = 2,
+    Support = 4,
+
+    DamageAndControl = Damage | Control,
+    ControlAndSupport = Control | Support,
+    DamageAndSupport = Damage | Support
+
 }
 public enum BuffType
 {

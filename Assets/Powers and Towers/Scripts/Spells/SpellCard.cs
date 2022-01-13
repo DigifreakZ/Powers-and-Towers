@@ -24,7 +24,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     private bool grabbed;
     public Transform targetCircle;
     private bool targetInRange;
-    public SpellCard mergeTarget;
+    [HideInInspector] public SpellCard mergeTarget;
     private Vector3 returnPosition;
 
     void OnEnable()
