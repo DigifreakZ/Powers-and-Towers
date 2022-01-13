@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int[] DeckCards;
     private int _currency = 0;
     [SerializeField] private CardDataBase towerData;
+    [SerializeField] private EnemyDataBase enemyData;
     public DashBoard dashBoard;
     /// <summary>
     /// Get: return current Currency.
@@ -25,6 +26,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject GetEnemyFromID(int ID)
+    {
+        return enemyData.Enemies[ID].gameObject;
+    }
+    public EnemyData GetEnemyDataFromID(int ID)
+    {
+        return enemyData.Enemies[ID];
+    }
     public static CardData GetCardData(int index)
     {
         if (instance == null) return null;
@@ -55,4 +64,5 @@ public class GameManager : MonoBehaviour
         if (instance != null) Destroy(gameObject);
         instance = this;
     }
+
 }

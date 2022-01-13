@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 777133399761795699}
   - component: {fileID: 777133399761795701}
   - component: {fileID: 777133399761795698}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5000,7 +5000,7 @@ GameObject:
   - component: {fileID: 2909940447992896899}
   - component: {fileID: 9111159167266929556}
   - component: {fileID: 8410956402346955726}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TowerHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,6 +9,7 @@ public class EnemyDataBase : ScriptableObject
 
     public void OnValidate()
     {
+        WaveData.enemyRange = Enemies.Count;
         if (Enemies.Count <= 0) return;
         for (int i = 0; i < Enemies.Count; i++)
         {

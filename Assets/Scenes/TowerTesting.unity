@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d676e1a946cdabe4eada2ca7339483c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3778795860092155320, guid: 0c7d3ff0084745c44962fdf8843fb907, type: 3}
   nextWave: 0
+  database: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
   _pathNodes:
   - {fileID: 410199162}
   - {fileID: 1416966410}
@@ -169,7 +169,13 @@ MonoBehaviour:
   - {fileID: 2120699076}
   - {fileID: 203830175}
   - {fileID: 1147715415}
-  wave: 
+  wave:
+  - name: Wave#1
+    waveData:
+    - name: Bug | 1
+      NR: 1
+      ID: 0
+      TB: 0
   demoMode: 1
 --- !u!4 &60694870
 Transform:
@@ -3736,6 +3742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeckCards: 000000000000000000000000000000000300000002000000
   towerData: {fileID: 11400000, guid: 5b131e31b09ab364c84201577effb10b, type: 2}
+  enemyData: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
   dashBoard: {fileID: 0}
 --- !u!4 &1460012353
 Transform:
