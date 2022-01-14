@@ -8,8 +8,24 @@ public class SpellDataEditor : Editor
     {
         base.OnInspectorGUI();
         SpellData spellData = (SpellData)target;
-
         EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Toggle Spell Types", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Damage"))
+        {
+            spellData.spellType ^= SpellType.Damage;
+        }
+        if (GUILayout.Button("Control"))
+        {
+            spellData.spellType ^= SpellType.Control;
+        }
+        if (GUILayout.Button("Support"))
+        {
+            spellData.spellType ^= SpellType.Support;
+        }
+        EditorGUILayout.EndHorizontal();
+
         if (spellData.spellType.HasFlag(SpellType.Damage))
         {
             EditorGUILayout.LabelField("Damage Options", EditorStyles.boldLabel);

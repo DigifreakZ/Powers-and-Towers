@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpellCardArea : MonoBehaviour
@@ -7,20 +8,45 @@ public class SpellCardArea : MonoBehaviour
     public SpellData spellsInDeck;
     public GameObject spellCardPrefab;
     public Transform targetCircle;
+    public int maximumHandSize = 7;
     public List<GameObject> spellsInHand;
     private SpellCard currentlyGrabbedCard;
     private bool holdingCard = false;
+    public TextMeshProUGUI DrawCost;
+
+    public bool belowMaxHandSize => spellsInHand.Count < maximumHandSize;
+
+    public int GetCostToDraw()
+    {
+        return 5 + 5 * spellsInHand.Count;
+    }
 
     public void DrawCard()
     {
-        GameObject newSpellCard = Instantiate(spellCardPrefab, transform, false);
-        Vector3 newCardPos = new Vector3(27, -230, 0);
-        newSpellCard.transform.localPosition = newCardPos;
-        newSpellCard.GetComponent<SpellCard>().spellData = spellsInDeck;
-        newSpellCard.GetComponent<SpellCard>().DisplayData();
-        newSpellCard.GetComponent<SpellCard>().targetCircle = targetCircle;
-        spellsInHand.Add(newSpellCard);
-        StartCoroutine(MoveCardUp(newSpellCard, spellsInHand.Count-1));
+        if (belowMaxHandSize)
+        {
+            if (GetCostToDraw() <= GameManager.instance.Currency)
+            {
+                GameManager.instance.Currency -= GetCostToDraw();
+                GameObject newSpellCard = Instantiate(spellCardPrefab, transform, false);
+                Vector3 newCardPos = new Vector3(27, -230, 0);
+                newSpellCard.transform.localPosition = newCardPos;
+                newSpellCard.GetComponent<SpellCard>().spellData = spellsInDeck;
+                newSpellCard.GetComponent<SpellCard>().DisplayData();
+                newSpellCard.GetComponent<SpellCard>().targetCircle = targetCircle;
+                spellsInHand.Add(newSpellCard);
+                StartCoroutine(MoveCardUp(newSpellCard, spellsInHand.Count - 1));
+                DrawCost.text = GetCostToDraw().ToString();
+            }
+            else
+            {
+                Debug.Log("Not enough currency to draw"); 
+            }
+        }
+        else
+        {
+            Debug.Log("Hand is full");
+        }
     }
 
     public void GrabbedCard(SpellCard grabbedCard)

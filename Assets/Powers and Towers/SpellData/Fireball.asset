@@ -32,9 +32,11 @@ MonoBehaviour:
   spellRangeLevelUp: 0.5
   spellType: 3
   damage: 1
-  damagePower: 15
+  damagePower: 0
   damageType: 1
   damageOverTime: 0
+  dOTDamage: 2
+  dOTDuration: 5
   slow: 1
   slowPower: 1
   buff: 0
