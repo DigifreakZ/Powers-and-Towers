@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691636cdc8e0a97459eb98e28ad530a3, type: 3}
   m_Name: Bug(Water)
   m_EditorClassIdentifier: 
-  _name: Water Bug
+  _name: Ice Bug
   health: 20
   lootValue: 5
   speed: 10
