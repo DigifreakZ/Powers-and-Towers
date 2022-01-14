@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="New Tower",menuName ="Towers/New Tower")]
+[CreateAssetMenu(fileName ="New Tower",menuName = "ScriptableObject/Towers/New Tower")]
 public class TowerData : CardData
 {
     [Tooltip("Tower Damage per Shot")]

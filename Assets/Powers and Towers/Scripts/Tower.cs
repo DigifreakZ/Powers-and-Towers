@@ -56,7 +56,7 @@ public class Tower : MonoBehaviour
         Debug.Log($"Destroyed {name}");
 
         //Debug.Log("Return Money");
-        GameManager.instance.Currency = GameManager.instance.Currency + Convert.ToInt32(data.cardCost * 0.5f);
+        GameManager.instance.Currency += Convert.ToInt32(data.cardCost * 0.5f);
 
         //Debug.Log("Destroy Object");
         Destroy(gameObject);

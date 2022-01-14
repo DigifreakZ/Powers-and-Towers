@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d676e1a946cdabe4eada2ca7339483c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3778795860092155320, guid: 0c7d3ff0084745c44962fdf8843fb907, type: 3}
   nextWave: 0
+  database: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
   _pathNodes:
   - {fileID: 410199162}
   - {fileID: 1416966410}
@@ -169,7 +169,23 @@ MonoBehaviour:
   - {fileID: 2120699076}
   - {fileID: 203830175}
   - {fileID: 1147715415}
-  wave: 
+  wave:
+  - name: Wave#1
+    waveData:
+    - name: Bug | 10
+      NR: 10
+      ID: 0
+      TB: 0.5
+    - name: Water Bug | 2
+      NR: 2
+      ID: 1
+      TB: 0.5
+  - name: Wave#2
+    waveData:
+    - name: Water Bug | 20
+      NR: 20
+      ID: 1
+      TB: 0.5
   demoMode: 1
 --- !u!4 &60694870
 Transform:
@@ -2049,7 +2065,7 @@ RectTransform:
   m_GameObject: {fileID: 216778266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1980654762}
@@ -2316,6 +2332,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 829553054}
     m_Modifications:
     - target: {fileID: 1306577853263798546, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: f63ac6c2a4132564e9d052cff8348c3d, type: 2}
+    - target: {fileID: 1306577853263798546, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
       propertyPath: cardHolderID
       value: 4
       objectReference: {fileID: 0}
@@ -2406,6 +2426,18 @@ PrefabInstance:
     - target: {fileID: 1306577853263798633, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
       propertyPath: m_Name
       value: Tower Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978049585436436696, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
+      propertyPath: m_text
+      value: A Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978049585436436696, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
+      propertyPath: m_fontSize
+      value: 21.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978049585436436696, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4464ac29294d94b9c8e00d5388ff56, type: 3}
@@ -3718,8 +3750,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65fa8731e12e6774aa726281a2643cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeckCards: 000000000000000000000000000000000000000002000000
+  DeckCards: 000000000000000000000000000000000300000002000000
   towerData: {fileID: 11400000, guid: 5b131e31b09ab364c84201577effb10b, type: 2}
+  enemyData: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
   dashBoard: {fileID: 0}
 --- !u!4 &1460012353
 Transform:
@@ -3729,7 +3762,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460012351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 155.81952, y: 85.53875, z: 1.5996128}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3845,12 +3878,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
   m_RefResolutionX: 640
-  m_RefResolutionY: 360
+  m_RefResolutionY: 320
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 0
   m_CropFrameY: 0
-  m_StretchFill: 0
+  m_StretchFill: 1
 --- !u!1 &1765638021
 GameObject:
   m_ObjectHideFlags: 0

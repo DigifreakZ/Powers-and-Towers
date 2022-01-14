@@ -6,10 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public int[] DeckCards;
     private int _currency = 0;
     [SerializeField] private CardDataBase towerData;
+    [SerializeField] private EnemyDataBase enemyData;
     public DashBoard dashBoard;
     /// <summary>
     /// Get: return current Currency.
@@ -17,15 +17,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int Currency
     {
-        get => _currency;
+        get { return _currency; }
         set
         {
             _currency = value;
-
+            if (dashBoard != null)
             UpdateUIDashBoard();
         }
     }
 
+    public GameObject GetEnemyFromID(int ID)
+    {
+        return enemyData.Enemies[ID].gameObject;
+    }
+    public EnemyData GetEnemyDataFromID(int ID)
+    {
+        return enemyData.Enemies[ID];
+    }
     public static CardData GetCardData(int index)
     {
         if (instance == null) return null;
@@ -35,8 +43,8 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Return card for your hand corresponding to hand position
     /// </summary>
-    /// <param name="deckHolder"></param>
-    /// <returns></returns>
+    /// <param name="deckHolder">ID</param>
+    /// <returns>CardData</returns>
     public static CardData GetHand(int deckHolder)
     {
         if (instance == null) return null;
@@ -56,4 +64,5 @@ public class GameManager : MonoBehaviour
         if (instance != null) Destroy(gameObject);
         instance = this;
     }
+
 }

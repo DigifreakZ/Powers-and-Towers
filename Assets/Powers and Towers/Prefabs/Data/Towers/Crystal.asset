@@ -19,7 +19,7 @@ MonoBehaviour:
   cardDescription: 'General Kenobi
 
 '
-  damage: 1
+  damage: 10
   attackCooldown: 1
   range: 5
   type: 0
