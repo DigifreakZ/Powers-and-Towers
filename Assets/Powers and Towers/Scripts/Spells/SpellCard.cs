@@ -24,7 +24,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     private bool grabbed;
     public Transform targetCircle;
     private bool targetInRange;
-    public SpellCard mergeTarget;
+    [HideInInspector] public SpellCard mergeTarget;
     private Vector3 returnPosition;
 
     void OnEnable()
@@ -122,11 +122,23 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
 
     private void CastSpell()
     {
-        spellData.Cast(spellLevel);
         grabbed = false;
         targetCircle.transform.position = new Vector3(0, 0, -10);
-        SendMessageUpwards("UpdateHand", gameObject);
-        Destroy(gameObject);
+        if (GameManager.instance.Currency >= spellData.cardCost)
+        {
+            GameManager.instance.Currency -= spellData.cardCost;
+            spellData.Cast(spellLevel);
+            grabbed = false;
+            targetCircle.transform.position = new Vector3(0, 0, -10);
+            SendMessageUpwards("UpdateHand", gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Not enough currency");
+            StartCoroutine(ReturnToPosition());
+        }
+        
     }
 
     private void MergeSpell()

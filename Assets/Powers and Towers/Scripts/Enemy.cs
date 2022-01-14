@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -86,7 +87,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ReceiveDamage(int dmg, DamageType type)
+    public void ReceiveDamage(float dmg, DamageType type)
     {
         float dmgMultiplyer = 1f;
         foreach(DamageType _type in weakness)
@@ -106,6 +107,32 @@ public class Enemy : MonoBehaviour
         Health -= Mathf.Clamp(Mathf.RoundToInt(dmg * dmgMultiplyer),1,int.MaxValue);
     }
 
+    public void StartDOTRoutine(float damageOverTimeDamage, float damageOverTimeDuration, DamageType damageType)
+    {
+        StartCoroutine(DamageOverTime(damageOverTimeDamage, damageOverTimeDuration, damageType));
+    }
+    public IEnumerator DamageOverTime(float damageOverTimeDamage, float damageOverTimeDuration, DamageType damageType)
+    {
+        for (int i = 0; i < damageOverTimeDuration; i++)
+        {
+            ReceiveDamage(damageOverTimeDamage, damageType);
+            Debug.Log("Took " + damageOverTimeDamage + " at second " + i);
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    public void GetSlowed(float slowAmount, float slowDuration)
+    {
+        StartCoroutine(GetSlowedRoutine(slowAmount, slowDuration));
+    }
+    private IEnumerator GetSlowedRoutine(float slowAmount, float slowDuration)
+    {
+        float defaultSpeed = _speed;
+        _speed *= 1-slowAmount;
+        yield return new WaitForSeconds(slowDuration);
+        _speed = defaultSpeed;
+    }
+
     protected virtual void ReachedEnd()
     {
         nextNodeIndex = 0;
@@ -119,6 +146,4 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         return;
     }
-
-
 }
