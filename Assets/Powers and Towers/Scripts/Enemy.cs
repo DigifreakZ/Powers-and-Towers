@@ -81,11 +81,17 @@ public class Enemy : MonoBehaviour
         }
         Health -= Mathf.Clamp(Mathf.RoundToInt(dmg * dmgMultiplyer),1,int.MaxValue);
     }
+
+    public void StartDOTRoutine(float damageOverTimeDamage, float damageOverTimeDuration, DamageType damageType)
+    {
+        StartCoroutine(DamageOverTime(damageOverTimeDamage, damageOverTimeDuration, damageType));
+    }
     public IEnumerator DamageOverTime(float damageOverTimeDamage, float damageOverTimeDuration, DamageType damageType)
     {
         for (int i = 0; i < damageOverTimeDuration; i++)
         {
             ReceiveDamage(damageOverTimeDamage, damageType);
+            Debug.Log("Took " + damageOverTimeDamage + " at second " + i);
             yield return new WaitForSeconds(1);
         }
     }

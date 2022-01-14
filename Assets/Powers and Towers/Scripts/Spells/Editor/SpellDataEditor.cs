@@ -19,7 +19,15 @@ public class SpellDataEditor : Editor
             {
                 spellData.damagePower = EditorGUILayout.IntField("Damage Power", spellData.damagePower);
                 spellData.damageType = (DamageType)EditorGUILayout.EnumPopup("Damage Type", spellData.damageType);
+                spellData.damageOverTime = EditorGUILayout.Toggle("Damage Over Time", spellData.damageOverTime);
+                if (spellData.damageOverTime)
+                {
+                    spellData.dOTDamage = EditorGUILayout.FloatField("Damage Per Second", spellData.dOTDamage);
+                    spellData.dOTDuration = EditorGUILayout.FloatField("DOT Duration", spellData.dOTDuration);
+                }
             }
+            
+
             EditorGUILayout.EndVertical();
         }
 

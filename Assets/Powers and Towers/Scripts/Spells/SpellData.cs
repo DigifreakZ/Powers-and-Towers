@@ -17,6 +17,8 @@ public class SpellData : CardData
     [HideInInspector] public int damagePower;
     [HideInInspector] public DamageType damageType;
     [HideInInspector] public bool damageOverTime;
+    [HideInInspector] public float dOTDamage;
+    [HideInInspector] public float dOTDuration;
     [HideInInspector] public bool slow;
     [HideInInspector] public float slowPower;
     [HideInInspector] public bool buff;
@@ -27,10 +29,16 @@ public class SpellData : CardData
         Collider2D[] hits = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), spellRange + levelCastAt * spellRangeLevelUp, target);
         foreach (var item in hits)
         {
+            Enemy enemy = item.GetComponent<Enemy>();
             if (damage)
             {
                 Debug.Log("Enemy damaged");
-                item.GetComponent<Enemy>().ReceiveDamage(damagePower, damageType);
+                enemy.ReceiveDamage(damagePower, damageType);
+            }
+            if (damageOverTime)
+            {
+                Debug.Log("Started Damage over Time");
+                enemy.StartDOTRoutine(dOTDamage, dOTDuration, damageType);
             }
             if (slow)
             {
