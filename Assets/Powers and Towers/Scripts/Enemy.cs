@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        _renderer = GetComponent<SpriteRenderer>();
         Init();
     }
 
@@ -58,7 +59,8 @@ public class Enemy : MonoBehaviour
             transform.localScale = data.Scale;
             _health = data.health;
             _speed = data.speed;
-            _renderer.sprite = data.spriteImage;
+            _lootValue = data.lootValue;
+            if (_renderer != null)_renderer.sprite = data.spriteImage;
             resistances = data.resistances;
             weakness = data.weakness;
         }

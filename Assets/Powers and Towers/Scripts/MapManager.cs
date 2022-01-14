@@ -24,6 +24,7 @@ public class MapManager : MonoBehaviour
         if (MapManager.instance != null) Destroy(gameObject);
         MapManager.instance = this;
         enemies = new List<Enemy>();
+
         StartCoroutine("Spawner");
     }
     private void Update()
@@ -66,6 +67,8 @@ public class MapManager : MonoBehaviour
     public void CommandStartNextRound()
     {
         nextWave = true;
+        if (wave.Count != nextWaveID + 1)
+        nextWaveID += 1;
     }
 
     private float timeBetweenSpawning = 0.2f;
@@ -80,6 +83,7 @@ public class MapManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(timeBetweenSpawning);
                 enemies.Add(Instantiate(GameManager.instance.GetEnemyFromID(currentWaveData[whatWave].ID), _pathNodes[0].position, Quaternion.identity).GetComponent<Enemy>());
+                enemies[enemies.Count - 1].EnemyData = GameManager.instance.GetEnemyDataFromID(currentWaveData[whatWave].ID);
             }
         }
         yield return null;
@@ -108,7 +112,7 @@ public class MapManager : MonoBehaviour
                     EnemyData data = database.Enemies[wave[first].waveData[second].ID];
                     wave[first].waveData[second].name = $"{data._name} | {wave[first].waveData[second].NR}";
                 }
-                catch (Exception e)
+                catch 
                 {
                     wave[first].waveData[second].name = $"No Enemy with |ID#{wave[first].waveData[second].ID}|";
                 }

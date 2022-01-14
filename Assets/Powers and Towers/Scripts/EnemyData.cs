@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class EnemyData : ScriptableObject
 {
-    public string _name = "N/a";
+    public string _name = "N/A";
     // Stats
     public int health = 10;
     public int lootValue = 1;
@@ -16,7 +16,7 @@ public class EnemyData : ScriptableObject
     public int EnemyID = -1;
     // Shape
     public Sprite spriteImage;
-    public Vector3 Scale = new Vector3(1f,1f,1f);
+    public Vector3 Scale = new Vector3(0.5f,0.5f,1f);
     public AnimationClip movingAnimation;
     public GameObject gameObject;
     // 
