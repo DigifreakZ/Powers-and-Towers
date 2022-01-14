@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DamageType[] weakness;
     [SerializeField] private SpriteRenderer _renderer;
     private int nextNodeIndex = 0;
+    private List<float> slowEffects;
     private EnemyData data;
     public EnemyData EnemyData
     {
@@ -125,12 +126,32 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(GetSlowedRoutine(slowAmount, slowDuration));
     }
+
+    private void FindBiggestSlow(List<float> effectList)
+    {
+        float totalSlow = 0;
+        if (effectList.Count > 0)
+        {
+            try
+            {
+                foreach(float slowPercentage in effectList)
+                {
+                    if (slowPercentage > totalSlow)
+                        totalSlow = slowPercentage;
+                };
+            }
+            catch{}
+        }
+        _speed *= Mathf.Clamp(1 - totalSlow,0f,1f);
+    }
+
     private IEnumerator GetSlowedRoutine(float slowAmount, float slowDuration)
     {
-        float defaultSpeed = _speed;
-        _speed *= 1-slowAmount;
+        slowEffects.Add(slowAmount);
+        FindBiggestSlow(slowEffects);
         yield return new WaitForSeconds(slowDuration);
-        _speed = defaultSpeed;
+        slowEffects.Remove(slowAmount);
+        FindBiggestSlow(slowEffects);
     }
 
     protected virtual void ReachedEnd()
