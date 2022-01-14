@@ -172,10 +172,20 @@ MonoBehaviour:
   wave:
   - name: Wave#1
     waveData:
-    - name: Bug | 1
-      NR: 1
+    - name: Bug | 10
+      NR: 10
       ID: 0
-      TB: 0
+      TB: 0.5
+    - name: Water Bug | 2
+      NR: 2
+      ID: 1
+      TB: 0.5
+  - name: Wave#2
+    waveData:
+    - name: Water Bug | 20
+      NR: 20
+      ID: 1
+      TB: 0.5
   demoMode: 1
 --- !u!4 &60694870
 Transform:
