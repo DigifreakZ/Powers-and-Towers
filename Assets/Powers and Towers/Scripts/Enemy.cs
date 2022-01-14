@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        slowEffects = new List<float>();
         Init();
     }
 
@@ -142,7 +143,8 @@ public class Enemy : MonoBehaviour
             }
             catch{}
         }
-        _speed *= Mathf.Clamp(1 - totalSlow,0f,1f);
+
+        _speed = data.speed * Mathf.Clamp(1 - totalSlow,0,1f);
     }
 
     private IEnumerator GetSlowedRoutine(float slowAmount, float slowDuration)
