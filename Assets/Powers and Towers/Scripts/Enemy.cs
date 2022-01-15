@@ -166,7 +166,11 @@ public class Enemy : MonoBehaviour
     {
         MapManager.instance.EnemyDied(this);
         GameManager.instance.Currency = _lootValue + GameManager.instance.Currency;
-        Destroy(gameObject);
+        try
+        {
+            Destroy(gameObject);
+        }
+        catch { }
         return;
     }
 }
