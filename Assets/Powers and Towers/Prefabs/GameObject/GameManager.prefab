@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65fa8731e12e6774aa726281a2643cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeckCards: 000000000000000000000000000000000200000003000000
+  DeckCards: 000000000000000000000000000000000000000000000000
+  SpellCards: 010000000100000001000000010000000100000001000000
   towerData: {fileID: 11400000, guid: 5b131e31b09ab364c84201577effb10b, type: 2}
   enemyData: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
   dashBoard: {fileID: 0}
