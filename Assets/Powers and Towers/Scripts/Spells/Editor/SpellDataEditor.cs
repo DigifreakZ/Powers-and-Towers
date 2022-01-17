@@ -55,6 +55,7 @@ public class SpellDataEditor : Editor
             if (spellData.slow)
             {
                 spellData.slowPower = EditorGUILayout.Slider("Slow Power", spellData.slowPower, 0, 1);
+                spellData.slowDuration = EditorGUILayout.Slider("Slow Duration", spellData.slowDuration, 1, 20);
             }
             EditorGUILayout.EndVertical();
         }

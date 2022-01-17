@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f4c12adea8418449d087910fdda91e, type: 3}
+  m_Name: TestSpell
+  m_EditorClassIdentifier: 
+  cardName: Yeet
+  cardID: 0
+  cardCost: 5
+  cardImage: {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
+  cardDescription: Testing
+  spellNames:
+  - Test lvl 1
+  - Test lvl 2
+  - Test lvl 3
+  spellIcons:
+  - {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
+  - {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
+  - {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
+  target:
+    serializedVersion: 2
+    m_Bits: 128
+  spellRange: 3
+  spellRangeLevelUp: 0
+  spellType: 2
+  damage: 0
+  damagePower: 0
+  damageType: 0
+  damageOverTime: 0
+  dOTDamage: 0
+  dOTDuration: 0
+  slow: 1
+  slowPower: 1
+  buff: 0
+  buffType: 0

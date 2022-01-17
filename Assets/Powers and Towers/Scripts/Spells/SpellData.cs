@@ -21,6 +21,7 @@ public class SpellData : CardData
     [HideInInspector] public float dOTDuration;
     [HideInInspector] public bool slow;
     [HideInInspector] public float slowPower;
+    [HideInInspector] public float slowDuration;
     [HideInInspector] public bool buff;
     [HideInInspector] public BuffType buffType;
 
@@ -43,7 +44,7 @@ public class SpellData : CardData
             if (slow)
             {
                 Debug.Log("Enemy slowed");
-                item.GetComponent<Enemy>().GetSlowed(slowPower, 5);
+                item.GetComponent<Enemy>().GetSlowed(slowPower, slowDuration);
             }
             if (buff)
             {

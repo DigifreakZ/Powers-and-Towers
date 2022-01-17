@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateUIDashBoard();
+    }
+
     public GameObject GetEnemyFromID(int ID)
     {
         return enemyData.Enemies[ID].gameObject;
@@ -65,4 +70,8 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void DebugGiveCurrency(int currency)
+    {
+        Currency += currency;
+    }
 }

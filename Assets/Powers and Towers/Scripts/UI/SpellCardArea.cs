@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpellCardArea : MonoBehaviour
 {
-    public SpellData spellsInDeck;
+    public List<SpellData> spellsInDeck;
     public GameObject spellCardPrefab;
     public Transform targetCircle;
     public int maximumHandSize = 7;
@@ -15,6 +15,19 @@ public class SpellCardArea : MonoBehaviour
     public TextMeshProUGUI DrawCost;
 
     public bool belowMaxHandSize => spellsInHand.Count < maximumHandSize;
+
+
+    
+    private void OnEnable()
+    {
+        GetSpellsInDeck();
+    }
+
+    private void GetSpellsInDeck()
+    {
+        Debug.Log("Not implemented yet!");
+        return;
+    }
 
     public int GetCostToDraw()
     {
@@ -31,7 +44,8 @@ public class SpellCardArea : MonoBehaviour
                 GameObject newSpellCard = Instantiate(spellCardPrefab, transform, false);
                 Vector3 newCardPos = new Vector3(27, -230, 0);
                 newSpellCard.transform.localPosition = newCardPos;
-                newSpellCard.GetComponent<SpellCard>().spellData = spellsInDeck;
+                int i = Random.Range(0, spellsInDeck.Count);
+                newSpellCard.GetComponent<SpellCard>().spellData = spellsInDeck[i];
                 newSpellCard.GetComponent<SpellCard>().DisplayData();
                 newSpellCard.GetComponent<SpellCard>().targetCircle = targetCircle;
                 spellsInHand.Add(newSpellCard);
