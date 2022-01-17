@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestSpell
   m_EditorClassIdentifier: 
   cardName: Yeet
-  cardID: 0
+  cardID: 4
   cardCost: 5
   cardImage: {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
   cardDescription: Testing
@@ -30,14 +30,18 @@ MonoBehaviour:
     m_Bits: 128
   spellRange: 3
   spellRangeLevelUp: 0
-  spellType: 2
-  damage: 0
-  damagePower: 0
-  damageType: 0
+  visualEffect: {fileID: 1117612574424355991, guid: e3a81669b9ea67e44969ee83e9e07a60, type: 3}
+  continousSpellEffect: 1
+  spellDuration: 5
+  spellType: 3
+  damage: 1
+  damagePower: 1
+  damageType: 4
   damageOverTime: 0
   dOTDamage: 0
   dOTDuration: 0
   slow: 1
   slowPower: 1
+  slowDuration: 5
   buff: 0
   buffType: 0

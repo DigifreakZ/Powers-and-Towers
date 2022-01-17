@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   cardName: Fireball
-  cardID: 1
+  cardID: 3
   cardCost: 5
   cardImage: {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
   cardDescription: Boom
@@ -30,6 +30,9 @@ MonoBehaviour:
     m_Bits: 128
   spellRange: 2
   spellRangeLevelUp: 0.5
+  visualEffect: {fileID: 6369282995719821307, guid: dd2c37fcf13b05c4fae8a7a443939f9c, type: 3}
+  continousSpellEffect: 0
+  spellDuration: 0
   spellType: 1
   damage: 1
   damagePower: 5
@@ -39,5 +42,6 @@ MonoBehaviour:
   dOTDuration: 5
   slow: 1
   slowPower: 1
+  slowDuration: 0
   buff: 0
   buffType: 2

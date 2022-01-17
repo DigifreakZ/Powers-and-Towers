@@ -20,6 +20,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     private Image spellIcon;
     [SerializeField]
     private TextMeshProUGUI spellDescriptionField;
+    private GameObject spellVisualEffect;
     private bool load;
     private bool grabbed;
     public Transform targetCircle;
@@ -39,6 +40,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         spellCostField.text = spellData.cardCost.ToString();
         spellIcon.sprite = spellData.spellIcons[spellLevel];
         spellDescriptionField.text = spellData.cardDescription;
+        spellVisualEffect = spellData.visualEffect;
     }
 
     void Update()
@@ -127,11 +129,20 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         if (GameManager.instance.Currency >= spellData.cardCost)
         {
             GameManager.instance.Currency -= spellData.cardCost;
-            spellData.Cast(spellLevel);
+            Vector2 castPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            spellData.Cast(spellLevel, castPoint);
             grabbed = false;
             targetCircle.transform.position = new Vector3(0, 0, -10);
             SendMessageUpwards("UpdateHand", gameObject);
-            Destroy(gameObject);
+            if (spellData.continousSpellEffect)
+            {
+                StartCoroutine(ContinousEffectRoutine(spellData.spellDuration, castPoint));
+            }
+            else
+            {
+                StartCoroutine(SpawnVisual(castPoint, spellData.continousSpellEffect));
+                Destroy(gameObject);
+            }
         }
         else
         {
@@ -139,6 +150,35 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
             StartCoroutine(ReturnToPosition());
         }
         
+    }
+
+    private IEnumerator ContinousEffectRoutine(int duration, Vector2 castPoint)
+    {
+        transform.position = new Vector3(-50,-50,0);
+        StartCoroutine(SpawnVisual(castPoint, spellData.continousSpellEffect));
+        for (int i = 0; i < duration; i++)
+        {
+            spellData.Cast(spellLevel, castPoint);
+            print(i);
+            yield return new WaitForSeconds(1);
+        }
+        Destroy(gameObject);
+    }
+
+    private IEnumerator SpawnVisual(Vector2 castPoint, bool continous)
+    {
+        GameObject tmpVisual = Instantiate(spellVisualEffect, castPoint, Quaternion.identity);
+        int duration;
+        if (continous)
+        {
+            duration = spellData.spellDuration;
+        }
+        else
+        {
+            duration = 2;
+        }
+        yield return new WaitForSeconds(duration);
+        Destroy(tmpVisual);
     }
 
     private void MergeSpell()

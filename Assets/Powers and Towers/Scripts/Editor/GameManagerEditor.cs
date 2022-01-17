@@ -6,7 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(GameManager))]
 public class GameManagerEditor : Editor
 {
-    int currencyToAdd = 0;
+    int currencyToAdd = 100;
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();

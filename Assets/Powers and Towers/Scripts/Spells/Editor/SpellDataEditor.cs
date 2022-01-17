@@ -8,6 +8,16 @@ public class SpellDataEditor : Editor
     {
         base.OnInspectorGUI();
         SpellData spellData = (SpellData)target;
+        EditorGUILayout.BeginHorizontal();
+        spellData.continousSpellEffect = EditorGUILayout.Toggle("Continous Spell Effect", spellData.continousSpellEffect);
+        if (spellData.continousSpellEffect)
+        {
+            EditorGUIUtility.labelWidth = 60;
+            spellData.spellDuration = EditorGUILayout.IntField("Duration", spellData.spellDuration, GUILayout.MaxWidth(Screen.width));
+            EditorGUIUtility.labelWidth = 0;
+        }
+        EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.Space();
 
         EditorGUILayout.LabelField("Toggle Spell Types", EditorStyles.boldLabel);

@@ -12,7 +12,10 @@ public class SpellData : CardData
     public LayerMask target;
     public float spellRange;
     public float spellRangeLevelUp;
-    public SpellType spellType;
+    public GameObject visualEffect;
+    [HideInInspector] public bool continousSpellEffect;
+    [HideInInspector] public int spellDuration;
+    [HideInInspector] public SpellType spellType;
     [HideInInspector] public bool damage;
     [HideInInspector] public int damagePower;
     [HideInInspector] public DamageType damageType;
@@ -25,9 +28,9 @@ public class SpellData : CardData
     [HideInInspector] public bool buff;
     [HideInInspector] public BuffType buffType;
 
-    public void Cast(int levelCastAt)
+    public void Cast(int levelCastAt, Vector2 castPoint)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), spellRange + levelCastAt * spellRangeLevelUp, target);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(castPoint, spellRange + levelCastAt * spellRangeLevelUp, target);
         foreach (var item in hits)
         {
             Enemy enemy = item.GetComponent<Enemy>();
