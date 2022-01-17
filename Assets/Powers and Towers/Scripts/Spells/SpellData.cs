@@ -37,7 +37,7 @@ public class SpellData : CardData
             if (damage)
             {
                 Debug.Log("Enemy damaged");
-                enemy.ReceiveDamage(damagePower, damageType);
+                enemy.ReceiveDamage(damagePower * levelCastAt, damageType);
             }
             if (damageOverTime)
             {
