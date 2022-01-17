@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3865897295541985394}
   - component: {fileID: 6618479644304661282}
   m_Layer: 8
-  m_Name: ProjectileTower
+  m_Name: Projectile Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

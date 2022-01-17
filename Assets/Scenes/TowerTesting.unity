@@ -2441,6 +2441,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738237, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: m_Name
       value: GameManager

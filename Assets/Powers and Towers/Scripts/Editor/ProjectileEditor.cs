@@ -13,9 +13,11 @@ public class ProjectileEditor : Editor
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Single"))
         {
+
         }
-        if (GUILayout.Button("Control"))
+        if (GUILayout.Button("AEO"))
         {
+
         }
         EditorGUILayout.EndHorizontal();
     }

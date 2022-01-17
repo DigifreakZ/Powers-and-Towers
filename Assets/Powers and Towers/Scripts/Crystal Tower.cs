@@ -2,22 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlameTower : Tower
+public class CrystalTower : Tower
 {
-    private List<Enemy> EnemiesInFlame;
-    [SerializeField] protected ParticleSystem particle;
     protected List<Collider2D> colliders;
     [SerializeField] protected GameObject projectile;
-    private void Awake()
-    {
-        Init(data);
-    }
-
-    public override void Init(TowerData data)
-    {
-        base.Init(data);
-        EnemiesInFlame = new List<Enemy>();
-    }
     protected override void Attack()
     {
         if (attackCD < 0f)
@@ -33,7 +21,6 @@ public class FlameTower : Tower
             colliders.AddRange(hitCollider);
             if (colliders != null && !(colliders.Count <= 0))
             {
-                particle.Play();
                 colliders.Sort(
                     (x1, x2) =>
                 (
@@ -53,13 +40,10 @@ public class FlameTower : Tower
                         Vector3 triangle = enemy.transform.position - transform.position;
                         headTransform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
                         // enemy.ReceiveDamage(damage, type);
-                        ShootProjectile();
+                        ShootProjectile(enemy.transform.position);
+                        attackCD = attackSpeed;
                     }
                 }
-            }
-            else
-            {
-                particle.Stop();
             }
         }
         else
@@ -68,32 +52,12 @@ public class FlameTower : Tower
         }
     }
 
-    protected void ShootProjectile()
+    protected void ShootProjectile(Vector3 target)
     {
-        if (EnemiesInFlame.Count <= 0) return;
-
-        List<Enemy> enemies = EnemiesInFlame;
-        for (int i = 0; i < EnemiesInFlame.Count; i++)
-        {
-            enemies[i].ReceiveDamage(damage,type);
-        }
-        attackCD = attackSpeed;
+        Vector3 triangle = target - transform.position;
+        GameObject _obj = Instantiate(projectile, transform.position, Quaternion.identity);
+        _obj.GetComponent<Projectile>().Init(damage, type);
+        _obj.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
+        _obj.GetComponent<Rigidbody2D>().AddForce(_obj.transform.right * 1000f);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 7)
-        {
-           EnemiesInFlame.Add(collision.transform.GetComponent<Enemy>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 7)
-        {
-            EnemiesInFlame.Remove(collision.transform.GetComponent<Enemy>());
-        }
-    }
-
 }
