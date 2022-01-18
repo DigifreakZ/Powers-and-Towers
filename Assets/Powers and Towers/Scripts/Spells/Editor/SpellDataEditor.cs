@@ -12,8 +12,8 @@ public class SpellDataEditor : Editor
         spellData.continousSpellEffect = EditorGUILayout.Toggle("Continous Spell Effect", spellData.continousSpellEffect);
         if (spellData.continousSpellEffect)
         {
-            EditorGUIUtility.labelWidth = 60;
-            spellData.spellDuration = EditorGUILayout.IntField("Duration", spellData.spellDuration, GUILayout.MaxWidth(Screen.width));
+            EditorGUIUtility.labelWidth = 90;
+            spellData.spellDuration = EditorGUILayout.IntField("Effect Duration", spellData.spellDuration, GUILayout.MaxWidth(Screen.width));
             EditorGUIUtility.labelWidth = 0;
         }
         EditorGUILayout.EndHorizontal();

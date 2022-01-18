@@ -16,6 +16,8 @@ public class Tower : MonoBehaviour
     protected SpriteRenderer headRender;
     protected SpriteRenderer baseRender;
     protected float attackCD = 0f;
+    protected bool statsChanged;
+
     // 
     public virtual void Init(TowerData data)
     {
@@ -49,6 +51,7 @@ public class Tower : MonoBehaviour
     public virtual void Upgrade()
     {
         data.UpgradeTower(this);
+        statsChanged = true;
     }
     protected virtual void Attack()
     {
@@ -67,9 +70,13 @@ public class Tower : MonoBehaviour
 
     private void CheckForBuffMod()
     {
-        damage = (int)MathF.Round(data.damage * statModifier);
-        attackSpeed = data.attackCooldown * statModifier;
-        radius = MathF.Round(data.range * statModifier);
+        if (statsChanged)
+        {
+            statsChanged = false;
+            damage = (int)MathF.Round(data.damage * statModifier);
+            attackSpeed = data.attackCooldown * statModifier;
+            radius = MathF.Round(data.range * statModifier);
+        }
     }
 
     public void ApplyBuff(float buffMod)
@@ -78,9 +85,21 @@ public class Tower : MonoBehaviour
     }
     private IEnumerator ApplyBuffRoutine(float buffMod)
     {
-        statModifier = buffMod;
-        yield return new WaitForSeconds(10);
-        statModifier = 1;
+        if (statModifier < buffMod)
+        {
+            StopCoroutine(ApplyBuffRoutine(statModifier));
+            statModifier = buffMod;
+            statsChanged = true;
+            yield return new WaitForSeconds(10);
+            statModifier = 1;
+            statsChanged = true;
+        }
+        else
+        {
+            print("Stronger buff already applied");
+            yield return null;
+        }
+        
     }
 
 }

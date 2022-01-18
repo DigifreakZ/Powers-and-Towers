@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DamageType[] resistances;
     [SerializeField] private DamageType[] weakness;
     [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private bool DebugDummy;
     private int nextNodeIndex = 0;
     private List<float> slowEffects;
     private EnemyData data;
@@ -47,7 +48,10 @@ public class Enemy : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         slowEffects = new List<float>();
-        Init();
+        if (!DebugDummy)
+        {
+            Init();
+        }
     }
 
     public void Init()
@@ -159,7 +163,10 @@ public class Enemy : MonoBehaviour
     protected virtual void ReachedEnd()
     {
         nextNodeIndex = 0;
-        Die();
+        if (!DebugDummy)
+        {
+            Die();
+        }
     }
 
     protected virtual void Die()

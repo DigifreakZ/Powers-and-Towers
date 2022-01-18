@@ -86,12 +86,17 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         }
     }
 
+    private Vector2 CurrentSpellRangeScale()
+    {
+        float scale = (spellData.spellRange + spellLevel * spellData.spellRangeLevelUp) * 2;
+        return new Vector2(scale, scale);
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         returnPosition = transform.localPosition;
         grabbed = true;
         SendMessageUpwards("GrabbedCard", this);
-        targetCircle.transform.localScale = new Vector2((spellData.spellRange + spellLevel * 0.5f) * 2, (spellData.spellRange + spellLevel * 0.5f) * 2);
+        targetCircle.transform.localScale = CurrentSpellRangeScale();
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -168,6 +173,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     private IEnumerator SpawnVisual(Vector2 castPoint, bool continous)
     {
         GameObject tmpVisual = Instantiate(spellVisualEffect, castPoint, Quaternion.identity);
+        tmpVisual.transform.localScale = CurrentSpellRangeScale();
         int duration;
         if (continous)
         {

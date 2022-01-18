@@ -53,7 +53,7 @@ public class SpellData : CardData
             if (buff)
             {
                 //Debug.Log("Tower Buffed");
-                item.GetComponent<Tower>().ApplyBuff(buffModifier);
+                item.GetComponent<Tower>().ApplyBuff((float)(buffModifier + 0.5 *  levelCastAt));
             }
         }
     }
