@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -7,6 +8,7 @@ public class Tower : MonoBehaviour
     protected int damage = 1;
     protected float attackSpeed = 1f;
     protected float radius = 5f;
+    protected float statModifier = 1;
     protected DamageType type;
     // Chache
     public TowerData data;
@@ -41,6 +43,7 @@ public class Tower : MonoBehaviour
     }
     protected virtual void Update()
     {
+        CheckForBuffMod();
         Attack();
     }
     public virtual void Upgrade()
@@ -60,6 +63,24 @@ public class Tower : MonoBehaviour
 
         //Debug.Log("Destroy Object");
         Destroy(gameObject);
+    }
+
+    private void CheckForBuffMod()
+    {
+        damage = (int)MathF.Round(data.damage * statModifier);
+        attackSpeed = data.attackCooldown * statModifier;
+        radius = MathF.Round(data.range * statModifier);
+    }
+
+    public void ApplyBuff(float buffMod)
+    {
+        StartCoroutine(ApplyBuffRoutine(buffMod));
+    }
+    private IEnumerator ApplyBuffRoutine(float buffMod)
+    {
+        statModifier = buffMod;
+        yield return new WaitForSeconds(10);
+        statModifier = 1;
     }
 
 }

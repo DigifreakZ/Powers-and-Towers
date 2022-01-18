@@ -2301,7 +2301,7 @@ PrefabInstance:
       objectReference: {fileID: 2019775806}
     - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
       propertyPath: spellsInDeck.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
       propertyPath: spellsInDeck.Array.data[0]
@@ -2311,6 +2311,10 @@ PrefabInstance:
       propertyPath: spellsInDeck.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: ec2daefc5a5be874aa094e6920e9ef7d, type: 2}
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: spellsInDeck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: a22187767712d8f40b3a371b61c23752, type: 2}
     - target: {fileID: 5529767755165566550, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

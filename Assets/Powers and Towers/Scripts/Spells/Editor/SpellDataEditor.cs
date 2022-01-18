@@ -77,7 +77,8 @@ public class SpellDataEditor : Editor
             spellData.buff = EditorGUILayout.Toggle("Buff", spellData.buff);
             if (spellData.buff)
             {
-                spellData.buffType = (BuffType)EditorGUILayout.EnumPopup("Buff Type", spellData.buffType);
+                spellData.buffModifier = EditorGUILayout.Slider("Buff Modifier", spellData.buffModifier, 1, 3);
+                //spellData.buffType = (BuffType)EditorGUILayout.EnumPopup("Buff Type", spellData.buffType);
             }
             EditorGUILayout.EndVertical();
         }

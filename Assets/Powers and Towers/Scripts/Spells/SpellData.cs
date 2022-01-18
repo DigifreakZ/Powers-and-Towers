@@ -26,6 +26,7 @@ public class SpellData : CardData
     [HideInInspector] public float slowPower;
     [HideInInspector] public float slowDuration;
     [HideInInspector] public bool buff;
+    [HideInInspector] public float buffModifier;
     [HideInInspector] public BuffType buffType;
 
     public void Cast(int levelCastAt, Vector2 castPoint)
@@ -51,7 +52,8 @@ public class SpellData : CardData
             }
             if (buff)
             {
-                Debug.Log("Tower Buffed");
+                //Debug.Log("Tower Buffed");
+                item.GetComponent<Tower>().ApplyBuff(buffModifier);
             }
         }
     }
