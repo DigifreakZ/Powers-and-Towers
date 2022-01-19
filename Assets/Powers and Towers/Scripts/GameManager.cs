@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[Serializable]
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int[] DeckCards;
+    [HideInInspector] public int[] DeckCards = new int[6];
+    [HideInInspector] public int[] SpellCards = new int[6];
     private int _currency = 0;
-    [SerializeField] private CardDataBase towerData;
+    [SerializeField] public CardDataBase towerData;
     [SerializeField] private EnemyDataBase enemyData;
     public DashBoard dashBoard;
     /// <summary>
@@ -26,11 +27,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void DebugGiveCurrency(int currency)
     {
-        UpdateUIDashBoard();
+        Currency += currency;
     }
-
     public GameObject GetEnemyFromID(int ID)
     {
         return enemyData.Enemies[ID].gameObject;
@@ -70,8 +70,4 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    public void DebugGiveCurrency(int currency)
-    {
-        Currency += currency;
-    }
 }
