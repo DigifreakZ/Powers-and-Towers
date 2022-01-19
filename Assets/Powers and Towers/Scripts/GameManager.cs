@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 [Serializable]
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +36,10 @@ public class GameManager : MonoBehaviour
         set
         {
             _health = value;
+            if (_health <= 0)
+            {
+                SceneManager.LoadScene("Main Menu");
+            }
             if (dashBoard != null)
                 UpdateUIDashBoard();
         }
