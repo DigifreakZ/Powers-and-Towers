@@ -8,7 +8,7 @@ using UnityEditor.SceneManagement;
 [CustomEditor(typeof(GameManager))]
 public class GameManagerEditor : Editor
 {
-    int currencyToAdd = 0;
+    int currencyToAdd = 100;
     SerializedProperty _DeckCards;
     private void OnEnable()
     {

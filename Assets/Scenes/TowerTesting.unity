@@ -2206,6 +2206,68 @@ Transform:
   m_Father: {fileID: 60694870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &502256591
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.778015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.11676
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056448061885254210, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+      propertyPath: m_Name
+      value: Targeting Circle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+--- !u!4 &502256592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
+  m_PrefabInstance: {fileID: 502256591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &531535568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,6 +2357,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1980654762}
     m_Modifications:
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: targetCircle
+      value: 
+      objectReference: {fileID: 502256592}
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: spellsInDeck.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: spellsInDeck.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 155b06e806b079046ae02d5f3412f8c9, type: 2}
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: spellsInDeck.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ec2daefc5a5be874aa094e6920e9ef7d, type: 2}
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: spellsInDeck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: a22187767712d8f40b3a371b61c23752, type: 2}
+    - target: {fileID: 5529767754411943793, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
+      propertyPath: spellsInDeck.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 76ccf52f98b550a48a99acc8f0ed43dd, type: 2}
     - target: {fileID: 5529767755165566550, guid: 89509b196dc56d74ea685a4dc9a870ce, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2443,10 +2529,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: DeckCards.Array.data[4]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: DeckCards.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[4]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[5]
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738237, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
