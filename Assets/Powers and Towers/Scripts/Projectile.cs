@@ -8,8 +8,9 @@ public class Projectile : MonoBehaviour
     public int damage;
     public DamageType damageType;
     public float DestroyMe = 2f;
-    private bool foundTarget;
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected bool foundTarget;
+    protected bool iniziated;
+    protected virtual void  OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.gameObject.layer == 7 && !foundTarget)
         {
@@ -18,15 +19,17 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void Update()
+    public virtual void Update()
     {
+        if (!iniziated) return;
         if (DestroyMe <= 0) Destroy(gameObject);
         DestroyMe -= Time.deltaTime;
     }
 
-    public void Init(int damage, DamageType type)
+    public virtual void Init(int damage, DamageType type)
     {
         this.damage = damage;
         damageType = type;
+        iniziated = true;
     }
 }

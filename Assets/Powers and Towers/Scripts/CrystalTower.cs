@@ -56,8 +56,8 @@ public class CrystalTower : Tower
     {
         Vector3 triangle = target - transform.position;
         GameObject _obj = Instantiate(projectile, transform.position, Quaternion.identity);
-        _obj.GetComponent<Projectile>().Init(damage, type);
+        _obj.GetComponent<FlaskProjectile>().Init(damage, type,5f,target);
         _obj.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
-        _obj.GetComponent<Rigidbody2D>().AddForce(_obj.transform.right * 1000f);
+        //_obj.GetComponent<Rigidbody2D>().AddForce(_obj.transform.right * 1000f);
     }
 }

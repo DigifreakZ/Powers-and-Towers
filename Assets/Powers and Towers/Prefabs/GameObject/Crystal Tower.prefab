@@ -126,8 +126,8 @@ GameObject:
   m_Component:
   - component: {fileID: 208466940352091464}
   - component: {fileID: 5621588213169864369}
-  - component: {fileID: 1537850162777525119}
   - component: {fileID: 6618479644304661282}
+  - component: {fileID: 7975162882443373495}
   m_Layer: 8
   m_Name: Crystal Tower
   m_TagString: Untagged
@@ -203,19 +203,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1537850162777525119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3495679550352773849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cd31687e1429e459f4f667e67ef56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 0}
 --- !u!61 &6618479644304661282
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -242,3 +229,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7975162882443373495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495679550352773849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c1f26e142ef5641b8009bf40933930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 1f3b992be3fdee1439e69cf218b022cd, type: 2}
+  projectile: {fileID: 2667806567056886496, guid: 34e07e665fb4ea147ba84519247f6593, type: 3}
