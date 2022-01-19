@@ -18,11 +18,11 @@ MonoBehaviour:
   cardImage: {fileID: 21300000, guid: b3f2ac4ff0cb8384586617b7df066182, type: 3}
   cardDescription: 
   damage: 1
-  attackCooldown: 0.1
+  attackCooldown: 0.2
   range: 5
   type: 1
   upgradedVersion: {fileID: 11400000}
-  spriteImage: {fileID: 21300000, guid: b3f2ac4ff0cb8384586617b7df066182, type: 3}
+  spriteImage: {fileID: 21300000, guid: 4211d13329f0eda4fadd8fd718596ad7, type: 3}
   TowerPrefab: {fileID: 4987131383283155994, guid: 059010657051f56428f366302b96720c, type: 3}
   Head: {fileID: 0}
   Towerbase: {fileID: 0}

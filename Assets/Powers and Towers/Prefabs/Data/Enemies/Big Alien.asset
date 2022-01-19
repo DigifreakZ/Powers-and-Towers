@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Big Alien
   m_EditorClassIdentifier: 
   _name: Big Alien
-  health: 30
+  health: 200
   lootValue: 10
   speed: 0.5
   EnemyID: 4

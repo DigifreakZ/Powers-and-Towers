@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alien
   m_EditorClassIdentifier: 
   _name: Alien
-  health: 15
+  health: 50
   lootValue: 2
   speed: 2
   EnemyID: 3

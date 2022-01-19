@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public CardDataBase towerData;
     [SerializeField] private EnemyDataBase enemyData;
     public DashBoard dashBoard;
+
     /// <summary>
     /// Get: return current Currency.
     /// Set: Sets new Currency and Updates UI.
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void UpdateUIDashBoard()
     {
+        if (dashBoard == null) return;
         dashBoard.CurrencyText = _currency.ToString();
         dashBoard.HealthText = _health.ToString();
     }
@@ -80,6 +82,10 @@ public class GameManager : MonoBehaviour
         if (instance != null) Destroy(gameObject);
         instance = this;
         Health = 100;
+    }
+    private void Start()
+    {
+        UpdateUIDashBoard();
     }
 
 }
