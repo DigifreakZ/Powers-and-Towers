@@ -16,7 +16,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] private Transform[] _pathNodes;
     [SerializeField] private List<Wave> wave;
     //
-    private int nextWaveID = 0;
+    private int nextWaveID = -1;
     private List<Enemy> enemies;
     public bool demoMode;
     private void Awake()
@@ -24,8 +24,11 @@ public class MapManager : MonoBehaviour
         if (MapManager.instance != null) Destroy(gameObject);
         MapManager.instance = this;
         enemies = new List<Enemy>();
-
-        StartCoroutine("Spawner");
+        //StartCoroutine("Spawner");
+    }
+    private void Start()
+    {
+        GameManager.instance.DebugGiveCurrency(10);
     }
     private void Update()
     {
@@ -33,6 +36,9 @@ public class MapManager : MonoBehaviour
         {
             nextWave = false;
             StartCoroutine("Spawner");
+        }
+        else
+        {
         }
     }
     // spawn enemy at start
@@ -63,12 +69,19 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-
+    private bool onGoingWave;
     public void CommandStartNextRound()
     {
+        if (onGoingWave) return;
         nextWave = true;
+        onGoingWave = true;
         if (wave.Count != nextWaveID + 1)
         nextWaveID += 1;
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.dashBoard.CurrentWave = nextWaveID.ToString();
+            GameManager.instance.dashBoard.MaxWave = wave.Count.ToString();
+        }
     }
 
     private float timeBetweenSpawning = 0.2f;
@@ -96,6 +109,11 @@ public class MapManager : MonoBehaviour
             enemies.Remove(enemy);
         }
         catch { }
+
+        if (onGoingWave && enemies.Count <= 0)
+        {
+            onGoingWave = false;
+        }
         return;
     }
 

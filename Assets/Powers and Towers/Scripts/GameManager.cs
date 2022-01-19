@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int[] DeckCards = new int[6];
     [HideInInspector] public int[] SpellCards = new int[6];
     private int _currency = 0;
+    private int _health = 0;
     [SerializeField] public CardDataBase towerData;
     [SerializeField] private EnemyDataBase enemyData;
     public DashBoard dashBoard;
@@ -26,7 +27,16 @@ public class GameManager : MonoBehaviour
             UpdateUIDashBoard();
         }
     }
-
+    public int Health
+    {
+        get { return _health; }
+        set
+        {
+            _health = value;
+            if (dashBoard != null)
+                UpdateUIDashBoard();
+        }
+    }
     public void DebugGiveCurrency(int currency)
     {
         Currency += currency;
@@ -62,12 +72,14 @@ public class GameManager : MonoBehaviour
     private void UpdateUIDashBoard()
     {
         dashBoard.CurrencyText = _currency.ToString();
+        dashBoard.HealthText = _health.ToString();
     }
 
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+        Health = 100;
     }
 
 }
