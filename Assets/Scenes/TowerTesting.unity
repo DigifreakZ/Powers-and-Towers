@@ -175,7 +175,19 @@ MonoBehaviour:
     - name: Bug | 40
       NR: 40
       ID: 0
-      TB: 0
+      TB: 1
+  - name: Wave#2
+    waveData:
+    - name: Fire Bug | 20
+      NR: 20
+      ID: 1
+      TB: 0.5
+  - name: Wave#3
+    waveData:
+    - name: Alien | 20
+      NR: 20
+      ID: 3
+      TB: 1
   demoMode: 1
 --- !u!4 &60694870
 Transform:
@@ -2059,7 +2071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &405379916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2442,11 +2454,43 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: DeckCards.Array.data[4]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: DeckCards.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[4]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: SpellCards.Array.data[5]
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738237, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
@@ -2868,7 +2912,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.897325
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10920,7 +10964,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943701128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FlameThrower
   m_EditorClassIdentifier: 
   cardName: Flame Tower
-  cardID: 3
-  cardCost: 0
+  cardID: 2
+  cardCost: 200
   cardImage: {fileID: 21300000, guid: b3f2ac4ff0cb8384586617b7df066182, type: 3}
   cardDescription: 
   damage: 1

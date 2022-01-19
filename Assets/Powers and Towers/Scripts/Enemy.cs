@@ -163,6 +163,10 @@ public class Enemy : MonoBehaviour
     protected virtual void ReachedEnd()
     {
         nextNodeIndex = 0;
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.Health -= _lootValue;
+        }
         if (!DebugDummy)
         {
             Die();

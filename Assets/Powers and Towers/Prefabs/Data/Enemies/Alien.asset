@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 691636cdc8e0a97459eb98e28ad530a3, type: 3}
-  m_Name: Bug(Water)
+  m_Name: Alien
   m_EditorClassIdentifier: 
-  _name: Ice Bug
-  health: 20
-  lootValue: 5
-  speed: 5
-  EnemyID: 2
-  spriteImage: {fileID: 21300000, guid: c4af7931503bc6745a603dfcf239a5cc, type: 3}
-  Scale: {x: 0.7, y: 0.7, z: 1}
+  _name: Alien
+  health: 15
+  lootValue: 2
+  speed: 2
+  EnemyID: 3
+  spriteImage: {fileID: 21300000, guid: 63f8f05cd8c15a94aafebed2d95d2878, type: 3}
+  Scale: {x: 0.6, y: 0.6, z: 1}
   movingAnimation: {fileID: 0}
   gameObject: {fileID: 3778795860092155320, guid: 0c7d3ff0084745c44962fdf8843fb907, type: 3}
-  resistances: 04000000
-  weakness: 01000000
+  resistances: 
+  weakness: 
