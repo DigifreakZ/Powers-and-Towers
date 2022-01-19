@@ -81,7 +81,7 @@ public class MapManager : MonoBehaviour
         nextWaveID += 1;
         if (GameManager.instance != null)
         {
-            GameManager.instance.dashBoard.CurrentWave = nextWaveID.ToString();
+            GameManager.instance.dashBoard.CurrentWave = (1+nextWaveID).ToString();
             GameManager.instance.dashBoard.MaxWave = wave.Count.ToString();
         }
     }
