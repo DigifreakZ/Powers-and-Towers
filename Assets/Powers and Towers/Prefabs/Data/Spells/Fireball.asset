@@ -31,6 +31,7 @@ MonoBehaviour:
   spellRange: 2
   spellRangeLevelUp: 0.5
   visualEffect: {fileID: 6369282995719821307, guid: dd2c37fcf13b05c4fae8a7a443939f9c, type: 3}
+  VisualEffectDuration: 2
   continousSpellEffect: 0
   spellDuration: 0
   spellType: 1
@@ -44,4 +45,5 @@ MonoBehaviour:
   slowPower: 1
   slowDuration: 0
   buff: 0
+  buffModifier: 0
   buffType: 2

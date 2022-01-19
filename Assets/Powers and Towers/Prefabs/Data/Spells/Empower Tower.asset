@@ -30,7 +30,8 @@ MonoBehaviour:
     m_Bits: 256
   spellRange: 3
   spellRangeLevelUp: 0.5
-  visualEffect: {fileID: 2667806567056886496, guid: 7196b535eab1beb429849d69d14675eb, type: 3}
+  visualEffect: {fileID: 3900333945340246877, guid: 3a1b57273cdfbbd498e886719b36c96b, type: 3}
+  VisualEffectDuration: 4
   continousSpellEffect: 0
   spellDuration: 0
   spellType: 4

@@ -13,6 +13,7 @@ public class SpellData : CardData
     public float spellRange;
     public float spellRangeLevelUp;
     public GameObject visualEffect;
+    public float VisualEffectDuration;
     [HideInInspector] public bool continousSpellEffect;
     [HideInInspector] public int spellDuration;
     [HideInInspector] public SpellType spellType;

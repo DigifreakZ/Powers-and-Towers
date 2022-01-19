@@ -139,6 +139,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
             grabbed = false;
             targetCircle.transform.position = new Vector3(0, 0, -10);
             SendMessageUpwards("UpdateHand", gameObject);
+            transform.position = new Vector3(10000, 10000, 0);
             if (spellData.continousSpellEffect)
             {
                 StartCoroutine(ContinousEffectRoutine(spellData.spellDuration, castPoint));
@@ -146,7 +147,6 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
             else
             {
                 StartCoroutine(SpawnVisual(castPoint, spellData.continousSpellEffect));
-                Destroy(gameObject);
             }
         }
         else
@@ -159,7 +159,6 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
 
     private IEnumerator ContinousEffectRoutine(int duration, Vector2 castPoint)
     {
-        transform.position = new Vector3(-50,-50,0);
         StartCoroutine(SpawnVisual(castPoint, spellData.continousSpellEffect));
         for (int i = 0; i < duration; i++)
         {
@@ -167,7 +166,6 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
             print(i);
             yield return new WaitForSeconds(1);
         }
-        Destroy(gameObject);
     }
 
     private IEnumerator SpawnVisual(Vector2 castPoint, bool continous)
@@ -181,10 +179,11 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         }
         else
         {
-            duration = 2;
+            duration = (int)spellData.VisualEffectDuration;
         }
         yield return new WaitForSeconds(duration);
         Destroy(tmpVisual);
+        Destroy(gameObject);
     }
 
     private void MergeSpell()
