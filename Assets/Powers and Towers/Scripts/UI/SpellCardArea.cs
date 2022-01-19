@@ -25,8 +25,10 @@ public class SpellCardArea : MonoBehaviour
 
     private void GetSpellsInDeck()
     {
-        Debug.Log("Not implemented yet!");
-        return;
+        for (int i = 0; i < GameManager.instance.SpellCards.Length; i++)
+        {
+            spellsInDeck.Add((SpellData)GameManager.GetCardData(GameManager.instance.SpellCards[i]));
+        }
     }
 
     public int GetCostToDraw()
