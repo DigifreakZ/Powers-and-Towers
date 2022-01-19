@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Ice Bug
   health: 20
   lootValue: 5
-  speed: 5
+  speed: 7
   EnemyID: 2
   spriteImage: {fileID: 21300000, guid: c4af7931503bc6745a603dfcf239a5cc, type: 3}
   Scale: {x: 0.7, y: 0.7, z: 1}

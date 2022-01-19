@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MapManager : MonoBehaviour
     //
     public bool nextWave;
 
+    public GameObject youWonText;
     //
     [SerializeField] private EnemyDataBase database;
     [SerializeField] private Transform[] _pathNodes;
@@ -113,10 +115,19 @@ public class MapManager : MonoBehaviour
         if (onGoingWave && enemies.Count <= 0)
         {
             onGoingWave = false;
+            if (nextWaveID + 1 == wave.Count)
+            {
+                StartCoroutine("YouWon");
+            }
         }
         return;
     }
-
+    IEnumerator YouWon()
+    {
+        youWonText.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Main Menu");
+    }
     private void OnValidate()
     {
         for(int first = 0; first < wave.Count; first++)

@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Alien
   health: 50
   lootValue: 2
-  speed: 2
+  speed: 3
   EnemyID: 3
   spriteImage: {fileID: 21300000, guid: 63f8f05cd8c15a94aafebed2d95d2878, type: 3}
   Scale: {x: 0.6, y: 0.6, z: 1}
