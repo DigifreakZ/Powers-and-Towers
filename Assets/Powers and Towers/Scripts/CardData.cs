@@ -12,15 +12,17 @@ public class CardData : ScriptableObject
     public Sprite cardImage;
     [TextArea]
     public string cardDescription;
-
+#if (UNITY_EDITOR)
     private void OnValidate()
     {
         if (cardID == -1)
         {
+
             CardDataBase database;
             database = AssetDatabase.LoadAssetAtPath("Assets\\Resources\\CardDataBase.asset", typeof(CardDataBase)) as CardDataBase;
             database.cardData.Add(this);
             database.OnValidate();
         }
     }
+#endif
 }
