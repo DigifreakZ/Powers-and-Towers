@@ -15,7 +15,8 @@ public class Projectile : MonoBehaviour
         if (collision.transform.gameObject.layer == 7 && !foundTarget)
         {
             foundTarget = true;
-            collision.GetComponent<Enemy>().ReceiveDamage(damage, damageType);
+            Enemy EM = collision.GetComponent<Enemy>();
+            EM.ReceiveDamage(damage, damageType);
             Destroy(gameObject);
         }
     }
