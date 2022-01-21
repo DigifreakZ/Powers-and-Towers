@@ -18,9 +18,9 @@ MonoBehaviour:
   cardImage: {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
   cardDescription: Freezing
   spellNames:
-  - Blizzard lvl 1
-  - Blizzard lvl 2
-  - Blizzard lvl 3
+  - Blizzard
+  - Ice Barrage
+  - Northern Summer
   spellIcons:
   - {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
   - {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
@@ -31,6 +31,7 @@ MonoBehaviour:
   spellRange: 3
   spellRangeLevelUp: 0
   visualEffect: {fileID: 1117612574424355991, guid: e3a81669b9ea67e44969ee83e9e07a60, type: 3}
+  VisualEffectDuration: 0
   continousSpellEffect: 1
   spellDuration: 5
   spellType: 3
@@ -40,6 +41,7 @@ MonoBehaviour:
   damageOverTime: 0
   dOTDamage: 0
   dOTDuration: 0
+  blackHole: 0
   slow: 1
   slowPower: 1
   slowDuration: 5

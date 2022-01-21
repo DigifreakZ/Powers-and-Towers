@@ -41,6 +41,7 @@ MonoBehaviour:
   damageOverTime: 0
   dOTDamage: 2
   dOTDuration: 5
+  blackHole: 0
   slow: 1
   slowPower: 1
   slowDuration: 0

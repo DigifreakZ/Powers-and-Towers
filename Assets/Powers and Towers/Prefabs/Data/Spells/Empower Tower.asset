@@ -18,9 +18,9 @@ MonoBehaviour:
   cardImage: {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
   cardDescription: Beeg towers
   spellNames:
-  - Empower Tower lvl 1
-  - Empower Tower lvl 2
-  - Empower Tower lvl 3
+  - Empower Tower
+  - Rally the Defence
+  - Suffer not the Xenos
   spellIcons:
   - {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
   - {fileID: 21300000, guid: 0d9a323c9fcedbd4c9adfe91c26cc7ac, type: 3}
@@ -41,6 +41,7 @@ MonoBehaviour:
   damageOverTime: 0
   dOTDamage: 0
   dOTDuration: 0
+  blackHole: 0
   slow: 0
   slowPower: 0
   slowDuration: 0
