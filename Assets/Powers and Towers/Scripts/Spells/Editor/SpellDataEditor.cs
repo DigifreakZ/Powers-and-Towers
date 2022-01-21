@@ -51,7 +51,7 @@ public class SpellDataEditor : Editor
                     spellData.dOTDamage = EditorGUILayout.FloatField("Damage Per Second", spellData.dOTDamage);
                     spellData.dOTDuration = EditorGUILayout.FloatField("DOT Duration", spellData.dOTDuration);
                 }
-                spellData.blackHole = EditorGUILayout.Toggle("Black Hole", spellData.blackHole);
+                spellData.blackHole = EditorGUILayout.Toggle(new GUIContent("Black Hole", "Should the spell destroy towers"), spellData.blackHole);
             }
             
 

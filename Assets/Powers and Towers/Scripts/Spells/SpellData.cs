@@ -38,35 +38,35 @@ public class SpellData : CardData
         {
             Enemy enemy = item.GetComponent<Enemy>();
             Tower tower = item.GetComponent<Tower>();
-            if (damage && enemy != null)
+            if (damage && item.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy damaged");
                 enemy.ReceiveDamage(damagePower * levelCastAt, damageType);
             }
-            if (damageOverTime && enemy != null)
+            if (damageOverTime && item.CompareTag("Enemy"))
             {
                 Debug.Log("Started Damage over Time");
                 enemy.StartDOTRoutine(dOTDamage, dOTDuration, damageType);
             }
-            if (slow && enemy != null)
+            if (slow && item.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy slowed");
                 enemy.GetSlowed(slowPower, slowDuration);
             }
-            if (buff && tower != null)
+            if (buff && item.CompareTag("Tower"))
             {
                 //Debug.Log("Tower Buffed");
                 tower.ApplyBuff((float)(buffModifier + 0.5 *  levelCastAt));
             }
-            if (blackHole && tower != null)
+            if (blackHole && item.CompareTag("Tower"))
             {
                 // Chance to spare towers
                 // 0% at level 1
                 // 10% at level 2
                 // 25% at level 3
-                if (UnityEngine.Random.value > 1.05 - 0.15 * levelCastAt)   
+                if (UnityEngine.Random.value < 1.05 - 0.15 * levelCastAt)   
                 {
-                    tower.Destroy(false);
+                    tower.DestroyTower(false);
                 }
             }
         }

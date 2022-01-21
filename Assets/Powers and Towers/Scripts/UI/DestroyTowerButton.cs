@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 
 public class DestroyTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private bool returnMoney = true;
     private Tower selectedTower;
     private Color _color;
     private void Start()
@@ -30,7 +29,7 @@ public class DestroyTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
     // Clicked
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (selectedTower != null) selectedTower.Destroy(returnMoney);
+        if (selectedTower != null) selectedTower.DestroyTower(true);
     }
 }
 

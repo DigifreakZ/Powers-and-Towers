@@ -57,10 +57,9 @@ public class Tower : MonoBehaviour
     {
         Debug.Log($"{name} Attacked");
     }
-    public virtual void Destroy(bool returnMoney)
+    public void DestroyTower(bool returnMoney)
     {
-        Debug.Log($"Destroyed {name}");
-
+        //Debug.Log($"Destroyed {name}");
         if (returnMoney)
         {
             //Debug.Log("Return Money");
