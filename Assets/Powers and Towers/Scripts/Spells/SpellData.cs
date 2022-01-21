@@ -23,6 +23,7 @@ public class SpellData : CardData
     [HideInInspector] public bool damageOverTime;
     [HideInInspector] public float dOTDamage;
     [HideInInspector] public float dOTDuration;
+    [HideInInspector] public bool blackHole;
     [HideInInspector] public bool slow;
     [HideInInspector] public float slowPower;
     [HideInInspector] public float slowDuration;
@@ -36,25 +37,37 @@ public class SpellData : CardData
         foreach (var item in hits)
         {
             Enemy enemy = item.GetComponent<Enemy>();
-            if (damage)
+            Tower tower = item.GetComponent<Tower>();
+            if (damage && enemy != null)
             {
                 Debug.Log("Enemy damaged");
                 enemy.ReceiveDamage(damagePower * levelCastAt, damageType);
             }
-            if (damageOverTime)
+            if (damageOverTime && enemy != null)
             {
                 Debug.Log("Started Damage over Time");
                 enemy.StartDOTRoutine(dOTDamage, dOTDuration, damageType);
             }
-            if (slow)
+            if (slow && enemy != null)
             {
                 Debug.Log("Enemy slowed");
-                item.GetComponent<Enemy>().GetSlowed(slowPower, slowDuration);
+                enemy.GetSlowed(slowPower, slowDuration);
             }
-            if (buff)
+            if (buff && tower != null)
             {
                 //Debug.Log("Tower Buffed");
-                item.GetComponent<Tower>().ApplyBuff((float)(buffModifier + 0.5 *  levelCastAt));
+                tower.ApplyBuff((float)(buffModifier + 0.5 *  levelCastAt));
+            }
+            if (blackHole && tower != null)
+            {
+                // Chance to spare towers
+                // 0% at level 1
+                // 10% at level 2
+                // 25% at level 3
+                if (UnityEngine.Random.value > 1.05 - 0.15 * levelCastAt)   
+                {
+                    tower.Destroy(false);
+                }
             }
         }
     }

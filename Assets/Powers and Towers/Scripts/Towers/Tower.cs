@@ -57,13 +57,15 @@ public class Tower : MonoBehaviour
     {
         Debug.Log($"{name} Attacked");
     }
-    public virtual void Destroy()
+    public virtual void Destroy(bool returnMoney)
     {
         Debug.Log($"Destroyed {name}");
 
-        //Debug.Log("Return Money");
-        GameManager.instance.Currency += Convert.ToInt32(data.cardCost * 0.5f);
-
+        if (returnMoney)
+        {
+            //Debug.Log("Return Money");
+            GameManager.instance.Currency += Convert.ToInt32(data.cardCost * 0.5f);
+        }
         //Debug.Log("Destroy Object");
         Destroy(gameObject);
     }

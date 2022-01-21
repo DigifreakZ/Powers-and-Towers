@@ -51,6 +51,7 @@ public class SpellDataEditor : Editor
                     spellData.dOTDamage = EditorGUILayout.FloatField("Damage Per Second", spellData.dOTDamage);
                     spellData.dOTDuration = EditorGUILayout.FloatField("DOT Duration", spellData.dOTDuration);
                 }
+                spellData.blackHole = EditorGUILayout.Toggle("Black Hole", spellData.blackHole);
             }
             
 
