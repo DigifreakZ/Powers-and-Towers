@@ -7,14 +7,27 @@ using UnityEngine.SceneManagement;
 [Serializable]
 public class GameManager : MonoBehaviour
 {
+    // Singelton
     public static GameManager instance;
-    [HideInInspector] public int[] DeckCards = new int[6];
-    [HideInInspector] public int[] SpellCards = new int[6];
-    private int _currency = 0;
+
+    // Singelton Variables
+    public int[] DeckCards = new int[6];
+    public int[] SpellCards = new int[6];
+    [SerializeField] public CardDataBase cardDatabase;
+    [SerializeField] public EnemyDataBase enemyDatabase;
+
+    // Ingame Variables
     private int _health = 0;
-    [SerializeField] public CardDataBase towerData;
-    [SerializeField] private EnemyDataBase enemyData;
-    public DashBoard dashBoard;
+    [SerializeField] private int _currency = 0;
+    [HideInInspector] public DashBoard DashBoard;
+
+    // Deck Builder Variables
+    [HideInInspector] public DeckBuilderIDCard scriptToAdd;
+    [HideInInspector] public int currentHoldID;
+    [HideInInspector] public int hoverID;
+    public bool holdingCard;
+    public bool hoveringDropCard;
+    
 
     /// <summary>
     /// Get: return current Currency.
@@ -26,7 +39,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _currency = value;
-            if (dashBoard != null)
+            if (DashBoard != null)
             UpdateUIDashBoard();
         }
     }
@@ -40,7 +53,7 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene("Main Menu");
             }
-            if (dashBoard != null)
+            if (DashBoard != null)
                 UpdateUIDashBoard();
         }
     }
@@ -48,20 +61,24 @@ public class GameManager : MonoBehaviour
     {
         Currency += currency;
     }
+
     public GameObject GetEnemyFromID(int ID)
     {
-        return enemyData.Enemies[ID].gameObject;
+        return enemyDatabase.Enemies[ID].gameObject;
     }
+
     public EnemyData GetEnemyDataFromID(int ID)
     {
-        return enemyData.Enemies[ID];
+        return enemyDatabase.Enemies[ID];
     }
+
     public static CardData GetCardData(int index)
     {
         if (instance == null) return null;
 
-        return instance.towerData.cardData[index];
+        return instance.cardDatabase.cardData[index];
     }
+
     /// <summary>
     /// Return card for your hand corresponding to hand position
     /// </summary>
@@ -71,22 +88,24 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) return null;
 
-        return instance.towerData.cardData[instance.DeckCards[deckHolder]];
+        return instance.cardDatabase.cardData[instance.DeckCards[deckHolder]];
     }
+
     /// <summary>
-    /// Updates UI
+    /// Updates DashBoard UI (Health, currency)
     /// </summary>
     private void UpdateUIDashBoard()
     {
-        if (dashBoard == null) return;
-        dashBoard.CurrencyText = _currency.ToString();
-        dashBoard.HealthText = _health.ToString();
+        if (DashBoard == null) return;
+        DashBoard.CurrencyText = _currency.ToString();
+        DashBoard.HealthText = _health.ToString();
     }
 
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+        DontDestroyOnLoad(this);
         Health = 100;
     }
     private void Start()

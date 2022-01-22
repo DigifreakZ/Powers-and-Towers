@@ -45,7 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeckCards: 000000000000000000000000000000000000000000000000
-  SpellCards: 010000000100000001000000010000000100000001000000
-  towerData: {fileID: 11400000, guid: 5b131e31b09ab364c84201577effb10b, type: 2}
-  enemyData: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
-  dashBoard: {fileID: 0}
+  SpellCards: 030000000300000003000000030000000300000003000000
+  cardDatabase: {fileID: 11400000, guid: 5b131e31b09ab364c84201577effb10b, type: 2}
+  enemyDatabase: {fileID: 11400000, guid: fced95bb7b0a2b044962455fa279dc7a, type: 2}
+  _currency: 0
+  DashBoard: {fileID: 0}
+  currentHoldID: 0
+  hoverID: 0
+  holdingCard: 0
+  hoveringDropCard: 0

@@ -55,7 +55,7 @@ public class GameManagerEditor : Editor
             }
         }
         EditorGUILayout.EndHorizontal();
-        if (gameManager.towerData != null)
+        if (gameManager.cardDatabase != null)
         {
             List<EditorDataHelper> cards = GetTowerCardData(gameManager);
             for (int i = 0; i < 6; i++)
@@ -76,7 +76,7 @@ public class GameManagerEditor : Editor
                 gameManager.SpellCards[i] = 1;
             }
         }
-        if (gameManager.towerData != null)
+        if (gameManager.cardDatabase != null)
         {
             List<EditorDataHelper> cards = GetSpellCardData(gameManager);
             for (int i = 0; i < 6; i++)
@@ -130,11 +130,11 @@ public class GameManagerEditor : Editor
     private List<EditorDataHelper> GetTowerCardData(GameManager manager)
     {
         List<EditorDataHelper> options = new List<EditorDataHelper>();
-        for (int i = 0; i < manager.towerData.cardData.Count; i++)
+        for (int i = 0; i < manager.cardDatabase.cardData.Count; i++)
         {
-            if (manager.towerData.cardData[i].GetType() == typeof(TowerData))
+            if (manager.cardDatabase.cardData[i].GetType() == typeof(TowerData))
             {
-                options.Add(new EditorDataHelper(manager.towerData.cardData[i].cardName, manager.towerData.cardData[i].cardID));
+                options.Add(new EditorDataHelper(manager.cardDatabase.cardData[i].cardName, manager.cardDatabase.cardData[i].cardID));
             }
         }
         return options;
@@ -143,11 +143,11 @@ public class GameManagerEditor : Editor
     private List<EditorDataHelper> GetSpellCardData(GameManager manager)
     {
         List<EditorDataHelper> options = new List<EditorDataHelper>();
-        for (int i = 0; i < manager.towerData.cardData.Count; i++)
+        for (int i = 0; i < manager.cardDatabase.cardData.Count; i++)
         {
-            if (manager.towerData.cardData[i].GetType() == typeof(SpellData))
+            if (manager.cardDatabase.cardData[i].GetType() == typeof(SpellData))
             {
-                options.Add(new EditorDataHelper(manager.towerData.cardData[i].cardName, manager.towerData.cardData[i].cardID));
+                options.Add(new EditorDataHelper(manager.cardDatabase.cardData[i].cardName, manager.cardDatabase.cardData[i].cardID));
             }
         }
         return options;
