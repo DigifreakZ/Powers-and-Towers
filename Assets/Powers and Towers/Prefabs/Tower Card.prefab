@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ba913cabd8f144b9bf4a4288279209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardHolderID: -1
   towerData: {fileID: 11400000, guid: 3370a2efa536d274cb6157b72e093d6b, type: 2}
   mLayerMask:
     serializedVersion: 2
