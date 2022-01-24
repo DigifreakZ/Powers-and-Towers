@@ -18,6 +18,8 @@ public class DeckBuilderHandSpell : MonoBehaviour, IPointerDownHandler, IPointer
     [SerializeField] private TextMeshProUGUI cardDescription;
     [SerializeField] private Image cardSpellImage;
     private UITweener tweener;
+    private bool load = false;
+
     public void initiziate(int TowerCardID)
     {
         if (GameManager.instance.cardDatabase.cardData[TowerCardID].GetType() == typeof(SpellData))
@@ -37,11 +39,21 @@ public class DeckBuilderHandSpell : MonoBehaviour, IPointerDownHandler, IPointer
         cardNameText.text = cardData.cardName.ToString();
         cardDescription.text = cardData.cardDescription.ToString();
         cardSpellImage.sprite = cardData.cardImage;
+        load = true;
     }
 
     private void Start()
     {
         CardData = (SpellData)GameManager.GetHandS(holderID);
+    }
+
+    private void LateUpdate()
+    {
+        if (load)
+        {
+            cardSpellImage.SetNativeSize();
+            load = false;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

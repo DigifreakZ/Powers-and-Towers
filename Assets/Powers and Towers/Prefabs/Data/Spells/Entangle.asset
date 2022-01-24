@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Entangle
   m_EditorClassIdentifier: 
   cardName: Entangle
-  cardID: 6
+  cardID: 7
   cardCost: 5
-  cardImage: {fileID: 292812209, guid: cb35ce919118ea0438c06b4226c75237, type: 3}
+  cardImage: {fileID: 21300000, guid: 6aaad74bdccfe594783247c95a2a0420, type: 3}
   cardDescription: 
   spellNames:
   - Entangle
@@ -53,3 +53,4 @@ MonoBehaviour:
   doBuff: 0
   buffModifier: 0
   buffType: 0
+  wildMagic: 0

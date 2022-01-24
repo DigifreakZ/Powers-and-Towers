@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Blizzard
   m_EditorClassIdentifier: 
   cardName: Blizzard
-  cardID: 4
+  cardID: 5
   cardCost: 5
-  cardImage: {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
+  cardImage: {fileID: 21300000, guid: 9b8bc137ca1c5b2468ac719bd4ef488b, type: 3}
   cardDescription: Freezing
   spellNames:
   - Blizzard
@@ -53,3 +53,4 @@ MonoBehaviour:
   doBuff: 0
   buffModifier: 0
   buffType: 0
+  wildMagic: 0

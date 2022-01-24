@@ -18,6 +18,8 @@ public class DeckBuilderSpell : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     [SerializeField] private Image cardSpellImage;
     private UITweener tweener;
     private bool holdingCard;
+    private bool load = false;
+
     public void initiziate(int TowerCardID)
     {
         if (GameManager.instance.cardDatabase.cardData[TowerCardID].GetType() == typeof(SpellData))
@@ -37,6 +39,7 @@ public class DeckBuilderSpell : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         cardNameText.text = cardData.cardName.ToString();
         cardDescription.text = cardData.cardDescription.ToString();
         cardSpellImage.sprite = cardData.cardImage;
+        load = true;
     }
 
     private void Update()
@@ -48,6 +51,14 @@ public class DeckBuilderSpell : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         if (m.image.sprite != cardData.cardImage)
             m.image.sprite = cardData.cardImage;
+    }
+    private void LateUpdate()
+    {
+        if (load)
+        {
+            cardSpellImage.SetNativeSize();
+            load = false;
+        }
     }
 
     private void Start()

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Lightning Strike
   m_EditorClassIdentifier: 
   cardName: Lightning Strike
-  cardID: 8
+  cardID: 11
   cardCost: 10
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: 461953276393eb74f98d0a47425a63cc, type: 3}
   cardDescription: Zippety zap
   spellNames:
   - Lightning Strike
@@ -53,3 +53,4 @@ MonoBehaviour:
   doBuff: 0
   buffModifier: 0
   buffType: 0
+  wildMagic: 0
