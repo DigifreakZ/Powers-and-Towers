@@ -9,7 +9,10 @@ public class ContentHandler : MonoBehaviour
     public void AddOneCard(int id)
     {
         GameObject _Obj = Instantiate(card,transform);
-        _Obj.GetComponent<TowerCardDeckSelecter>().initiziate(id);
+        if (!Spells)
+            _Obj.GetComponent<DeckBuilderTower>().initiziate(id);
+        else
+            _Obj.GetComponent<DeckBuilderSpell>().initiziate(id);
     }
 
     private void Awake()

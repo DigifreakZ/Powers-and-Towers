@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Crystal Tower
   cardID: 1
-  cardCost: 100
+  cardCost: 50
   cardImage: {fileID: 21300000, guid: fa338131f2682734083eb3deb71020f0, type: 3}
   cardDescription: 
   damage: 10
   attackCooldown: 1
-  range: 5
+  range: 3
   type: 2
   upgradedVersion: {fileID: 11400000}
   spriteImage: {fileID: 21300000, guid: 38746d779bb4b274d911f1126203122d, type: 3}

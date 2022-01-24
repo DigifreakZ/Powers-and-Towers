@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3865897295541985394}
   - component: {fileID: 6618479644304661282}
   m_Layer: 8
-  m_Name: Projectile Tower
+  m_Name: Frostshard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6462a21741997984aa8ffd47265e655e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 9e1acbc5c1af2b04084a514392acf6a4, type: 2}
-  projectile: {fileID: 2667806567056886496, guid: 7196b535eab1beb429849d69d14675eb, type: 3}
+  data: {fileID: 0}
+  projectile: {fileID: 2667806567056886496, guid: 394f5131d8f5d1f44a46bd717f1ca19b, type: 3}
 --- !u!61 &6618479644304661282
 BoxCollider2D:
   m_ObjectHideFlags: 0

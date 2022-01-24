@@ -6,25 +6,22 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class DeckBuilderIDCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class DeckBuilderHandSpell : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int holderID;
-    [Tooltip("Determines what Tower the card is holding")]
-    [SerializeField] private TowerData towerData;
-    public TowerData TowerData { set { towerData = value; UpdateVisuals(); } private get => towerData; }
+    [Tooltip("Determines what Spell the card is holding")]
+    [SerializeField] private SpellData cardData;
+    public SpellData CardData { set { cardData = value; UpdateVisuals(); } private get => cardData; }
     [Tooltip("Layers Tower can't be placed on")]
     [SerializeField] private TextMeshProUGUI cardCostText;
     [SerializeField] private TextMeshProUGUI cardNameText;
-    [SerializeField] private TextMeshProUGUI cardDamageText;
-    [SerializeField] private TextMeshProUGUI cardSpeedText;
-    [SerializeField] private TextMeshProUGUI cardRangeText;
-    [SerializeField] private TextMeshProUGUI cardElementText;
-    [SerializeField] private Image cardTowerImage;
+    [SerializeField] private TextMeshProUGUI cardDescription;
+    [SerializeField] private Image cardSpellImage;
     private UITweener tweener;
     public void initiziate(int TowerCardID)
     {
-        if (GameManager.instance.cardDatabase.cardData[TowerCardID].GetType() == typeof(TowerData))
-            TowerData = (TowerData)GameManager.instance.cardDatabase.cardData[TowerCardID];
+        if (GameManager.instance.cardDatabase.cardData[TowerCardID].GetType() == typeof(SpellData))
+            CardData = (SpellData)GameManager.instance.cardDatabase.cardData[TowerCardID];
         else
         {
             // Destroy(gameObject);
@@ -36,17 +33,15 @@ public class DeckBuilderIDCard : MonoBehaviour, IPointerDownHandler, IPointerUpH
     /// </summary>
     private void UpdateVisuals()
     {
-        cardCostText.text = towerData.cardCost.ToString();
-        cardNameText.text = towerData.cardName.ToString();
-        cardDamageText.text = towerData.damage.ToString();
-        cardSpeedText.text = (1 / towerData.attackCooldown).ToString();
-        cardRangeText.text = towerData.range.ToString();
-        cardElementText.text = towerData.type.ToString();
-        cardTowerImage.sprite = towerData.spriteImage;
+        cardCostText.text = cardData.cardCost.ToString();
+        cardNameText.text = cardData.cardName.ToString();
+        cardDescription.text = cardData.cardDescription.ToString();
+        cardSpellImage.sprite = cardData.cardImage;
     }
+
     private void Start()
     {
-        TowerData = (TowerData)GameManager.GetHand(holderID);
+        CardData = (SpellData)GameManager.GetHandS(holderID);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -61,7 +56,7 @@ public class DeckBuilderIDCard : MonoBehaviour, IPointerDownHandler, IPointerUpH
         GameManager.instance.hoverID = holderID;
         if (GameManager.instance.holdingCard)
         {
-            GameManager.instance.scriptToAdd = this;
+            GameManager.instance.SpellToAdd = this;
             GameManager.instance.hoveringDropCard = true;
             initiziate(GameManager.instance.currentHoldID);
         }
@@ -69,7 +64,7 @@ public class DeckBuilderIDCard : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        initiziate(GameManager.GetHand(holderID).cardID);
+        initiziate(GameManager.GetHandS(holderID).cardID);
         GameManager.instance.hoveringDropCard = false;
     }
 

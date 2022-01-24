@@ -2320,7 +2320,7 @@ GameObject:
   - component: {fileID: 6669169418082284199}
   - component: {fileID: 5524449301545904287}
   m_Layer: 5
-  m_Name: Tower Card Deck Builder Selection
+  m_Name: Deck Builder Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

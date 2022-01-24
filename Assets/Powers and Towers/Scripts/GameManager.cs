@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // Singelton Variables
-    public int[] DeckCards = new int[6];
-    public int[] SpellCards = new int[6];
+    [HideInInspector] public int[] DeckCards = new int[6];
+    [HideInInspector] public int[] SpellCards = new int[6];
     [SerializeField] public CardDataBase cardDatabase;
     [SerializeField] public EnemyDataBase enemyDatabase;
 
@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public DashBoard DashBoard;
 
     // Deck Builder Variables
-    [HideInInspector] public DeckBuilderIDCard scriptToAdd;
+    [HideInInspector] public DeckBuilderHandTower TowerToAdd;
+    [HideInInspector] public DeckBuilderHandSpell SpellToAdd;
     [HideInInspector] public int currentHoldID;
     [HideInInspector] public int hoverID;
     public bool holdingCard;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
             if (_health <= 0)
             {
                 SceneManager.LoadScene("Main Menu");
+                _health = 100;
             }
             if (DashBoard != null)
                 UpdateUIDashBoard();
@@ -90,6 +92,12 @@ public class GameManager : MonoBehaviour
 
         return instance.cardDatabase.cardData[instance.DeckCards[deckHolder]];
     }
+    public static CardData GetHandS(int deckHolder)
+    {
+        if (instance == null) return null;
+
+        return instance.cardDatabase.cardData[instance.SpellCards[deckHolder]];
+    }
 
     /// <summary>
     /// Updates DashBoard UI (Health, currency)
@@ -103,10 +111,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) Destroy(gameObject);
-        instance = this;
-        DontDestroyOnLoad(this);
-        Health = 100;
+        if (GameManager.instance != null) Destroy(gameObject);
+        else
+        {
+            GameManager.instance = this;
+            DontDestroyOnLoad(this);
+            Health = 100;
+        }
     }
     private void Start()
     {

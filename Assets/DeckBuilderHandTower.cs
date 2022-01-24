@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class TowerCardDeckSelecter : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class DeckBuilderHandTower : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public int holderID;
     [Tooltip("Determines what Tower the card is holding")]
     [SerializeField] private TowerData towerData;
     public TowerData TowerData { set { towerData = value; UpdateVisuals(); } private get => towerData; }
@@ -20,16 +21,15 @@ public class TowerCardDeckSelecter : MonoBehaviour, IPointerDownHandler, IPointe
     [SerializeField] private TextMeshProUGUI cardElementText;
     [SerializeField] private Image cardTowerImage;
     private UITweener tweener;
-    private bool holdingCard;
     public void initiziate(int TowerCardID)
     {
         if (GameManager.instance.cardDatabase.cardData[TowerCardID].GetType() == typeof(TowerData))
             TowerData = (TowerData)GameManager.instance.cardDatabase.cardData[TowerCardID];
         else
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
-        UpdateVisuals();
+        //UpdateVisuals();
     }
     /// <summary>
     /// Updates Visuals of Card to corresponding TowerData
@@ -44,30 +44,34 @@ public class TowerCardDeckSelecter : MonoBehaviour, IPointerDownHandler, IPointe
         cardElementText.text = towerData.type.ToString();
         cardTowerImage.sprite = towerData.spriteImage;
     }
-
     private void Start()
     {
-        if (towerData != null)
-        UpdateVisuals();
+        TowerData = (TowerData)GameManager.GetHand(holderID);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        GameManager.instance.currentHoldID = towerData.cardID;
-        GameManager.instance.holdingCard = true;
-        print("Down");
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (GameManager.instance.hoveringDropCard)
-        {
-            GameManager.instance.DeckCards[GameManager.instance.scriptToAdd.holderID] = towerData.cardID;
-        }
-        GameManager.instance.holdingCard = false;
-        GameManager.instance.currentHoldID = -1;
-        print("Up");
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        GameManager.instance.hoverID = holderID;
+        if (GameManager.instance.holdingCard)
+        {
+            GameManager.instance.TowerToAdd = this;
+            GameManager.instance.hoveringDropCard = true;
+            initiziate(GameManager.instance.currentHoldID);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        initiziate(GameManager.GetHand(holderID).cardID);
+        GameManager.instance.hoveringDropCard = false;
+    }
 
     public static bool IsPointerOverUIObject()
     {
@@ -77,10 +81,4 @@ public class TowerCardDeckSelecter : MonoBehaviour, IPointerDownHandler, IPointe
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
     }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        // throw new System.NotImplementedException();
-    }
-
 }
