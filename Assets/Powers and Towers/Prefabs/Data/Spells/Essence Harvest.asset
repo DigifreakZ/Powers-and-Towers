@@ -10,46 +10,46 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3f4c12adea8418449d087910fdda91e, type: 3}
-  m_Name: Lightning Strike
+  m_Name: Essence Harvest
   m_EditorClassIdentifier: 
-  cardName: Lightning Strike
+  cardName: Essence Harvest
   cardID: 8
-  cardCost: 10
-  cardImage: {fileID: 0}
-  cardDescription: Zippety zap
+  cardCost: 5
+  cardImage: {fileID: 21300000, guid: 1c1ab6081d5d60f4aa01ceb800310450, type: 3}
+  cardDescription: Big money
   spellNames:
-  - Lightning Strike
-  - Greater Lightning Strike
-  - Thunderstorm
+  - Essence Harvest
+  - Greater Essence Harvest
+  - Essence Reap
   spellIcons:
-  - {fileID: 21300000, guid: 461953276393eb74f98d0a47425a63cc, type: 3}
-  - {fileID: 21300000, guid: 9ad4ad7e85277f34db461c82998968a3, type: 3}
-  - {fileID: 21300000, guid: d90e79fdbea79804b946b2ed90497ec1, type: 3}
+  - {fileID: 21300000, guid: 1c1ab6081d5d60f4aa01ceb800310450, type: 3}
+  - {fileID: 21300000, guid: f2dfc7132c5e5ef49839c45b84300838, type: 3}
+  - {fileID: 21300000, guid: 31ee11c132105914aad68637056e3c44, type: 3}
   target:
     serializedVersion: 2
     m_Bits: 128
-  spellRange: 2
+  spellRange: 3
   spellRangeLevelUp: 1
   visualEffect: {fileID: 30273135685680225, guid: 2d42b474225ab0d4b972e4f095827b1d, type: 3}
   VisualEffectDuration: 0
   continousSpellEffect: 0
   spellDuration: 0
-  spellType: 3
-  doDamage: 1
-  damageAmount: 15
-  damageAmountIncrease: 5
-  damageType: 2
+  spellType: 4
+  doDamage: 0
+  damageAmount: 0
+  damageAmountIncrease: 0
+  damageType: 0
   doDamageOverTime: 0
   dOTDamage: 0
   dOTDamageIncrease: 0
   dOTDuration: 0
   blackHole: 0
-  doSlow: 1
-  slowPower: 1
+  doSlow: 0
+  slowPower: 0
   slowPowerIncrease: 0
-  slowDuration: 3
-  increaseLootValue: 0
-  lootValueModifier: 0
+  slowDuration: 0
+  increaseLootValue: 1
+  lootValueModifier: 2
   doBuff: 0
   buffModifier: 0
   buffType: 0

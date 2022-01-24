@@ -17,19 +17,25 @@ public class SpellData : CardData
     [HideInInspector] public bool continousSpellEffect;
     [HideInInspector] public int spellDuration;
     [HideInInspector] public SpellType spellType;
-    [HideInInspector] public bool damage;
-    [HideInInspector] public int damagePower;
+    [HideInInspector] public bool doDamage;
+    [HideInInspector] public int damageAmount;
+    [HideInInspector] public int damageAmountIncrease;
     [HideInInspector] public DamageType damageType;
-    [HideInInspector] public bool damageOverTime;
+    [HideInInspector] public bool doDamageOverTime;
     [HideInInspector] public float dOTDamage;
+    [HideInInspector] public float dOTDamageIncrease;
     [HideInInspector] public float dOTDuration;
     [HideInInspector] public bool blackHole;
-    [HideInInspector] public bool slow;
+    [HideInInspector] public bool doSlow;
     [HideInInspector] public float slowPower;
+    [HideInInspector] public float slowPowerIncrease;
     [HideInInspector] public float slowDuration;
-    [HideInInspector] public bool buff;
+    [HideInInspector] public bool increaseLootValue;
+    [HideInInspector] public float lootValueModifier;
+    [HideInInspector] public bool doBuff;
     [HideInInspector] public float buffModifier;
     [HideInInspector] public BuffType buffType;
+    [HideInInspector] public bool wildMagic;
 
     public void Cast(int levelCastAt, Vector2 castPoint)
     {
@@ -38,25 +44,29 @@ public class SpellData : CardData
         {
             Enemy enemy = item.GetComponent<Enemy>();
             Tower tower = item.GetComponent<Tower>();
-            if (damage && item.CompareTag("Enemy"))
+            if (increaseLootValue && item.CompareTag("Enemy"))
+            {
+                enemy.IncreaseLootValue(lootValueModifier);
+            }
+            if (doDamage && item.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy damaged");
-                enemy.ReceiveDamage(damagePower * levelCastAt, damageType);
+                enemy.ReceiveDamage(damageAmount + damageAmountIncrease * levelCastAt, damageType);
             }
-            if (damageOverTime && item.CompareTag("Enemy"))
+            if (doDamageOverTime && item.CompareTag("Enemy"))
             {
                 Debug.Log("Started Damage over Time");
-                enemy.StartDOTRoutine(dOTDamage, dOTDuration, damageType);
+                enemy.StartDOTRoutine(dOTDamage + dOTDamageIncrease * levelCastAt, dOTDuration, damageType);
             }
-            if (slow && item.CompareTag("Enemy"))
+            if (doSlow && item.CompareTag("Enemy"))
             {
                 Debug.Log("Enemy slowed");
-                enemy.GetSlowed(slowPower, slowDuration);
+                enemy.GetSlowed(slowPower + slowPowerIncrease * levelCastAt, slowDuration);
             }
-            if (buff && item.CompareTag("Tower"))
+            if (doBuff && item.CompareTag("Tower"))
             {
                 //Debug.Log("Tower Buffed");
-                tower.ApplyBuff((float)(buffModifier + 0.5 *  levelCastAt));
+                tower.ApplyBuff((float)(buffModifier + 0.5 *  levelCastAt), buffType);
             }
             if (blackHole && item.CompareTag("Tower"))
             {
@@ -83,12 +93,14 @@ public class SpellData : CardData
     DamageAndControl = Damage | Control,
     ControlAndSupport = Control | Support,
     DamageAndSupport = Damage | Support
-
 }
-public enum BuffType
+[Flags] public enum BuffType
 {
-    All,
-    Damage,
-    Range,
-    Speed
+    Damage = 1,
+    Range = 2,
+    AttackSpeed = 4,
+
+    DamageAndRange = Damage | Range,
+    RangeAndAttackSpeed = Range | AttackSpeed,
+    DamageAndAttackSpeed = Damage | AttackSpeed,
 }

@@ -19,8 +19,8 @@ MonoBehaviour:
   cardDescription: Eat shit
   spellNames:
   - Black Hole
-  - Event Horizon
-  - Maw of the Void
+  - Greater Black Hole
+  - Astral Devourer
   spellIcons:
   - {fileID: 21300000, guid: 42e8cba34afc05f43918bac5e8a8d893, type: 3}
   - {fileID: 21300000, guid: 672733b8de63ba545bedae860c968779, type: 3}
@@ -35,16 +35,21 @@ MonoBehaviour:
   continousSpellEffect: 0
   spellDuration: 0
   spellType: 1
-  damage: 1
-  damagePower: 1000
+  doDamage: 1
+  damageAmount: 100
+  damageAmountIncrease: 50
   damageType: 0
-  damageOverTime: 0
+  doDamageOverTime: 0
   dOTDamage: 0
+  dOTDamageIncrease: 0
   dOTDuration: 0
   blackHole: 1
-  slow: 0
+  doSlow: 0
   slowPower: 0
+  slowPowerIncrease: 0
   slowDuration: 0
-  buff: 0
+  increaseLootValue: 0
+  lootValueModifier: 0
+  doBuff: 0
   buffModifier: 0
   buffType: 0

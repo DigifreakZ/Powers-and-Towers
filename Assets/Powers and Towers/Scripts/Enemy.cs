@@ -113,6 +113,21 @@ public class Enemy : MonoBehaviour
         Health -= Mathf.Clamp(Mathf.RoundToInt(dmg * dmgMultiplyer),1,int.MaxValue);
     }
 
+    public void IncreaseLootValue(float multiplier)
+    {
+        float tmpLootValue = EnemyData.lootValue;
+        tmpLootValue *= multiplier;
+        if (tmpLootValue > _lootValue)
+        {
+            _lootValue = (int)MathF.Round(tmpLootValue);
+            print("Loot value of " + name + " increased");
+        }
+        else
+        {
+            print("Bigger multiplier already in effect on " + name);
+        }
+    }
+
     public void StartDOTRoutine(float damageOverTimeDamage, float damageOverTimeDuration, DamageType damageType)
     {
         StartCoroutine(DamageOverTime(damageOverTimeDamage, damageOverTimeDuration, damageType));

@@ -19,12 +19,12 @@ MonoBehaviour:
   cardDescription: Freezing
   spellNames:
   - Blizzard
-  - Ice Barrage
-  - Northern Summer
+  - Greater Blizzard
+  - Call of Winter
   spellIcons:
-  - {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
-  - {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
-  - {fileID: 21300000, guid: 2cc1167cf45e70d4c8517b98344348dd, type: 3}
+  - {fileID: 21300000, guid: 9b8bc137ca1c5b2468ac719bd4ef488b, type: 3}
+  - {fileID: 21300000, guid: c907025f2856e584db8d999507ad8369, type: 3}
+  - {fileID: 21300000, guid: 829c50587629bbb448d4263aa46c3c8f, type: 3}
   target:
     serializedVersion: 2
     m_Bits: 128
@@ -35,16 +35,21 @@ MonoBehaviour:
   continousSpellEffect: 1
   spellDuration: 5
   spellType: 3
-  damage: 1
-  damagePower: 1
+  doDamage: 1
+  damageAmount: 2
+  damageAmountIncrease: 1
   damageType: 4
-  damageOverTime: 0
+  doDamageOverTime: 0
   dOTDamage: 0
+  dOTDamageIncrease: 0
   dOTDuration: 0
   blackHole: 0
-  slow: 1
+  doSlow: 1
   slowPower: 1
+  slowPowerIncrease: 0
   slowDuration: 5
-  buff: 0
+  increaseLootValue: 0
+  lootValueModifier: 0
+  doBuff: 0
   buffModifier: 0
   buffType: 0

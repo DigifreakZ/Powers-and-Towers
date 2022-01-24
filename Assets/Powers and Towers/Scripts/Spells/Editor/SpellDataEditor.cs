@@ -36,23 +36,36 @@ public class SpellDataEditor : Editor
         }
         EditorGUILayout.EndHorizontal();
 
+        /*
+            Snippets for making new fields:
+            new GUIContent("label", "Tooltip")
+
+        */
+
         if (spellData.spellType.HasFlag(SpellType.Damage))
         {
             EditorGUILayout.LabelField("Damage Options", EditorStyles.boldLabel);
             EditorGUILayout.BeginVertical("Box");
-            spellData.damage = EditorGUILayout.Toggle("Damage", spellData.damage);
-            if (spellData.damage)
+            spellData.doDamage = EditorGUILayout.Toggle("Damage", spellData.doDamage);
+            if (spellData.doDamage)
             {
-                spellData.damagePower = EditorGUILayout.IntField("Damage Power", spellData.damagePower);
-                spellData.damageType = (DamageType)EditorGUILayout.EnumPopup("Damage Type", spellData.damageType);
-                spellData.damageOverTime = EditorGUILayout.Toggle("Damage Over Time", spellData.damageOverTime);
-                if (spellData.damageOverTime)
+                EditorGUILayout.BeginVertical("Box");
+
+                spellData.damageAmount = EditorGUILayout.IntField(new GUIContent("Damage amount", "How much damage should the spell do"), spellData.damageAmount);
+                spellData.damageAmountIncrease = EditorGUILayout.IntField(new GUIContent("Damage amount increase", "How much should the damage increase per spell level"), spellData.damageAmountIncrease);
+                spellData.damageType = (DamageType)EditorGUILayout.EnumPopup(new GUIContent("Damage type", "What type of damage does the spell do"), spellData.damageType);
+                spellData.doDamageOverTime = EditorGUILayout.Toggle(new GUIContent("Damage over time", "Should the spell do damage over time"), spellData.doDamageOverTime);
+                if (spellData.doDamageOverTime)
                 {
-                    spellData.dOTDamage = EditorGUILayout.FloatField("Damage Per Second", spellData.dOTDamage);
-                    spellData.dOTDuration = EditorGUILayout.FloatField("DOT Duration", spellData.dOTDuration);
+                    EditorGUILayout.BeginVertical("Box");
+                    spellData.dOTDamage = EditorGUILayout.FloatField(new GUIContent("DOT amount", "How much damage should the spell do every second"), spellData.dOTDamage);
+                    spellData.dOTDamageIncrease = EditorGUILayout.FloatField(new GUIContent("DOT amount increase", "How much DOT amount increase per level"), spellData.dOTDamageIncrease);
+                    spellData.dOTDuration = EditorGUILayout.FloatField(new GUIContent("DOT duration", "How long should the effect last"), spellData.dOTDuration);
+                    EditorGUILayout.EndVertical();
                 }
-                spellData.blackHole = EditorGUILayout.Toggle(new GUIContent("Black Hole", "Should the spell destroy towers"), spellData.blackHole);
+                EditorGUILayout.EndVertical();
             }
+            spellData.blackHole = EditorGUILayout.Toggle(new GUIContent("Black Hole", "Should the spell destroy towers"), spellData.blackHole);
             
 
             EditorGUILayout.EndVertical();
@@ -62,11 +75,14 @@ public class SpellDataEditor : Editor
         {
             EditorGUILayout.LabelField("Control Options", EditorStyles.boldLabel);
             EditorGUILayout.BeginVertical("Box");
-            spellData.slow = EditorGUILayout.Toggle("Slow", spellData.slow);
-            if (spellData.slow)
+            spellData.doSlow = EditorGUILayout.Toggle("Slow", spellData.doSlow);
+            if (spellData.doSlow)
             {
-                spellData.slowPower = EditorGUILayout.Slider("Slow Power", spellData.slowPower, 0, 1);
-                spellData.slowDuration = EditorGUILayout.Slider("Slow Duration", spellData.slowDuration, 1, 20);
+                EditorGUILayout.BeginVertical("Box");
+                spellData.slowPower = EditorGUILayout.Slider(new GUIContent("Slow amount", "How much should targets be slowed by"), spellData.slowPower, 0, 1);
+                spellData.slowPowerIncrease = EditorGUILayout.Slider(new GUIContent("Slow amount increase", "How much should slow amount be increase by per level"), spellData.slowPowerIncrease, 0, 0.5f);
+                spellData.slowDuration = EditorGUILayout.Slider(new GUIContent("Slow duration", "How long should targets be slowed for"), spellData.slowDuration, 1, 20);
+                EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndVertical();
         }
@@ -75,12 +91,22 @@ public class SpellDataEditor : Editor
         {
             EditorGUILayout.LabelField("Support Options", EditorStyles.boldLabel);
             EditorGUILayout.BeginVertical("Box");
-            spellData.buff = EditorGUILayout.Toggle("Buff", spellData.buff);
-            if (spellData.buff)
+            spellData.doBuff = EditorGUILayout.Toggle("Buff", spellData.doBuff);
+            if (spellData.doBuff)
             {
-                spellData.buffModifier = EditorGUILayout.Slider("Buff Modifier", spellData.buffModifier, 1, 3);
-                //spellData.buffType = (BuffType)EditorGUILayout.EnumPopup("Buff Type", spellData.buffType);
+                EditorGUILayout.BeginVertical("Box");
+                spellData.buffModifier = EditorGUILayout.Slider(new GUIContent("Buff modifier", "How much should stats be increased by"), spellData.buffModifier, 1, 3);
+                spellData.buffType = (BuffType)EditorGUILayout.EnumFlagsField(new GUIContent("Buff type", "What stat should the buff increase"), spellData.buffType);
+                EditorGUILayout.EndVertical();
             }
+            spellData.increaseLootValue = EditorGUILayout.Toggle("Increase loot value", spellData.increaseLootValue);
+            if (spellData.increaseLootValue)
+            {
+                EditorGUILayout.BeginVertical("Box");
+                spellData.lootValueModifier = EditorGUILayout.Slider(new GUIContent("Loot value modifier", "How much should loot value be increased by"), spellData.lootValueModifier, 1, 5);
+                EditorGUILayout.EndVertical();
+            }
+            spellData.wildMagic = EditorGUILayout.Toggle(new GUIContent("Wild magic", "Is the spell wild magic"), spellData.wildMagic);
             EditorGUILayout.EndVertical();
         }
     }

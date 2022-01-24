@@ -27,6 +27,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     private bool targetInRange;
     [HideInInspector] public SpellCard mergeTarget;
     private Vector3 returnPosition;
+    private List<SpellData> wildMagicTarget;
 
     public SpellData SpellData
     {
@@ -80,6 +81,17 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         if (load)
         {
             spellIcon.SetNativeSize();
+            if (spellData.wildMagic)
+            {
+                wildMagicTarget = new List<SpellData>();
+                foreach (var item in GetComponentInParent<SpellCardArea>().spellsInDeck)
+                {
+                    if (!item.wildMagic)
+                    {
+                        wildMagicTarget.Add(item);
+                    }
+                }
+            }
         }
     }
 
@@ -142,6 +154,10 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         {
             GameManager.instance.Currency -= SpellData.cardCost;
             Vector2 castPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            if (spellData.wildMagic)
+            {
+                SpellData = wildMagicTarget[UnityEngine.Random.Range(0,wildMagicTarget.Count)];
+            }
             SpellData.Cast(spellLevel, castPoint);
             grabbed = false;
             targetCircle.transform.position = new Vector3(0, 0, -10);
@@ -197,7 +213,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         grabbed = false;
         targetCircle.transform.position = new Vector3(0, 0, -10);
-        if ( mergeTarget != null && mergeTarget.spellLevel == spellLevel && mergeTarget.SpellData == SpellData && spellLevel < 2 )
+        if ( mergeTarget != null && mergeTarget.spellLevel == spellLevel && (mergeTarget.SpellData == SpellData || spellData.wildMagic) && spellLevel < 2 )
         {
             mergeTarget.LevelUp();
             SendMessageUpwards("UpdateHand", gameObject);

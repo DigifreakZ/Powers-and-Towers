@@ -19,7 +19,7 @@ MonoBehaviour:
   cardDescription: Boom
   spellNames:
   - Fireball
-  - Firestorm
+  - Greater Fireball
   - Meteor
   spellIcons:
   - {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
@@ -35,16 +35,21 @@ MonoBehaviour:
   continousSpellEffect: 0
   spellDuration: 0
   spellType: 1
-  damage: 1
-  damagePower: 5
+  doDamage: 1
+  damageAmount: 5
+  damageAmountIncrease: 5
   damageType: 1
-  damageOverTime: 0
+  doDamageOverTime: 0
   dOTDamage: 2
+  dOTDamageIncrease: 0
   dOTDuration: 5
   blackHole: 0
-  slow: 1
+  doSlow: 0
   slowPower: 1
+  slowPowerIncrease: 0
   slowDuration: 0
-  buff: 0
+  increaseLootValue: 0
+  lootValueModifier: 0
+  doBuff: 0
   buffModifier: 0
   buffType: 2
