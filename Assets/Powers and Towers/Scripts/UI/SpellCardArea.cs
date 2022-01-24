@@ -47,8 +47,7 @@ public class SpellCardArea : MonoBehaviour
                 Vector3 newCardPos = new Vector3(27, -230, 0);
                 newSpellCard.transform.localPosition = newCardPos;
                 int i = Random.Range(0, spellsInDeck.Count);
-                newSpellCard.GetComponent<SpellCard>().spellData = spellsInDeck[i];
-                newSpellCard.GetComponent<SpellCard>().DisplayData();
+                newSpellCard.GetComponent<SpellCard>().SpellData = spellsInDeck[i];
                 newSpellCard.GetComponent<SpellCard>().targetCircle = targetCircle;
                 spellsInHand.Add(newSpellCard);
                 StartCoroutine(MoveCardUp(newSpellCard, spellsInHand.Count - 1));

@@ -29,7 +29,7 @@ public class DestroyTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
     // Clicked
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (selectedTower != null) selectedTower.Destroy();
+        if (selectedTower != null) selectedTower.DestroyTower(true);
     }
 }
 

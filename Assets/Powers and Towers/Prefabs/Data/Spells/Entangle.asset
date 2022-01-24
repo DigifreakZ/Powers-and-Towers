@@ -13,36 +13,43 @@ MonoBehaviour:
   m_Name: Entangle
   m_EditorClassIdentifier: 
   cardName: Entangle
-  cardID: 0
+  cardID: 6
   cardCost: 5
   cardImage: {fileID: 292812209, guid: cb35ce919118ea0438c06b4226c75237, type: 3}
   cardDescription: 
   spellNames:
   - Entangle
-  - Binding Roots
+  - Greater Entangle
   - Nature's Halt
   spellIcons:
-  - {fileID: 292812209, guid: cb35ce919118ea0438c06b4226c75237, type: 3}
-  - {fileID: 292812209, guid: cb35ce919118ea0438c06b4226c75237, type: 3}
-  - {fileID: 292812209, guid: cb35ce919118ea0438c06b4226c75237, type: 3}
+  - {fileID: 21300000, guid: 6aaad74bdccfe594783247c95a2a0420, type: 3}
+  - {fileID: 21300000, guid: 674c4b7022d2fc44cb2d888eb415a94e, type: 3}
+  - {fileID: 21300000, guid: ac6e56c73a5690b449ce7d56a67fb638, type: 3}
   target:
     serializedVersion: 2
     m_Bits: 128
   spellRange: 3
   spellRangeLevelUp: 1
   visualEffect: {fileID: 1117612574424355991, guid: e399d441825847a4d8b7994f256ef389, type: 3}
+  VisualEffectDuration: 0
   continousSpellEffect: 1
   spellDuration: 5
   spellType: 2
-  damage: 0
-  damagePower: 0
+  doDamage: 0
+  damageAmount: 0
+  damageAmountIncrease: 0
   damageType: 0
-  damageOverTime: 0
+  doDamageOverTime: 0
   dOTDamage: 0
+  dOTDamageIncrease: 0
   dOTDuration: 0
-  slow: 1
+  blackHole: 0
+  doSlow: 1
   slowPower: 1
+  slowPowerIncrease: 0
   slowDuration: 1
-  buff: 0
+  increaseLootValue: 0
+  lootValueModifier: 0
+  doBuff: 0
   buffModifier: 0
   buffType: 0

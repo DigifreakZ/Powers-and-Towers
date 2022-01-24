@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TowerTesting.unity
     guid: d1cfce0221110174f80b3649505a6bc2
+  - enabled: 1
+    path: Assets/Scenes/SpellTesting.unity
+    guid: 4f9d56528b2f0634f98acba460093505
   m_configObjects: {}

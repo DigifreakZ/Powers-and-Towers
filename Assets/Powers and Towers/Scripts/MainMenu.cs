@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [HideInInspector] public string sceneToLoad;
     public void StartGame()
     {
-        SceneManager.LoadScene("TowerTesting");
+        SceneManager.LoadScene(sceneToLoad);
     }
     public void QuitGame()
     {

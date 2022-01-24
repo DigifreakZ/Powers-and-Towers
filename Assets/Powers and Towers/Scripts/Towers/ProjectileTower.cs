@@ -14,7 +14,7 @@ public class ProjectileTower : Tower
             Physics2D.OverlapCircleAll
             (
                 transform.position,
-                radius,
+                range,
                 1 << 7
             );
             colliders = new List<Collider2D>();
@@ -31,7 +31,7 @@ public class ProjectileTower : Tower
                         (x2.transform.position - transform.position).sqrMagnitude
                     )
                 );
-                if ((colliders[0].transform.position - transform.position).sqrMagnitude >= radius * radius) return;
+                if ((colliders[0].transform.position - transform.position).sqrMagnitude >= range * range) return;
                 if (colliders[0] != null)
                 {
                     Enemy enemy = colliders[0].GetComponent<Enemy>();

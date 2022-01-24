@@ -9,7 +9,7 @@ using System;
 
 public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public SpellData spellData;
+    private SpellData spellData;
     [SerializeField]
     private int spellLevel = 0;
     [SerializeField]
@@ -27,20 +27,28 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     private bool targetInRange;
     [HideInInspector] public SpellCard mergeTarget;
     private Vector3 returnPosition;
+    private List<SpellData> wildMagicTarget;
 
-    void OnEnable()
+    public SpellData SpellData
     {
-        //DisplayData();
+        get
+        {
+            return spellData;
+        }
+        set
+        {
+            spellData = value;
+            DisplayData();
+        }
     }
-
     public void DisplayData()
     {
         load = true;
-        spellNameField.text = spellData.spellNames[spellLevel];
-        spellCostField.text = spellData.cardCost.ToString();
-        spellIcon.sprite = spellData.spellIcons[spellLevel];
-        spellDescriptionField.text = spellData.cardDescription;
-        spellVisualEffect = spellData.visualEffect;
+        spellNameField.text = SpellData.spellNames[spellLevel];
+        spellCostField.text = SpellData.cardCost.ToString();
+        spellIcon.sprite = SpellData.spellIcons[spellLevel];
+        spellDescriptionField.text = SpellData.cardDescription;
+        spellVisualEffect = SpellData.visualEffect;
     }
 
     void Update()
@@ -55,7 +63,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
             else
             {
                 targetCircle.transform.position = mousePos; 
-                targetInRange = Physics2D.OverlapCircle(mousePos, spellData.spellRange, spellData.target) != null;
+                targetInRange = Physics2D.OverlapCircle(mousePos, SpellData.spellRange, SpellData.target) != null;
                 if (targetInRange)
                 {
                     targetCircle.GetComponent<SpriteRenderer>().color = Color.green;
@@ -73,6 +81,17 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         if (load)
         {
             spellIcon.SetNativeSize();
+            if (spellData.wildMagic)
+            {
+                wildMagicTarget = new List<SpellData>();
+                foreach (var item in GetComponentInParent<SpellCardArea>().spellsInDeck)
+                {
+                    if (!item.wildMagic)
+                    {
+                        wildMagicTarget.Add(item);
+                    }
+                }
+            }
         }
     }
 
@@ -81,14 +100,14 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         if (spellLevel < 2)
         {
             spellLevel++;
-            spellNameField.text = spellData.spellNames[spellLevel];
-            spellIcon.sprite = spellData.spellIcons[spellLevel];
+            spellNameField.text = SpellData.spellNames[spellLevel];
+            spellIcon.sprite = SpellData.spellIcons[spellLevel];
         }
     }
 
     private Vector2 CurrentSpellRangeScale()
     {
-        float scale = (spellData.spellRange + spellLevel * spellData.spellRangeLevelUp) * 2;
+        float scale = (SpellData.spellRange + spellLevel * SpellData.spellRangeLevelUp) * 2;
         return new Vector2(scale, scale);
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -131,22 +150,26 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         grabbed = false;
         targetCircle.transform.position = new Vector3(0, 0, -10);
-        if (GameManager.instance.Currency >= spellData.cardCost)
+        if (GameManager.instance.Currency >= SpellData.cardCost)
         {
-            GameManager.instance.Currency -= spellData.cardCost;
+            GameManager.instance.Currency -= SpellData.cardCost;
             Vector2 castPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            spellData.Cast(spellLevel, castPoint);
+            if (spellData.wildMagic)
+            {
+                SpellData = wildMagicTarget[UnityEngine.Random.Range(0,wildMagicTarget.Count)];
+            }
+            SpellData.Cast(spellLevel, castPoint);
             grabbed = false;
             targetCircle.transform.position = new Vector3(0, 0, -10);
             SendMessageUpwards("UpdateHand", gameObject);
-            if (spellData.continousSpellEffect)
+            transform.position = new Vector3(10000, 10000, 0);
+            if (SpellData.continousSpellEffect)
             {
-                StartCoroutine(ContinousEffectRoutine(spellData.spellDuration, castPoint));
+                StartCoroutine(ContinousEffectRoutine(SpellData.spellDuration, castPoint));
             }
             else
             {
-                StartCoroutine(SpawnVisual(castPoint, spellData.continousSpellEffect));
-                Destroy(gameObject);
+                StartCoroutine(SpawnVisual(castPoint, SpellData.continousSpellEffect));
             }
         }
         else
@@ -159,15 +182,13 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
 
     private IEnumerator ContinousEffectRoutine(int duration, Vector2 castPoint)
     {
-        transform.position = new Vector3(-50,-50,0);
-        StartCoroutine(SpawnVisual(castPoint, spellData.continousSpellEffect));
+        StartCoroutine(SpawnVisual(castPoint, SpellData.continousSpellEffect));
         for (int i = 0; i < duration; i++)
         {
-            spellData.Cast(spellLevel, castPoint);
+            SpellData.Cast(spellLevel, castPoint);
             print(i);
             yield return new WaitForSeconds(1);
         }
-        Destroy(gameObject);
     }
 
     private IEnumerator SpawnVisual(Vector2 castPoint, bool continous)
@@ -177,21 +198,22 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         int duration;
         if (continous)
         {
-            duration = spellData.spellDuration;
+            duration = SpellData.spellDuration;
         }
         else
         {
-            duration = 2;
+            duration = (int)SpellData.VisualEffectDuration;
         }
         yield return new WaitForSeconds(duration);
         Destroy(tmpVisual);
+        Destroy(gameObject);
     }
 
     private void MergeSpell()
     {
         grabbed = false;
         targetCircle.transform.position = new Vector3(0, 0, -10);
-        if ( mergeTarget != null && mergeTarget.spellLevel == spellLevel && mergeTarget.spellData == spellData && spellLevel < 2 )
+        if ( mergeTarget != null && mergeTarget.spellLevel == spellLevel && (mergeTarget.SpellData == SpellData || spellData.wildMagic) && spellLevel < 2 )
         {
             mergeTarget.LevelUp();
             SendMessageUpwards("UpdateHand", gameObject);

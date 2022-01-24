@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     // Stats
     protected int damage = 1;
+    protected float damageModifier = 1;
     protected float attackSpeed = 1f;
-    protected float radius = 5f;
-    protected float statModifier = 1;
+    protected float attacSpeedModifier = 1;
+    protected float range = 5f;
+    protected float rangeModifier = 1;
     protected DamageType type;
     // Chache
     public TowerData data;
@@ -25,7 +28,7 @@ public class Tower : MonoBehaviour
         {
             this.damage = data.damage;
             this.attackSpeed = data.attackCooldown;
-            this.radius = data.range;
+            this.range = data.range;
             this.type = data.type;
             this.data = data;
         }
@@ -57,13 +60,14 @@ public class Tower : MonoBehaviour
     {
         Debug.Log($"{name} Attacked");
     }
-    public virtual void Destroy()
+    public void DestroyTower(bool returnMoney)
     {
-        Debug.Log($"Destroyed {name}");
-
-        //Debug.Log("Return Money");
-        GameManager.instance.Currency += Convert.ToInt32(data.cardCost * 0.5f);
-
+        //Debug.Log($"Destroyed {name}");
+        if (returnMoney)
+        {
+            //Debug.Log("Return Money");
+            GameManager.instance.Currency += Convert.ToInt32(data.cardCost * 0.5f);
+        }
         //Debug.Log("Destroy Object");
         Destroy(gameObject);
     }
@@ -73,35 +77,49 @@ public class Tower : MonoBehaviour
         if (statsChanged)
         {
             statsChanged = false;
-            damage = (int)MathF.Round(data.damage * statModifier);
-            attackSpeed = data.attackCooldown * statModifier;
-            radius = MathF.Round(data.range * statModifier);
+            damage = (int)MathF.Round(data.damage * damageModifier);
+            print("Damage: " + damage);
+            attackSpeed = data.attackCooldown * attacSpeedModifier;
+            print("Attack Speed: " + attackSpeed);
+            range = MathF.Round(data.range * rangeModifier);
+            print("Range: " + range);
         }
     }
 
-    public void ApplyBuff(float buffMod)
+    public void ApplyBuff(float buffMod, BuffType buffType)
     {
-        StartCoroutine(ApplyBuffRoutine(buffMod));
+        StartCoroutine(ApplyBuffRoutine(buffMod, buffType));
     }
-    private IEnumerator ApplyBuffRoutine(float buffMod)
+    private IEnumerator ApplyBuffRoutine(float buffMod, BuffType buffType)
     {
-        if (statModifier < buffMod)
+        if (buffType.HasFlag(BuffType.Damage) && damageModifier < buffMod)
         {
-            StopCoroutine(ApplyBuffRoutine(statModifier));
-            statModifier = buffMod;
-            statsChanged = true;
-            yield return new WaitForSeconds(10);
-            statModifier = 1;
-            statsChanged = true;
+            damageModifier = buffMod;
         }
-        else
+        if (buffType.HasFlag(BuffType.Range) && rangeModifier < buffMod)
         {
-            print("Stronger buff already applied");
-            yield return null;
+            rangeModifier = buffMod;
         }
-        
+        if (buffType.HasFlag(BuffType.AttackSpeed) && attackSpeed < buffMod)
+        {
+            attacSpeedModifier = buffMod;
+        }
+        statsChanged = true;
+        yield return new WaitForSeconds(10);
+        if (buffType.HasFlag(BuffType.Damage))
+        {
+            damageModifier = 1;
+        }
+        if (buffType.HasFlag(BuffType.Range))
+        {
+            rangeModifier = 1;
+        }
+        if (buffType.HasFlag(BuffType.AttackSpeed))
+        {
+            attacSpeedModifier = 1;
+        }
+        statsChanged = true;
     }
-
 }
 
 public enum DamageType
@@ -111,5 +129,6 @@ public enum DamageType
     Lightning,
     Nature,
     Ice,
-    Air
+    Air,
+    Cosmic
 }
