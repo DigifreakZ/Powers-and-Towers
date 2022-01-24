@@ -16,7 +16,7 @@ MonoBehaviour:
   cardID: 7
   cardCost: 5
   cardImage: {fileID: 21300000, guid: 6aaad74bdccfe594783247c95a2a0420, type: 3}
-  cardDescription: 
+  cardDescription: Stop!
   spellNames:
   - Entangle
   - Greater Entangle
