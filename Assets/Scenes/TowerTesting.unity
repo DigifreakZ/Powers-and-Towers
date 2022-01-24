@@ -2220,7 +2220,7 @@ RectTransform:
   m_Children:
   - {fileID: 54384429}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2236,7 +2236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1056448061885254208, guid: 59003a493b54316499872f3bf0d2d243, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2562,103 +2562,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604676377}
   m_CullTransparentMesh: 1
---- !u!1001 &651617852
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1642.5806
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 413.62848
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.885207
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738235, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: DeckCards.Array.data[2]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: DeckCards.Array.data[3]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: DeckCards.Array.data[4]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: DeckCards.Array.data[5]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: SpellCards.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: SpellCards.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: SpellCards.Array.data[2]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: SpellCards.Array.data[3]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: SpellCards.Array.data[4]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: SpellCards.Array.data[5]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6887692930348738237, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
 --- !u!1 &789221566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,6 +2786,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1980654762}
     m_Modifications:
+    - target: {fileID: 1066412734108536169, guid: 9208d799d19cd1f4ea12ebeb5f10136a, type: 3}
+      propertyPath: m_text
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057927053465690891, guid: 9208d799d19cd1f4ea12ebeb5f10136a, type: 3}
+      propertyPath: m_text
+      value: '10
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 6057927053699188660, guid: 9208d799d19cd1f4ea12ebeb5f10136a, type: 3}
       propertyPath: m_Pivot.x
       value: 0

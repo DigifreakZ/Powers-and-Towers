@@ -14,7 +14,7 @@ public class DashBoard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maxWave;
     private void Start()
     {
-        GameManager.instance.dashBoard = this;
+        GameManager.instance.DashBoard = this;
     }
 
     public string CurrencyText
