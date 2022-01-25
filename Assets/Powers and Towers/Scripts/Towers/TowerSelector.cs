@@ -9,7 +9,7 @@ public class TowerSelector : MonoBehaviour
     public UpgradeTowerButton upgradeButton;
     public DestroyTowerButton destroyButton;
     private UITweener tweener;
-
+    public UITweener Tweener => tweener;
     private void Awake()
     {
         if (!tweener) tweener = GetComponent<UITweener>();
@@ -30,9 +30,12 @@ public class TowerSelector : MonoBehaviour
             {
                 if (raycastHit_Game.collider.transform.gameObject.layer == 8)
                 {
-                    upgradeButton.SelectTower(raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>());
-                    destroyButton.SelectTower(raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>());
-                    tweener.On();
+                    if (raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>().data != null)
+                    {
+                        upgradeButton.SelectTower(raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>());
+                        destroyButton.SelectTower(raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>());
+                        tweener.On();
+                    }
                 }
             }
             else if (!IsPointerOverUIObject())

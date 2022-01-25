@@ -30,6 +30,7 @@ public class DestroyTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
     public void OnPointerDown(PointerEventData eventData)
     {
         if (selectedTower != null) selectedTower.DestroyTower(true);
+        TowerSelector.instance.Tweener.Off();
     }
 }
 
