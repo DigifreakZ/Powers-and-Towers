@@ -2659,27 +2659,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[0]
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[1]
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[2]
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[3]
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[4]
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[5]
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738237, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: m_Name
