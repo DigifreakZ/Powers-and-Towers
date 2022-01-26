@@ -69,6 +69,7 @@ public class ContentHandler : MonoBehaviour
         {
             if (cardData.GetType() == typeof(TowerData))
             {
+                if (!((TowerData)cardData).IsUpgrade)
                 result.Add((TowerData)cardData);
             }
         }

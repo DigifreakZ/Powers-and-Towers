@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6462a21741997984aa8ffd47265e655e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 9e1acbc5c1af2b04084a514392acf6a4, type: 2}
   projectile: {fileID: 2667806567056886496, guid: 394f5131d8f5d1f44a46bd717f1ca19b, type: 3}
 --- !u!61 &6618479644304661282
 BoxCollider2D:

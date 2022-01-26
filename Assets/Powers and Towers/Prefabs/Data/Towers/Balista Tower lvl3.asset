@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2750b48453dd5941bcb4e133dbc4db3, type: 3}
-  m_Name: FlameThrower
+  m_Name: Balista Tower lvl3
   m_EditorClassIdentifier: 
-  cardName: Flame Tower
-  cardID: 2
+  cardName: Balista Tower LV2
+  cardID: 14
   cardCost: 75
-  cardImage: {fileID: 21300000, guid: b3f2ac4ff0cb8384586617b7df066182, type: 3}
+  cardImage: {fileID: 21300000, guid: d03f56842c70aa9428085b3bebff44f2, type: 3}
   cardDescription: 
-  damage: 1
-  attackCooldown: 0.1
-  range: 4
-  type: 1
+  damage: 30
+  attackCooldown: 0.2
+  range: 5
+  type: 0
   upgradedVersion: {fileID: 11400000}
-  spriteImage: {fileID: 21300000, guid: 4211d13329f0eda4fadd8fd718596ad7, type: 3}
-  TowerPrefab: {fileID: 4987131383283155994, guid: 059010657051f56428f366302b96720c, type: 3}
-  Head: {fileID: 21300000, guid: cd7920c119d58f549bb0cd6533a968b7, type: 3}
+  spriteImage: {fileID: 21300000, guid: e5cbe56cf09963f46aaca0b384e838c4, type: 3}
+  TowerPrefab: {fileID: 3495679550352773849, guid: 700c6a7ec5a49e64fb2546d5fe824d13, type: 3}
+  Head: {fileID: 0}
   Towerbase: {fileID: 0}
-  IsUpgrade: 0
+  IsUpgrade: 1

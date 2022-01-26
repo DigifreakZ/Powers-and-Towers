@@ -45,6 +45,13 @@ public class TowerSelector : MonoBehaviour
         }
     }
 
+    public void SelectTower(ref Tower tower)
+    {
+        upgradeButton.SelectTower(tower);
+        destroyButton.SelectTower(tower); 
+        tweener.On();
+    }
+
     public static bool IsPointerOverUIObject()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);

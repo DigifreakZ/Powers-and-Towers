@@ -22,6 +22,8 @@ public class TowerData : CardData
     public Sprite Head;
     [Tooltip("What the Head is standing on")]
     public Sprite Towerbase;
+    [Header("Is this an Upgrade")]
+    public bool IsUpgrade;
     /// <summary>
     /// Places Tower
     /// </summary>

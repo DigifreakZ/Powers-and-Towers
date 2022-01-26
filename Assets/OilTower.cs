@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlameTower : Tower
+public class OilTower : Tower
 {
     private List<Enemy> EnemiesInRange;
     [SerializeField] protected ParticleSystem particle;
@@ -75,7 +75,12 @@ public class FlameTower : Tower
         List<Enemy> enemies = EnemiesInRange;
         for (int i = 0; i < EnemiesInRange.Count; i++)
         {
-            enemies[i].ReceiveDamage(damage,type);
+            try
+            {
+                enemies[i].GetSlowed(Mathf.Clamp(damage * 0.5f,0,0.8f), 1f);
+                enemies[i].ReceiveDamage(damage, type);
+            }
+            catch { Debug.LogWarning("Warning Error in ShootProjectile: OilTower.cs"); }
         }
         attackCD = attackSpeed;
     }
@@ -84,7 +89,7 @@ public class FlameTower : Tower
     {
         if (collision.gameObject.layer == 7)
         {
-           EnemiesInRange.Add(collision.transform.GetComponent<Enemy>());
+            EnemiesInRange.Add(collision.transform.GetComponent<Enemy>());
         }
     }
 

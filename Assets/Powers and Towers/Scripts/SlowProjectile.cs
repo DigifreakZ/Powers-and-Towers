@@ -13,10 +13,14 @@ public class SlowProjectile : Projectile
         if (collision.transform.gameObject.layer == 7 && !foundTarget)
         {
             foundTarget = true;
-            Enemy EM = collision.GetComponent<Enemy>();
-            EM.ReceiveDamage(damage, damageType);
-            EM.GetSlowed(slowAmount,slowDuration);
-            Destroy(gameObject);
+            try
+            {
+                Enemy EM = collision.GetComponent<Enemy>();
+                EM.ReceiveDamage(damage, damageType);
+                EM.GetSlowed(Mathf.Clamp(damage * 0.01f, 0, 0.5f), 1f);
+                Destroy(gameObject);
+            }
+            catch { }
         }
     }
 }

@@ -90,15 +90,13 @@ public class UpgradeTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
     {
         if (selectedTower == null) return;
 
-        float yourCurrency = 999999; // Insert Get Currency Function here
-
-        if (selectedTower.data.upgradedVersion.cardCost <= yourCurrency)
+        if (selectedTower.data.upgradedVersion.cardCost <= GameManager.instance.Currency)
         {
-            yourCurrency -= selectedTower.data.upgradedVersion.cardCost;
+            GameManager.instance.Currency -= selectedTower.data.upgradedVersion.cardCost;
             selectedTower.Upgrade();
+            TowerSelector.instance.SelectTower(ref selectedTower);
         }
 
-        SelectTower(selectedTower);
         // Return your currency Value Here
         //Debug.LogWarning("[Reminder] Need Currency System");
     }
