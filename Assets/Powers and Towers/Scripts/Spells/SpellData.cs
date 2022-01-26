@@ -70,11 +70,11 @@ public class SpellData : CardData
             }
             if (blackHole && item.CompareTag("Tower"))
             {
-                // Chance to spare towers
-                // 0% at level 1
+                // Chance to destroy towers
+                // 20% at level 1
                 // 10% at level 2
-                // 25% at level 3
-                if (UnityEngine.Random.value < 1.05 - 0.15 * levelCastAt)   
+                // 0% at level 3
+                if (UnityEngine.Random.value < 0.2 - 0.1 * levelCastAt)   
                 {
                     tower.DestroyTower(false);
                 }

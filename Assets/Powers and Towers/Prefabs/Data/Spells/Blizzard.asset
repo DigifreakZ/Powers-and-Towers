@@ -16,7 +16,7 @@ MonoBehaviour:
   cardID: 5
   cardCost: 5
   cardImage: {fileID: 21300000, guid: 9b8bc137ca1c5b2468ac719bd4ef488b, type: 3}
-  cardDescription: Freezing
+  cardDescription: Deals damage and slow enemies in an area
   spellNames:
   - Blizzard
   - Greater Blizzard

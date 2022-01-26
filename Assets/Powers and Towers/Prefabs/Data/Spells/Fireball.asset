@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   cardName: Fireball
-  cardID: 3
+  cardID: 4
   cardCost: 5
   cardImage: {fileID: 21300000, guid: 4d0bc9161d6bbd24f96bc89258c31976, type: 3}
-  cardDescription: Boom
+  cardDescription: Deals damage to enemies
   spellNames:
   - Fireball
   - Greater Fireball
@@ -53,3 +53,4 @@ MonoBehaviour:
   doBuff: 0
   buffModifier: 0
   buffType: 2
+  wildMagic: 0
