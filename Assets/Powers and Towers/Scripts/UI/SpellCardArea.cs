@@ -23,6 +23,11 @@ public class SpellCardArea : MonoBehaviour
         GetSpellsInDeck();
     }
 
+    private void Update()
+    {
+        DrawCost.text = GetCostToDraw().ToString();
+    }
+
     private void GetSpellsInDeck()
     {
         for (int i = 0; i < GameManager.instance.SpellCards.Length; i++)
@@ -51,7 +56,6 @@ public class SpellCardArea : MonoBehaviour
                 newSpellCard.GetComponent<SpellCard>().targetCircle = targetCircle;
                 spellsInHand.Add(newSpellCard);
                 StartCoroutine(MoveCardUp(newSpellCard, spellsInHand.Count - 1));
-                DrawCost.text = GetCostToDraw().ToString();
             }
             else
             {

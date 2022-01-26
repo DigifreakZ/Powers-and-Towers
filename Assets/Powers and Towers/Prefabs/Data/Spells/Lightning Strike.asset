@@ -16,7 +16,7 @@ MonoBehaviour:
   cardID: 11
   cardCost: 10
   cardImage: {fileID: 21300000, guid: 461953276393eb74f98d0a47425a63cc, type: 3}
-  cardDescription: Zippety zap
+  cardDescription: Deals damage and stuns enemies
   spellNames:
   - Lightning Strike
   - Greater Lightning Strike
