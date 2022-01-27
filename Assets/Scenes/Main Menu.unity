@@ -5121,7 +5121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 22.224703}
+  m_AnchoredPosition: {x: 0, y: 22.224731}
   m_SizeDelta: {x: -300, y: -255.5506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &676818137
@@ -7663,19 +7663,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[2]
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[3]
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[4]
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[5]
-      value: 4
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738237, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: m_Name
@@ -18911,7 +18911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 22.224703}
+  m_AnchoredPosition: {x: 0, y: 22.224731}
   m_SizeDelta: {x: -300, y: -255.5506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928639006

@@ -1880,6 +1880,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21c1824733e1d4f99a218fad694af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  art: {fileID: 0}
+  costTextNew: {fileID: 0}
+  nameTextNew: {fileID: 0}
+  attackTextNew: {fileID: 0}
+  speedTextNew: {fileID: 0}
+  rangeTextNew: {fileID: 0}
+  elementTextNew: {fileID: 0}
+  attackTextOld: {fileID: 0}
+  speedTextOld: {fileID: 0}
+  rangeTextOld: {fileID: 0}
+  elementTextOld: {fileID: 0}
+  ParentOfValues: {fileID: 0}
 --- !u!1 &315664497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,7 +3456,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3468,7 +3480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616156931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1.5, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3489,7 +3501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
   m_RefResolutionX: 640
-  m_RefResolutionY: 320
+  m_RefResolutionY: 360
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 0
