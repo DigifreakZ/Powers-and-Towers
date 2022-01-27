@@ -97,7 +97,7 @@ public class MapManager : MonoBehaviour
             for (int i = 0; i < currentWaveData[whatWave].NR; i++)
             {
                 yield return new WaitForSeconds(timeBetweenSpawning);
-                enemies.Add(Instantiate(GameManager.instance.GetEnemyFromID(currentWaveData[whatWave].ID), _pathNodes[0].position, Quaternion.identity).GetComponent<Enemy>());
+                enemies.Add(Instantiate(GameManager.instance.GetEnemyFromID(currentWaveData[whatWave].ID), _pathNodes[0].position, Quaternion.identity).GetComponentInChildren<Enemy>());
                 enemies[enemies.Count - 1].EnemyData = GameManager.instance.GetEnemyDataFromID(currentWaveData[whatWave].ID);
             }
         }

@@ -20,6 +20,6 @@ MonoBehaviour:
   spriteImage: {fileID: 21300000, guid: 5cd015c0e03184545b941a34c38395df, type: 3}
   Scale: {x: 0.5, y: 0.5, z: 1}
   movingAnimation: {fileID: 0}
-  gameObject: {fileID: 3778795860092155320, guid: 0c7d3ff0084745c44962fdf8843fb907, type: 3}
+  gameObject: {fileID: 949062120218553962, guid: ed6db1715108d934086a8103f4827cd6, type: 3}
   resistances: 
   weakness: 

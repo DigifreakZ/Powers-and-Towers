@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DamageType[] weakness;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private bool DebugDummy;
+    [SerializeField] private Image healthbar;
+    [SerializeField] private Animator healthbarAnimator;
     private int nextNodeIndex = 0;
     private List<float> slowEffects;
     private EnemyData data;
@@ -36,7 +39,8 @@ public class Enemy : MonoBehaviour
         set
         {
             _health = value;
-
+            healthbar.fillAmount = (float)_health/EnemyData.health;
+            healthbarAnimator.SetTrigger("Damage");
             if (_health <= 0)
             {
                 Die();
@@ -74,6 +78,11 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        healthbarAnimator.transform.position = transform.position;
+    }
+
     private void FixedUpdate()
     {
         if (_nodes != null)
@@ -88,6 +97,7 @@ public class Enemy : MonoBehaviour
 
                 Vector3 triangle = _nodes[nextNodeIndex].position - transform.position;
                 transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
+                //healthbarAnimator.gameObject.transform.rotation = Quaternion.Euler(0, 0, -transform.rotation.z);
             }
             rb.position = Vector3.MoveTowards(transform.position, _nodes[nextNodeIndex].position, _speed * Time.fixedDeltaTime);
         }
@@ -194,7 +204,7 @@ public class Enemy : MonoBehaviour
         GameManager.instance.Currency = _lootValue + GameManager.instance.Currency;
         try
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
         catch { }
         return;
