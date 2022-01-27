@@ -7975,6 +7975,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
+      propertyPath: DeckCards.Array.data[4]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887692930348738236, guid: 5a214ca841d5ed94f9b767bbc7f3c6fb, type: 3}
       propertyPath: SpellCards.Array.data[0]
       value: 4
       objectReference: {fileID: 0}
