@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   defaultMouse: {fileID: 0}
+  rangeIndicatorPrefab: {fileID: 1566933615027173588, guid: 8c6638fb7aa3abf4385eb664eaae8760, type: 3}
 --- !u!1 &845366638168452601
 GameObject:
   m_ObjectHideFlags: 0

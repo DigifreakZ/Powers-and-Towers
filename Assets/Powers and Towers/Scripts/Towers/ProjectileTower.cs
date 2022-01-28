@@ -60,4 +60,5 @@ public class ProjectileTower : Tower
         _obj.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
         _obj.GetComponent<Rigidbody2D>().AddForce(_obj.transform.right * 1000f);
     }
+
 }

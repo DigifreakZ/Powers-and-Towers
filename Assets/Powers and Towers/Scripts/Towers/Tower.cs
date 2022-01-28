@@ -14,7 +14,8 @@ public class Tower : MonoBehaviour
     protected float rangeModifier = 1;
     protected DamageType type;
     // Chache
-    public TowerData data;
+    protected TowerData data;
+    public TowerData Data => data;
     protected Transform headTransform;
     protected SpriteRenderer headRender;
     protected SpriteRenderer baseRender;
@@ -24,14 +25,11 @@ public class Tower : MonoBehaviour
     // 
     public virtual void Init(TowerData data)
     {
-        if (data != this.data)
-        {
-            this.damage = data.damage;
-            this.attackSpeed = data.attackCooldown;
-            this.range = data.range;
-            this.type = data.type;
-            this.data = data;
-        }
+        this.damage = data.damage;
+        this.attackSpeed = data.attackCooldown;
+        this.range = data.range;
+        this.type = data.type;
+        this.data = data;
 
         if (headTransform == null)
             headTransform = gameObject.transform.GetChild(0);
@@ -53,7 +51,7 @@ public class Tower : MonoBehaviour
     }
     public virtual void Upgrade()
     {
-        data.UpgradeTower(this);
+        Data.UpgradeTower(this);
         statsChanged = true;
     }
     protected virtual void Attack()
@@ -66,7 +64,7 @@ public class Tower : MonoBehaviour
         if (returnMoney)
         {
             //Debug.Log("Return Money");
-            GameManager.instance.Currency += Convert.ToInt32(data.cardCost * 0.5f);
+            GameManager.instance.Currency += Convert.ToInt32(Data.cardCost * 0.5f);
         }
         //Debug.Log("Destroy Object");
         Destroy(gameObject);
@@ -77,11 +75,11 @@ public class Tower : MonoBehaviour
         if (statsChanged)
         {
             statsChanged = false;
-            damage = (int)MathF.Round(data.damage * damageModifier);
+            damage = (int)MathF.Round(Data.damage * damageModifier);
             print("Damage: " + damage);
-            attackSpeed = data.attackCooldown * attacSpeedModifier;
+            attackSpeed = Data.attackCooldown * attacSpeedModifier;
             print("Attack Speed: " + attackSpeed);
-            range = MathF.Round(data.range * rangeModifier);
+            range = MathF.Round(Data.range * rangeModifier);
             print("Range: " + range);
         }
     }
@@ -119,6 +117,11 @@ public class Tower : MonoBehaviour
             attacSpeedModifier = 1;
         }
         statsChanged = true;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f,0f,0f,0.2f);
+        Gizmos.DrawSphere(transform.position, Data.range);
     }
 }
 

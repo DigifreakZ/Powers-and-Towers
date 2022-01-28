@@ -39,7 +39,7 @@ public class UpgradeTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
             fullCardImage = GetComponent<Image>();
         }
         selectedTower = tower;
-        if (tower.data.upgradedVersion == null ||tower.data == tower.data.upgradedVersion)
+        if (tower.Data.upgradedVersion == null ||tower.Data == tower.Data.upgradedVersion)
         {
             fullCardImage.enabled = false;
             ParentOfValues.SetActive(false);
@@ -50,8 +50,8 @@ public class UpgradeTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
             fullCardImage.enabled = true;
             ParentOfValues.SetActive(true);
 
-            TowerData newTowerData = tower.data.upgradedVersion;
-            TowerData oldTowerData = tower.data;
+            TowerData newTowerData = tower.Data.upgradedVersion;
+            TowerData oldTowerData = tower.Data;
 
             art.sprite = newTowerData.spriteImage;
 
@@ -90,9 +90,9 @@ public class UpgradeTowerButton : MonoBehaviour, IPointerDownHandler, IPointerEn
     {
         if (selectedTower == null) return;
 
-        if (selectedTower.data.upgradedVersion.cardCost <= GameManager.instance.Currency)
+        if (selectedTower.Data.upgradedVersion.cardCost <= GameManager.instance.Currency)
         {
-            GameManager.instance.Currency -= selectedTower.data.upgradedVersion.cardCost;
+            GameManager.instance.Currency -= selectedTower.Data.upgradedVersion.cardCost;
             selectedTower.Upgrade();
             TowerSelector.instance.SelectTower(ref selectedTower);
         }

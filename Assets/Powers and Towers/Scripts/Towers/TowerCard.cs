@@ -49,19 +49,23 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         if (!holdingCard || MouseHandler.instance == null) return;
         
-        MouseHandler m = MouseHandler.instance;
-
-        if (!m.image.enabled) m.image.enabled = true;
-
-        if (m.image.sprite != towerData.spriteImage)
-            m.image.sprite = towerData.spriteImage;
+        MouseHandler mouse = MouseHandler.instance;
 
         if (ViablePlacementArea && GameManager.instance.Currency >= towerData.cardCost && !IsPointerOverUIObject())
-            m.image.color = Color.white;
+        {
+            mouse.towerPreviewBodyRender.color = Color.white;
+            mouse.towerPreviewHeadRender.color = Color.white;
+        }
         else if (IsPointerOverUIObject())
-            m.image.color = new Color(0,0,0,0);
+        {
+            mouse.towerPreviewBodyRender.color = new Color(0, 0, 0, 0);
+            mouse.towerPreviewHeadRender.color = new Color(0, 0, 0, 0);
+        }
         else
-            m.image.color = Color.red;
+        {
+            mouse.towerPreviewBodyRender.color = Color.red;
+            mouse.towerPreviewHeadRender.color = Color.red;
+        }
     }
 
     // Sets tower att mouse Position
@@ -90,17 +94,19 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     public void OnPointerDown(PointerEventData eventData)
     {
         holdingCard = true;
+        MouseHandler.instance.Show(towerData);
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         holdingCard = false;
         if (ViablePlacementArea && GameManager.instance.Currency >= towerData.cardCost && !IsPointerOverUIObject())
         {
-            GameManager.instance.Currency = GameManager.instance.Currency - towerData.cardCost;
+            GameManager.instance.Currency -= towerData.cardCost;
             towerData.SetTower(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + new Vector3(0, 0, 10));
         }
         if (MouseHandler.instance == null) return;
         MouseHandler.instance.SetDefaultMouse();
+        MouseHandler.instance.Hide();
     }
     public void LevelUp()
     {
