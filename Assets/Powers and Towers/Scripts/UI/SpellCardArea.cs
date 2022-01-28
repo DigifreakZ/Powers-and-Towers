@@ -13,6 +13,7 @@ public class SpellCardArea : MonoBehaviour
     private SpellCard currentlyGrabbedCard;
     private bool holdingCard = false;
     public TextMeshProUGUI DrawCost;
+    [HideInInspector] public int discount = 0;
 
     public bool belowMaxHandSize => spellsInHand.Count < maximumHandSize;
 
@@ -38,7 +39,12 @@ public class SpellCardArea : MonoBehaviour
 
     public int GetCostToDraw()
     {
-        return 5 + 5 * spellsInHand.Count;
+        int spellCost = 5 + 1 * spellsInHand.Count - discount;
+        if (spellCost > 10 - discount)
+        {
+            spellCost = 10 - discount;
+        }
+        return spellCost;
     }
 
     public void DrawCard()
