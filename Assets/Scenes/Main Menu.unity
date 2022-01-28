@@ -3846,6 +3846,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   defaultMouse: {fileID: 0}
+  rangeIndicatorPrefab: {fileID: 0}
+  DefaultTowerBase: {fileID: 0}
+  towerPreviewBody: {fileID: 0}
+  towerPreviewBodyRender: {fileID: 0}
+  towerPreviewHead: {fileID: 0}
+  towerPreviewHeadRender: {fileID: 0}
 --- !u!114 &485746750
 MonoBehaviour:
   m_ObjectHideFlags: 0
