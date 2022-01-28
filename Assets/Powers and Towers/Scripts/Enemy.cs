@@ -13,14 +13,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DamageType[] resistances;
     [SerializeField] private DamageType[] weakness;
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private GameObject HealthBar;
     [SerializeField] private bool DebugDummy;
     private int nextNodeIndex = 0;
     private List<float> slowEffects;
     private EnemyData data;
-
-
-
     public EnemyData EnemyData
     {
         get { return data; }
@@ -46,11 +42,6 @@ public class Enemy : MonoBehaviour
                 Die();
             }
         }
-    }
-
-    private void OnEnable()
-    {
-        
     }
 
     private void Start()
