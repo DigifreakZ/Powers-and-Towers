@@ -10,7 +10,7 @@ public class OilTower : Tower
     [SerializeField] protected GameObject projectile;
     private void Awake()
     {
-        Init(data);
+        Init(Data);
     }
 
     public override void Init(TowerData data)

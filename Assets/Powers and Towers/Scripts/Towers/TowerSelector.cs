@@ -31,7 +31,7 @@ public class TowerSelector : MonoBehaviour
             {
                 if (raycastHit_Game.collider.transform.gameObject.layer == 8)
                 {
-                    if (raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>().data != null)
+                    if (raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>().Data != null)
                     {
                         SelectedTower = raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>();
                         SelectTower(ref SelectedTower);

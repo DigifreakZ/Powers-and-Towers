@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // Singelton Variables
-    [HideInInspector] public int[] DeckCards = new int[6];
-    [HideInInspector] public int[] SpellCards = new int[6];
+    public int[] DeckCards = new int[6];
+    public int[] SpellCards = new int[6];
     [SerializeField] public CardDataBase cardDatabase;
     [SerializeField] public EnemyDataBase enemyDatabase;
 
@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
             _health = value;
             if (_health <= 0)
             {
+                ResetValues();
                 SceneManager.LoadScene("Main Menu");
-                _health = 100;
             }
             if (DashBoard != null)
                 UpdateUIDashBoard();
@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
 
         return instance.cardDatabase.cardData[index];
     }
-
     /// <summary>
     /// Return card for your hand corresponding to hand position
     /// </summary>
@@ -107,6 +106,12 @@ public class GameManager : MonoBehaviour
         if (DashBoard == null) return;
         DashBoard.CurrencyText = _currency.ToString();
         DashBoard.HealthText = _health.ToString();
+    }
+
+    public void ResetValues()
+    {
+        _health = 100;
+        _currency = 0;
     }
 
     private void Awake()

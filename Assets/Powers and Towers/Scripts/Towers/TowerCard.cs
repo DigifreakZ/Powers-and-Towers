@@ -51,17 +51,21 @@ public class TowerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         
         MouseHandler mouse = MouseHandler.instance;
 
-        if (!mouse.image.enabled) mouse.image.enabled = true;
-
-        if (mouse.image.sprite != towerData.spriteImage)
-            mouse.image.sprite = towerData.spriteImage;
-
         if (ViablePlacementArea && GameManager.instance.Currency >= towerData.cardCost && !IsPointerOverUIObject())
-            mouse.image.color = Color.white;
+        {
+            mouse.towerPreviewBodyRender.color = Color.white;
+            mouse.towerPreviewHeadRender.color = Color.white;
+        }
         else if (IsPointerOverUIObject())
-            mouse.image.color = new Color(0,0,0,0);
+        {
+            mouse.towerPreviewBodyRender.color = new Color(0, 0, 0, 0);
+            mouse.towerPreviewHeadRender.color = new Color(0, 0, 0, 0);
+        }
         else
-            mouse.image.color = Color.red;
+        {
+            mouse.towerPreviewBodyRender.color = Color.red;
+            mouse.towerPreviewHeadRender.color = Color.red;
+        }
     }
 
     // Sets tower att mouse Position
