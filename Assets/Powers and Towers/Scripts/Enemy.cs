@@ -200,7 +200,11 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        MapManager.instance.EnemyDied(this);
+        try
+        {
+            MapManager.instance.EnemyDied(this);
+        }
+        catch { }
         GameManager.instance.Currency = _lootValue + GameManager.instance.Currency;
         try
         {

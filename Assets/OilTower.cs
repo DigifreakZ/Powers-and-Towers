@@ -8,11 +8,6 @@ public class OilTower : Tower
     [SerializeField] protected ParticleSystem particle;
     protected List<Collider2D> colliders;
     [SerializeField] protected GameObject projectile;
-    private void Awake()
-    {
-        Init(Data);
-    }
-
     public override void Init(TowerData data)
     {
         base.Init(data);
