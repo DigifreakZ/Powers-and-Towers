@@ -241,5 +241,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c1f26e142ef5641b8009bf40933930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 1f3b992be3fdee1439e69cf218b022cd, type: 2}
   projectile: {fileID: 2667806567056886496, guid: 34e07e665fb4ea147ba84519247f6593, type: 3}
