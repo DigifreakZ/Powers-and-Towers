@@ -58,7 +58,7 @@ public class ProjectileTower : Tower
         GameObject _obj= Instantiate(projectile,transform.position,Quaternion.identity);
         _obj.GetComponent<Projectile>().Init(damage,type);
         _obj.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(triangle.y, triangle.x) * Mathf.Rad2Deg);
-        _obj.GetComponent<Rigidbody2D>().AddForce(_obj.transform.right * 1000f);
+        _obj.GetComponent<Rigidbody2D>().AddForce(_obj.transform.right * 500f * range);
     }
 
 }

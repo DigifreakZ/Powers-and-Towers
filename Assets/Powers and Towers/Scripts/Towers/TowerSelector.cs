@@ -8,9 +8,42 @@ public class TowerSelector : MonoBehaviour
     public static TowerSelector instance;
     public UpgradeTowerButton upgradeButton;
     public DestroyTowerButton destroyButton;
-    private Tower SelectedTower;
+    [SerializeField] private GameObject rangeIndicatorPrefab;
+    private Transform selectedTowerRangeIndictor;
     private UITweener tweener;
+    public Transform SelectedTowerRangeIndictor
+    {
+        set
+        {
+            selectedTowerRangeIndictor = value;
+        }
+        get
+        {
+            if (selectedTowerRangeIndictor == null)
+            {
+                selectedTowerRangeIndictor = Instantiate(rangeIndicatorPrefab,new Vector3(0,-1000,0),Quaternion.identity).transform;
+            }
+            return selectedTowerRangeIndictor;
+        }
+    }
+    private Tower selectedTower;
+    private Tower SelectedTower
+    {
+        get
+        {
+            return selectedTower;
+        }
+        set
+        {
+            if (selectedTower != null)
+                selectedTower.Deselect();
+            selectedTower = value;
+            if (selectedTower != null)
+                selectedTower.Select();
+        }
+    }
     public UITweener Tweener => tweener;
+
     private void Awake()
     {
         if (!tweener) tweener = GetComponent<UITweener>();
@@ -27,20 +60,21 @@ public class TowerSelector : MonoBehaviour
                     + new Vector3(0, 0, 10),
                     Vector2.zero
                 );
-            if (raycastHit_Game && !IsPointerOverUIObject())
+            if (raycastHit_Game && raycastHit_Game.transform.gameObject.layer != 6 && !IsPointerOverUIObject())
             {
                 if (raycastHit_Game.collider.transform.gameObject.layer == 8)
                 {
                     if (raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>().Data != null)
                     {
                         SelectedTower = raycastHit_Game.collider.transform.gameObject.GetComponent<Tower>();
-                        SelectTower(ref SelectedTower);
+                        SelectTower(ref selectedTower);
                     }
                 }
             }
             else if (!IsPointerOverUIObject())
             {
                 tweener.Off();
+                SelectedTower = null;
             }
         }
     }

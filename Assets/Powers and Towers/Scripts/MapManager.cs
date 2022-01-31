@@ -21,11 +21,16 @@ public class MapManager : MonoBehaviour
     private int nextWaveID = -1;
     private List<Enemy> enemies;
     public bool demoMode;
+
+    // Ingame Start
+    private List<PointingArrow> starthelpIndicator;
+    public List<PointingArrow> StarthelpIndicator => starthelpIndicator;
     private void Awake()
     {
         if (MapManager.instance != null) Destroy(gameObject);
         MapManager.instance = this;
         enemies = new List<Enemy>();
+        starthelpIndicator = new List<PointingArrow>();
         //StartCoroutine("Spawner");
     }
     private void Start()
@@ -83,6 +88,13 @@ public class MapManager : MonoBehaviour
         {
             GameManager.instance.DashBoard.CurrentWave = (1+nextWaveID).ToString();
             GameManager.instance.DashBoard.MaxWave = wave.Count.ToString();
+        }
+        if (starthelpIndicator.Count != 0)
+        {
+            for(int i = starthelpIndicator.Count - 1; i >= 0; i--)
+            {
+                starthelpIndicator[i].DestroyMe();
+            }
         }
     }
 
