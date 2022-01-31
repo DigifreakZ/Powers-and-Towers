@@ -51,9 +51,9 @@ public class SpellCardArea : MonoBehaviour
     {
         if (belowMaxHandSize)
         {
-            if (GetCostToDraw() <= GameManager.instance.Currency)
+            if (GetCostToDraw() <= GameManager.instance.Mana)
             {
-                GameManager.instance.Currency -= GetCostToDraw();
+                GameManager.instance.Mana -= GetCostToDraw();
                 GameObject newSpellCard = Instantiate(spellCardPrefab, transform, false);
                 Vector3 newCardPos = new Vector3(27, -230, 0);
                 newSpellCard.transform.localPosition = newCardPos;
@@ -65,7 +65,7 @@ public class SpellCardArea : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not enough currency to draw"); 
+                Debug.Log("Not enough mana to draw"); 
             }
         }
         else

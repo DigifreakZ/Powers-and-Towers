@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class DashBoard : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currencyText;
+    [SerializeField] private TextMeshProUGUI manaText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI currentWave;
     [SerializeField] private TextMeshProUGUI maxWave;
@@ -20,6 +21,10 @@ public class DashBoard : MonoBehaviour
     public string CurrencyText
     {
         set => currencyText.text = value;
+    }
+    public string ManaText
+    {
+        set => manaText.text = value;
     }
     public string HealthText
     {

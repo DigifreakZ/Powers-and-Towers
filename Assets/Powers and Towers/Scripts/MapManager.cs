@@ -71,7 +71,7 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-    private bool onGoingWave;
+    [HideInInspector] public bool onGoingWave;
     public void CommandStartNextRound()
     {
         if (onGoingWave) return;

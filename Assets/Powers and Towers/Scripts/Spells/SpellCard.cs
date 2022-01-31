@@ -150,9 +150,9 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         grabbed = false;
         targetCircle.transform.position = new Vector3(0, 0, -10);
-        if (GameManager.instance.Currency >= SpellData.cardCost)
+        if (GameManager.instance.Mana >= SpellData.cardCost)
         {
-            GameManager.instance.Currency -= SpellData.cardCost;
+            GameManager.instance.Mana -= SpellData.cardCost;
             Vector2 castPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             if (spellData.wildMagic)
             {
@@ -174,7 +174,7 @@ public class SpellCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         }
         else
         {
-            Debug.Log("Not enough currency");
+            Debug.Log("Not enough mana");
             StartCoroutine(ReturnToPosition());
         }
         
