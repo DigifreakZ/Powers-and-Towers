@@ -139,7 +139,7 @@ public class SpellCardArea : MonoBehaviour
 
     private IEnumerator MoveCardDown(GameObject item, int index)
     {
-        Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index - 61);
+        Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index - 65);
         while (item.transform.localPosition.y > endPoint.y)
         {
             float step = 256 * Time.deltaTime;
