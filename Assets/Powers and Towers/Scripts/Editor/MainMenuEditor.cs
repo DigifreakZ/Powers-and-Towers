@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(MainMenu))]
 public class MainMenuEditor : Editor
 {
-    private readonly string[] options = new string[] {"TowerTesting", "SpellTesting"};
+    private readonly string[] options = new string[] {"SpellTesting", "TowerTesting"};
     private int selected = 0;
     public override void OnInspectorGUI()
     {
