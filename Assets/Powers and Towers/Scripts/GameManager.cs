@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
             {
                 _mana = value;
             }
+            if (mapManager == null)
+            {
+                mapManager = FindObjectOfType<MapManager>();
+            }
             if (!manaRegenInProgress)
             {
                 StartCoroutine(ManaRegen());
@@ -148,6 +152,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        mapManager = FindObjectOfType<MapManager>();
         UpdateUIDashBoard();
     }
 
