@@ -15,9 +15,14 @@ public class GameManager : MonoBehaviour
     public int[] SpellCards = new int[6];
     [SerializeField] public CardDataBase cardDatabase;
     [SerializeField] public EnemyDataBase enemyDatabase;
+    public MapManager mapManager;
 
     // Ingame Variables
     private int _health = 0;
+    private const float MAXMANA = 30;
+    private float _mana = 15;
+    private bool manaRegenInProgress = false;
+    public float manaRegenRate = 1;
     [SerializeField] private int _currency = 0;
     [HideInInspector] public DashBoard DashBoard;
 
@@ -28,7 +33,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int hoverID;
     public bool holdingCard;
     public bool hoveringDropCard;
-    
+
 
     /// <summary>
     /// Get: return current Currency.
@@ -42,6 +47,31 @@ public class GameManager : MonoBehaviour
             _currency = value;
             if (DashBoard != null)
             UpdateUIDashBoard();
+        }
+    }
+    public float Mana
+    {
+        get { return _mana; }
+        set
+        {
+            if (value > MAXMANA)
+            {
+                _mana = MAXMANA;
+            }
+            else
+            {
+                _mana = value;
+            }
+            if (mapManager == null)
+            {
+                mapManager = FindObjectOfType<MapManager>();
+            }
+            if (!manaRegenInProgress)
+            {
+                StartCoroutine(ManaRegen());
+            }
+            if (DashBoard != null)
+                UpdateUIDashBoard();
         }
     }
     public int Health
@@ -105,6 +135,7 @@ public class GameManager : MonoBehaviour
     {
         if (DashBoard == null) return;
         DashBoard.CurrencyText = _currency.ToString();
+        DashBoard.ManaText = _mana.ToString() + "/" + MAXMANA;
         DashBoard.HealthText = _health.ToString();
     }
 
@@ -126,7 +157,21 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        mapManager = FindObjectOfType<MapManager>();
         UpdateUIDashBoard();
     }
 
+    private IEnumerator ManaRegen()
+    {
+        manaRegenInProgress = true;
+        while (_mana < MAXMANA)
+        {
+            yield return new WaitForSeconds(1);
+            if (mapManager.onGoingWave)
+            {
+                Mana += manaRegenRate;
+            }
+        }
+        manaRegenInProgress = false;
+    }
 }
