@@ -41,11 +41,7 @@ public class MapManager : MonoBehaviour
     {
         if (nextWave)
         {
-            nextWave = false;
-            StartCoroutine("Spawner");
-        }
-        else
-        {
+            CommandStartNextRound();
         }
     }
     // spawn enemy at start
@@ -84,11 +80,16 @@ public class MapManager : MonoBehaviour
         onGoingWave = true;
         if (wave.Count != nextWaveID + 1)
         nextWaveID += 1;
+
+        // Dashboard
         if (GameManager.instance != null)
         {
             GameManager.instance.DashBoard.CurrentWave = (1+nextWaveID).ToString();
             GameManager.instance.DashBoard.MaxWave = wave.Count.ToString();
         }
+        //
+
+        // Pointers
         if (starthelpIndicator.Count != 0)
         {
             for(int i = starthelpIndicator.Count - 1; i >= 0; i--)
@@ -96,6 +97,7 @@ public class MapManager : MonoBehaviour
                 starthelpIndicator[i].DestroyMe();
             }
         }
+        //
     }
 
     private float timeBetweenSpawning = 0.2f;
