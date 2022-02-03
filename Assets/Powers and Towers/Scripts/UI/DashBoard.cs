@@ -16,6 +16,7 @@ public class DashBoard : MonoBehaviour
     private void Start()
     {
         GameManager.instance.DashBoard = this;
+        GameManager.instance.Currency = GameManager.instance.Currency;
     }
 
     public string CurrencyText

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayButton : MonoBehaviour, IPointerDownHandler
+public class PlayButton : MonoBehaviour
 {
     [SerializeField] private Sprite playSprite;
     [SerializeField] private Sprite stopSprite;
@@ -23,23 +23,21 @@ public class PlayButton : MonoBehaviour, IPointerDownHandler
             spriteRenderer = value;
         }
     }
-    public void AutoPlayOn()
+    private void AutoPlayOn()
     {
-        print(autoplay);
         SpriteRenderer.sprite = playSprite;
         MapManager.instance.nextWave = autoplay;
     }
-    public void AutoPlayOff()
+    private void AutoPlayOff()
     {
-        print(autoplay);
         SpriteRenderer.sprite = stopSprite;
         MapManager.instance.nextWave = autoplay;
     }
     private void Start()
     {
-        AutoPlayOn();
+        AutoPlayOff();
     }
-    public void OnPointerDown(PointerEventData eventData)
+    public void ButtonDown()
     {
         autoplay = !autoplay;
         if (autoplay)
