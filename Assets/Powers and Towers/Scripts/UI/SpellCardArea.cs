@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -57,7 +58,7 @@ public class SpellCardArea : MonoBehaviour
                 GameObject newSpellCard = Instantiate(spellCardPrefab, transform, false);
                 Vector3 newCardPos = new Vector3(27, -230, 0);
                 newSpellCard.transform.localPosition = newCardPos;
-                int i = Random.Range(0, spellsInDeck.Count);
+                int i = UnityEngine.Random.Range(0, spellsInDeck.Count);
                 newSpellCard.GetComponent<SpellCard>().SpellData = spellsInDeck[i];
                 newSpellCard.GetComponent<SpellCard>().targetCircle = targetCircle;
                 spellsInHand.Add(newSpellCard);
@@ -140,11 +141,18 @@ public class SpellCardArea : MonoBehaviour
     private IEnumerator MoveCardDown(GameObject item, int index)
     {
         Vector3 endPoint = new Vector3(item.transform.localPosition.x, -16 * index - 65);
-        while (item.transform.localPosition.y > endPoint.y)
+        try
         {
-            float step = 256 * Time.deltaTime;
-            item.transform.localPosition = Vector3.MoveTowards(item.transform.localPosition, endPoint, step);
-            yield return null;
+            while (item.transform.localPosition.y > endPoint.y)
+            {
+                float step = 256 * Time.deltaTime;
+                item.transform.localPosition = Vector3.MoveTowards(item.transform.localPosition, endPoint, step);
+            }
         }
+        catch (Exception e)
+        { 
+            Debug.LogWarning($"Error:\n{e}\n| SpellCardArea.cs");
+        }
+        yield return null;
     }
 }

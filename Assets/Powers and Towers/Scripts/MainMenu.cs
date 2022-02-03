@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [HideInInspector] public string sceneToLoad;
+    public string sceneToLoad;
     public void StartGame()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene("SpellTesting");
+        //SceneManager.LoadScene(sceneToLoad);
     }
     public void QuitGame()
     {

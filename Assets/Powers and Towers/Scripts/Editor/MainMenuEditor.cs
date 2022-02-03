@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(MainMenu))]
 public class MainMenuEditor : Editor
@@ -14,5 +15,11 @@ public class MainMenuEditor : Editor
         MainMenu mainMenu = (MainMenu)target;
         selected = EditorGUILayout.Popup("Which scene to load?", selected, options);
         mainMenu.sceneToLoad = options[selected];
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(mainMenu);
+            EditorSceneManager.MarkSceneDirty(mainMenu.gameObject.scene);
+        }
     }
 }
