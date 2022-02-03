@@ -21,11 +21,16 @@ public class MapManager : MonoBehaviour
     private int nextWaveID = -1;
     private List<Enemy> enemies;
     public bool demoMode;
+
+    // Ingame Start
+    private List<PointingArrow> starthelpIndicator;
+    public List<PointingArrow> StarthelpIndicator => starthelpIndicator;
     private void Awake()
     {
         if (MapManager.instance != null) Destroy(gameObject);
         MapManager.instance = this;
         enemies = new List<Enemy>();
+        starthelpIndicator = new List<PointingArrow>();
         //StartCoroutine("Spawner");
     }
     private void Start()
@@ -36,11 +41,7 @@ public class MapManager : MonoBehaviour
     {
         if (nextWave)
         {
-            nextWave = false;
-            StartCoroutine("Spawner");
-        }
-        else
-        {
+            CommandStartNextRound();
         }
     }
     // spawn enemy at start
@@ -79,11 +80,24 @@ public class MapManager : MonoBehaviour
         onGoingWave = true;
         if (wave.Count != nextWaveID + 1)
         nextWaveID += 1;
+
+        // Dashboard
         if (GameManager.instance != null)
         {
             GameManager.instance.DashBoard.CurrentWave = (1+nextWaveID).ToString();
             GameManager.instance.DashBoard.MaxWave = wave.Count.ToString();
         }
+        //
+
+        // Pointers
+        if (starthelpIndicator.Count != 0)
+        {
+            for(int i = starthelpIndicator.Count - 1; i >= 0; i--)
+            {
+                starthelpIndicator[i].DestroyMe();
+            }
+        }
+        //
     }
 
     private float timeBetweenSpawning = 0.2f;

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _currency = 0;
     [HideInInspector] public DashBoard DashBoard;
 
+
     // Deck Builder Variables
     [HideInInspector] public DeckBuilderHandTower TowerToAdd;
     [HideInInspector] public DeckBuilderHandSpell SpellToAdd;

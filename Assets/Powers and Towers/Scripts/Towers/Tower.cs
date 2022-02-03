@@ -16,11 +16,41 @@ public class Tower : MonoBehaviour
     // Chache
     protected TowerData data;
     public TowerData Data => data;
+
     protected Transform headTransform;
     protected SpriteRenderer headRender;
+
     protected SpriteRenderer baseRender;
     protected float attackCD = 0f;
     protected bool statsChanged;
+
+    internal void Deselect()
+    {
+        if (TowerSelector.instance == null) return;
+        print($"Deselected|{name}|");
+
+        Transform towerIndicator = TowerSelector.instance.SelectedTowerRangeIndictor.transform;
+
+        if (towerIndicator.gameObject.activeSelf)
+            towerIndicator.gameObject.SetActive(false);
+    }
+    internal void Select()
+    {
+        if (TowerSelector.instance == null) return;
+        print($"Selected|{name}|");
+
+        Transform towerIndicator = TowerSelector.instance.SelectedTowerRangeIndictor.transform;
+        towerIndicator.position = transform.position;
+
+        SpriteRenderer tempSpriteRenderer = transform.GetComponent<SpriteRenderer>();
+        SpriteRenderer tempSpriteRenderer2 = towerIndicator.GetComponent<SpriteRenderer>();
+        towerIndicator.localScale = Vector3.one * range * 2;
+        tempSpriteRenderer2.renderingLayerMask = tempSpriteRenderer.renderingLayerMask;
+        tempSpriteRenderer2.sortingOrder = tempSpriteRenderer.sortingOrder - 1;
+
+        if (!towerIndicator.gameObject.activeSelf)
+            towerIndicator.gameObject.SetActive(true);
+    }
 
     // 
     public virtual void Init(TowerData data)
