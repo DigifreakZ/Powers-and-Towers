@@ -20,7 +20,6 @@ public class MapManager : MonoBehaviour
     //
     private int nextWaveID = -1;
     private List<Enemy> enemies;
-    public bool demoMode;
 
     // Ingame Start
     private List<PointingArrow> starthelpIndicator;
@@ -35,7 +34,7 @@ public class MapManager : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.instance.DebugGiveCurrency(10);
+        GameManager.instance.NewGame();
     }
     private void Update()
     {
@@ -76,8 +75,8 @@ public class MapManager : MonoBehaviour
     public void CommandStartNextRound()
     {
         if (onGoingWave) return;
-        nextWave = true;
         onGoingWave = true;
+        nextWave = true;
         if (wave.Count != nextWaveID + 1)
         nextWaveID += 1;
 
@@ -88,7 +87,7 @@ public class MapManager : MonoBehaviour
             GameManager.instance.DashBoard.MaxWave = wave.Count.ToString();
         }
         //
-
+        StartCoroutine("Spawner");
         // Pointers
         if (starthelpIndicator.Count != 0)
         {

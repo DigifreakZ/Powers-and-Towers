@@ -35,6 +35,12 @@ public class GameManager : MonoBehaviour
     public bool holdingCard;
     public bool hoveringDropCard;
 
+    public void NewGame()
+    {
+        Currency = 10;
+        Health = 100;
+    }
+
 
     /// <summary>
     /// Get: return current Currency.

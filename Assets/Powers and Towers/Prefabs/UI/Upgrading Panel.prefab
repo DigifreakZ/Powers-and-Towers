@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeButton: {fileID: 0}
   destroyButton: {fileID: 0}
+  rangeIndicatorPrefab: {fileID: 1566933615027173588, guid: 8c6638fb7aa3abf4385eb664eaae8760, type: 3}
 --- !u!1 &60884836804471123
 GameObject:
   m_ObjectHideFlags: 0
