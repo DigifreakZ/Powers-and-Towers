@@ -28101,6 +28101,10 @@ PrefabInstance:
       value: Map Manager
       objectReference: {fileID: 0}
     - target: {fileID: 820954201050791939, guid: 675a24e5c0c73984fa5ea357f56cbe36, type: 3}
+      propertyPath: demoMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820954201050791939, guid: 675a24e5c0c73984fa5ea357f56cbe36, type: 3}
       propertyPath: youWonText
       value: 
       objectReference: {fileID: 315664497}
